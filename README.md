@@ -1,3 +1,17 @@
+# DOCS
+Do wyświetlenia mapy uzyta biblioteka:
+https://angular-maps.com/guides/getting-started/
+
+Aplikacja w google applications:
+party-app-206319
+
+Do rozwazenia: - czadowa stylizacja map:
+https://angular-maps.com/guides/snazzy-info-window/custom-info-windows-with-snazzy-info-window/
+-> kod zrodlowy: https://github.com/atmist/snazzy-info-window
+Mozna to wystylizowac w ten sposob:
+https://snazzymaps.com/
+
+
 # PartyApp
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.7.3.
