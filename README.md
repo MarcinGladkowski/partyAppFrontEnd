@@ -11,6 +11,9 @@ https://angular-maps.com/guides/snazzy-info-window/custom-info-windows-with-snaz
 Mozna to wystylizowac w ten sposob:
 https://snazzymaps.com/
 
+### Bootstrap 4 material dla apllikacji:
+https://stackoverflow.com/questions/47131199/how-to-use-material-design-with-bootstrap-4
+
 
 # PartyApp
 
