@@ -12,18 +12,16 @@ export class AppComponent {
 
   apiKey = 'AIzaSyAt9ym5lJu_8pguSVm6idX0nfQtgy-12dw';
 
-  lat = 50.254968;
-  lng = 19.0275632;
 
   devices = [
-    {
-      latitude: 50.254968,
-      longitude: 19.0275632
-    },
-    {
-      latitude: 50.2548661,
-      longitude: 19.0350241
-    }
+    // {
+    //   latitude: 50.254968,
+    //   longitude: 19.0275632
+    // },
+    // {
+    //   latitude: 50.2548661,
+    //   longitude: 19.0350241
+    // }
   ];
 
 }

@@ -4,6 +4,8 @@ import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 import { AppComponent } from './app.component';
 import { AgmCoreModule } from '@agm/core';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -11,6 +13,8 @@ import { MDBBootstrapModule } from 'angular-bootstrap-md';
   ],
   imports: [
     BrowserModule,
+    CommonModule,
+    FormsModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyAt9ym5lJu_8pguSVm6idX0nfQtgy-12dw'
     }),

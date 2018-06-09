@@ -14,6 +14,15 @@ https://snazzymaps.com/
 ### Bootstrap 4 material dla apllikacji:
 https://stackoverflow.com/questions/47131199/how-to-use-material-design-with-bootstrap-4
 
+Tutorial:
+https://mdbootstrap.com/angular/5min-quickstart/
+
++ GOOGLE MAPS:
+http://brianflove.com/2016/10/18/angular-2-google-maps-places-autocomplete/
+
++ oznaczanie terenu
+https://stackblitz.com/edit/angular-google-maps-demo
+
 
 # PartyApp
 
