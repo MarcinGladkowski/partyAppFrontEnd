@@ -2,6 +2,9 @@
 Do wyświetlenia mapy uzyta biblioteka:
 https://angular-maps.com/guides/getting-started/
 
+##DEMO
+https://stackblitz.com/edit/angular-google-maps-demo
+
 Aplikacja w google applications:
 GOOGLE API CONSOLE:
 party-app-206319

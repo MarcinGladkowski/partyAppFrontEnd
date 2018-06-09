@@ -11,17 +11,24 @@
 
       <h5>Lista eventów:</h5>
       <ul class="list-group">
-        <li *ngFor="let place of places" class="list-group-item">{{ place.name }}</li>
+        <li *ngFor="let party of partyEvents" class="list-group-item">{{ party.name }}</li>
       </ul>
 
     </div>
     <div class="col-md-8 ">
-      <!-- <agm-map [latitude]="lat" [longitude]="lon" [scrollwheel]="false" [zoom]="zoom">
-                <agm-marker [latitude]="place.latitude" [longitude]="place.lon" *ngFor="let place of places"></agm-marker>
-              </agm-map> -->
+      <agm-map 
+          [latitude]="latitude"
+          [longitude]="longitude">
+        <agm-marker 
+            class="mapMarker" 
+            *ngFor="let party of partyEvents" 
+            [latitude]="party.latitude" 
+            [longitude]="party.longitude">
 
-      <agm-map  *ngFor="let device of devices;" [latitude]="device.latitude" [longitude]="device.longitude">
-        <agm-marker class="mapMarker" *ngFor="let device of devices;" [latitude]="device.latitude" [longitude]="device.longitude">
+            <agm-info-window>
+              <strong>{{ party.name }}</strong>
+            </agm-info-window>
+
         </agm-marker>
       </agm-map>
     </div>

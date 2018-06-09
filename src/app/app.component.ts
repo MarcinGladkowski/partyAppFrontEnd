@@ -14,20 +14,10 @@ export class AppComponent implements OnInit {
   constructor(
     private mapsAPILoader: MapsAPILoader,
     private ngZone: NgZone
-  ) {
-    this.places = [
-      {
-        name: 'DefaultEvent',
-        lat: 50.254968,
-        lon: 19.0275632
-      }
-    ];
-  }
+  ) {}
 
-
-  apiKey = 'AIzaSyAt9ym5lJu_8pguSVm6idX0nfQtgy-12dw';
-
-  public places: Array<Object>;
+  public latitude: number;
+  public longitude: number;
   public searchControl: FormControl;
   public zoom: number;
 
@@ -35,33 +25,32 @@ export class AppComponent implements OnInit {
   public searchElementRef: ElementRef;
 
 
-
-  devices = [
+  partyEvents = [
     {
-      latitude: 50.254968,
-      longitude: 19.0275632
+      name: 'Domówka',
+      latitude: 50.1826663,
+      longitude: 19.1444923
     },
     {
+      name: 'Impreza muzyczna',
       latitude: 50.2548661,
       longitude: 19.0350241
     }
   ];
 
-  place = {
-    name: '',
-    latitude: 0,
-    lon: 0
-  };
-
   ngOnInit() {
+
     // set google maps defaults
+    this.latitude = 50.254968;
+    this.longitude = 19.0275632;
+
     this.zoom = 4;
 
     // create search FormControl
     this.searchControl = new FormControl();
 
     // set current position
-    // this.setCurrentPosition();
+    this.setCurrentPosition();
 
     // load Places Autocomplete
     this.mapsAPILoader.load().then(() => {
@@ -77,28 +66,34 @@ export class AppComponent implements OnInit {
           if (place.geometry === undefined || place.geometry === null) {
             return;
           }
-          // const newPlace = {
-          //   name: 'Event',
-          //   lat: place.geometry.location.lat(),
-          //   lon: place.geometry.location.lng()
-          // };
-          // console.log(newPlace);
+          const newPlace = {
+            name: 'Event',
+            latitude: place.geometry.location.lat(),
+            longitude: place.geometry.location.lng()
+          };
+          console.log(newPlace);
           // set latitude, longitude and zoom
-          // this.places.push(newPlace);
+          this.partyEvents.push(newPlace);
+
+          // set latitude, longitude and zoom
+          // this.latitude = place.geometry.location.lat();
+          // this.longitude = place.geometry.location.lng();
+          // this.zoom = 12;
+
           this.zoom = 12;
         });
       });
     });
   }
 
-  // private setCurrentPosition() {
-  //   if ('geolocation' in navigator) {
-  //     navigator.geolocation.getCurrentPosition((position) => {
-  //       this.latitude = position.coords.latitude;
-  //       this.longitude = position.coords.longitude;
-  //       this.zoom = 12;
-  //     });
-  //   }
-  // }
+  private setCurrentPosition() {
+    if ('geolocation' in navigator) {
+      navigator.geolocation.getCurrentPosition((position) => {
+        this.latitude = position.coords.latitude;
+        this.longitude = position.coords.longitude;
+        this.zoom = 12;
+      });
+    }
+  }
 
 }
