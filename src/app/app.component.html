@@ -1,24 +1,17 @@
-<!--/.Navbar-->
 <div class="container-fluid">
     <div class="row">
-
         <div class="col-md-4">
           <h3>Wprowadź adres:</h3>
             <div class="md-form">
-                <input mdbInputDirective type="text" id="form1" class="form-control">
+                <input mdbInputDirective  id="form1" placeholder="search for location" autocorrect="off" autocapitalize="off" spellcheck="off" type="text" class="form-control" 
+                #search [formControl]="searchControl">
                 <label for="form1" class="">Example label</label>
             </div>
-
         </div>
         <div class="col-md-8 ">
-
-          <agm-map [latitude]="lat" [longitude]="lng">
-            <agm-marker class="mapMarker" *ngFor="let device of devices;" [latitude]="device.latitude" [longitude]="device.longitude">
-            </agm-marker>
-          </agm-map>
-
+            <agm-map [latitude]="latitude" [longitude]="longitude" [scrollwheel]="false" [zoom]="zoom">
+                <agm-marker [latitude]="latitude" [longitude]="longitude"></agm-marker>
+              </agm-map>
         </div>
       </div>
 </div>
-
-

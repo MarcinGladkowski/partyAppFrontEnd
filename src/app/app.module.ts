@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
-
+import { ReactiveFormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { AgmCoreModule } from '@agm/core';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
@@ -15,8 +15,10 @@ import { FormsModule } from '@angular/forms';
     BrowserModule,
     CommonModule,
     FormsModule,
+    ReactiveFormsModule,
     AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyAt9ym5lJu_8pguSVm6idX0nfQtgy-12dw'
+      apiKey: 'AIzaSyAt9ym5lJu_8pguSVm6idX0nfQtgy-12dw',
+      libraries: ['places']
     }),
     MDBBootstrapModule.forRoot()
   ],
