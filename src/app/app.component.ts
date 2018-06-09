@@ -14,44 +14,54 @@ export class AppComponent implements OnInit {
   constructor(
     private mapsAPILoader: MapsAPILoader,
     private ngZone: NgZone
-  ) {}
+  ) {
+    this.places = [
+      {
+        name: 'DefaultEvent',
+        lat: 50.254968,
+        lon: 19.0275632
+      }
+    ];
+  }
 
 
   apiKey = 'AIzaSyAt9ym5lJu_8pguSVm6idX0nfQtgy-12dw';
 
-  public latitude: number;
-  public longitude: number;
+  public places: Array<Object>;
   public searchControl: FormControl;
   public zoom: number;
 
   @ViewChild('search')
   public searchElementRef: ElementRef;
 
-  place = {
-    name: '',
-    lat: 0,
-    lon: 0
-  };
 
-  places = [
+
+  devices = [
     {
-      name: 'Numer_1',
-      lat: 39.8282,
-      lon: -98.5795
+      latitude: 50.254968,
+      longitude: 19.0275632
+    },
+    {
+      latitude: 50.2548661,
+      longitude: 19.0350241
     }
   ];
+
+  place = {
+    name: '',
+    latitude: 0,
+    lon: 0
+  };
 
   ngOnInit() {
     // set google maps defaults
     this.zoom = 4;
-    // this.latitude = 39.8282;
-    // this.longitude = -98.5795;
 
     // create search FormControl
     this.searchControl = new FormControl();
 
     // set current position
-    this.setCurrentPosition();
+    // this.setCurrentPosition();
 
     // load Places Autocomplete
     this.mapsAPILoader.load().then(() => {
@@ -67,24 +77,28 @@ export class AppComponent implements OnInit {
           if (place.geometry === undefined || place.geometry === null) {
             return;
           }
-
+          // const newPlace = {
+          //   name: 'Event',
+          //   lat: place.geometry.location.lat(),
+          //   lon: place.geometry.location.lng()
+          // };
+          // console.log(newPlace);
           // set latitude, longitude and zoom
-          this.latitude = place.geometry.location.lat();
-          this.longitude = place.geometry.location.lng();
+          // this.places.push(newPlace);
           this.zoom = 12;
         });
       });
     });
   }
 
-  private setCurrentPosition() {
-    if ('geolocation' in navigator) {
-      navigator.geolocation.getCurrentPosition((position) => {
-        this.latitude = position.coords.latitude;
-        this.longitude = position.coords.longitude;
-        this.zoom = 12;
-      });
-    }
-  }
+  // private setCurrentPosition() {
+  //   if ('geolocation' in navigator) {
+  //     navigator.geolocation.getCurrentPosition((position) => {
+  //       this.latitude = position.coords.latitude;
+  //       this.longitude = position.coords.longitude;
+  //       this.zoom = 12;
+  //     });
+  //   }
+  // }
 
 }
