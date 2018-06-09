@@ -27,13 +27,25 @@ export class AppComponent implements OnInit {
   @ViewChild('search')
   public searchElementRef: ElementRef;
 
-  devices = [];
+  place = {
+    name: '',
+    lat: 0,
+    lon: 0
+  };
+
+  places = [
+    {
+      name: 'Numer_1',
+      lat: 39.8282,
+      lon: -98.5795
+    }
+  ];
 
   ngOnInit() {
     // set google maps defaults
     this.zoom = 4;
-    this.latitude = 39.8282;
-    this.longitude = -98.5795;
+    // this.latitude = 39.8282;
+    // this.longitude = -98.5795;
 
     // create search FormControl
     this.searchControl = new FormControl();

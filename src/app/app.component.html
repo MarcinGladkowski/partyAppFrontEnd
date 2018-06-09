@@ -1,16 +1,23 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-md-4">
-          <h3>Wprowadź adres:</h3>
+
+            <h3>Wprowadź adres:</h3>
             <div class="md-form">
                 <input mdbInputDirective  id="form1" placeholder="search for location" autocorrect="off" autocapitalize="off" spellcheck="off" type="text" class="form-control" 
                 #search [formControl]="searchControl">
                 <label for="form1" class="">Example label</label>
             </div>
+
+            <h5>Lista eventów:</h5>
+            <ul class="list-group">
+                <li *ngFor="let place of places" class="list-group-item">{{ place.name }}</li>
+            </ul>
+
         </div>
         <div class="col-md-8 ">
             <agm-map [latitude]="latitude" [longitude]="longitude" [scrollwheel]="false" [zoom]="zoom">
-                <agm-marker [latitude]="latitude" [longitude]="longitude"></agm-marker>
+                <agm-marker [latitude]="place.lat" [longitude]="place.lon" *ngFor="let place of places"></agm-marker>
               </agm-map>
         </div>
       </div>

@@ -3,7 +3,12 @@ Do wyświetlenia mapy uzyta biblioteka:
 https://angular-maps.com/guides/getting-started/
 
 Aplikacja w google applications:
+GOOGLE API CONSOLE:
 party-app-206319
+
+Api do wlaczenia w panelu:
+Places API
+
 
 Do rozwazenia: - czadowa stylizacja map:
 https://angular-maps.com/guides/snazzy-info-window/custom-info-windows-with-snazzy-info-window/
