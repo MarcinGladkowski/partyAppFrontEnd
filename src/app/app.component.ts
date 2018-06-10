@@ -1,5 +1,5 @@
 import { ElementRef, NgModule, Component, OnInit, NgZone, ViewChild  } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { FormGroup, FormControl } from '@angular/forms';
 import { AgmCoreModule } from '@agm/core';
 import { MapsAPILoader } from '@agm/core';
 import { } from 'googlemaps';
@@ -13,16 +13,23 @@ export class AppComponent implements OnInit {
 
   constructor(
     private mapsAPILoader: MapsAPILoader,
-    private ngZone: NgZone
+    private ngZone: NgZone,
   ) {}
 
   public latitude: number;
   public longitude: number;
   public searchControl: FormControl;
+  public newEvent: FormGroup;
   public zoom: number;
 
   @ViewChild('search')
   public searchElementRef: ElementRef;
+
+  event = {
+    name: '',
+    desc: '',
+    close: false
+  };
 
 
   partyEvents = [
