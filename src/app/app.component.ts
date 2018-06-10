@@ -25,25 +25,40 @@ export class AppComponent implements OnInit {
   @ViewChild('search')
   public searchElementRef: ElementRef;
 
-  event = {
+  partyEvent = {
+    id: null,
     name: '',
     desc: '',
-    close: false
+    close: false,
+    latitude: null,
+    longitude: null,
+    label: 'A',
+    draggable: true
   };
 
-
   partyEvents = [
-    {
-      name: 'Domówka',
-      latitude: 50.1826663,
-      longitude: 19.1444923
-    },
-    {
-      name: 'Impreza muzyczna',
-      latitude: 50.2548661,
-      longitude: 19.0350241
-    }
+    // {
+    //   id: 1,
+    //   name: 'Domówka',
+    //   desc: 'ciekawa impreza',
+    //   latitude: 50.1826663,
+    //   longitude: 19.1444923
+    // },
+    // {
+    //   id: 2,
+    //   name: 'Impreza muzyczna',
+    //   desc: 'tylko Bach',
+    //   latitude: 50.2548661,
+    //   longitude: 19.0350241
+    // }
   ];
+
+  add(event) {
+    console.log(event);
+    console.log(this.partyEvent.name);
+    console.log(this.partyEvent.desc);
+
+  }
 
   ngOnInit() {
 
@@ -74,13 +89,19 @@ export class AppComponent implements OnInit {
             return;
           }
           const newPlace = {
-            name: 'Event',
+            id: 3,
+            name: this.partyEvent.name,
+            desc: this.partyEvent.desc,
             latitude: place.geometry.location.lat(),
-            longitude: place.geometry.location.lng()
+            longitude: place.geometry.location.lng(),
+            label: 'A',
+            draggable: true
           };
-          console.log(newPlace);
           // set latitude, longitude and zoom
           this.partyEvents.push(newPlace);
+
+          this.partyEvent.name = '';
+          this.partyEvent.desc = '';
 
           // set latitude, longitude and zoom
           // this.latitude = place.geometry.location.lat();

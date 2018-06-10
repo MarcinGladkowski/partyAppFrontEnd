@@ -15,22 +15,22 @@
             </div>
             <form>
                 <div class="md-form">
-                    <input type="text" id="form1" class="form-control" [(ngModel)]="event.name" name="eventName">
-                    <label for="form1" >Nazwa wydarzenia</label>
+                    <input type="text" id="form1" class="form-control" [(ngModel)]="partyEvent.name" name="eventName">
+                    <!-- <label for="form1" >Nazwa wydarzenia</label> -->
                 </div>
 
                 <div class="md-form">
-                    <input type="text" id="form1" class="form-control" [(ngModel)]="event.desc" name="eventDesc">
-                    <label for="form1" >Opis wydarzenia</label>
+                    <input type="text" id="form1" class="form-control" [(ngModel)]="partyEvent.desc" name="eventDesc">
+                    <!-- <label for="form1" >Opis wydarzenia</label> -->
                 </div>
 
                 <div class="form-check">
-                  <input class="form-check-input" mdbInputDirective type="checkbox" id="checkbox1" [(ngModel)]="event.close" name="evemtDesc">
+                  <input class="form-check-input" mdbInputDirective type="checkbox" id="checkbox1" [(ngModel)]="partyEvent.close" name="evemtDesc">
                   <label class="form-check-label" for="checkbox1">Zamknięta</label>
                  </div>
 
                  <div class="form-group">
-                    <button type="button" class="btn btn-sm btn-primary waves-light" mdbWavesEffect>Dodaj</button>
+                    <button (click)="add($event)" type="button" class="btn btn-sm btn-primary waves-light" mdbWavesEffect>Dodaj</button>
                 </div>
 
             </form>
@@ -61,12 +61,15 @@
           [longitude]="longitude">
         <agm-marker 
             class="mapMarker" 
-            *ngFor="let party of partyEvents" 
+            *ngFor="let party of partyEvents; let i = index" 
             [latitude]="party.latitude" 
-            [longitude]="party.longitude">
+            [longitude]="party.longitude"
+            [markerDraggable]="party.draggable"
+        >
 
             <agm-info-window>
               <strong>{{ party.name }}</strong>
+              <p>{{ party.desc }} </p>
             </agm-info-window>
 
         </agm-marker>
