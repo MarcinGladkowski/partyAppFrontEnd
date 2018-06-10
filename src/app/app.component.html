@@ -2,32 +2,56 @@
   <div class="row main-container">
     <div class="col-4">
 
-      <!-- Material input -->
-      <div class="md-form">
-          <input type="text" id="form1" class="form-control">
-          <label for="form1" >Example label</label>
-      </div>
-      <!-- Material input -->
-      <div class="md-form">
-          <input type="text" id="form1" class="form-control">
-          <label for="form1" >Example label</label>
-      </div>
+      <!--Panel-->
+      <div class="card">
+          <div class="card-header primary-color lighten-1 white-text">
+              Nowe wydarzenie:
+          </div>
+          <div class="card-body">
+            <!-- Login form -->
+            <div class="md-form">
+              <input mdbInputDirective id="form1" placeholder="search for location" autocorrect="off" autocapitalize="off" spellcheck="off"
+                type="text" class="form-control" #search [formControl]="searchControl">
+            </div>
+   
+                <!-- Material input -->
+                <div class="md-form">
+                    <input type="text" id="form1" class="form-control">
+                    <label for="form1" >Nazwa wydarzenia</label>
+                </div>
 
-      <h3>Wprowadź adres:</h3>
-      <div class="md-form">
-        <input mdbInputDirective id="form1" placeholder="search for location" autocorrect="off" autocapitalize="off" spellcheck="off"
-          type="text" class="form-control" #search [formControl]="searchControl">
-        <label for="form1" class="">Example label</label>
+                <!-- Material input -->
+                <div class="md-form">
+                    <input type="text" id="form1" class="form-control">
+                    <label for="form1" >Opis wydarzenia</label>
+                </div>
+
+                <div class="form-check">
+                  <input class="form-check-input" mdbInputDirective type="checkbox" id="checkbox1">
+                  <label class="form-check-label" for="checkbox1">Zamknięta</label>
+              </div>
+            
+            <!-- form -->
+          </div>
       </div>
+      <!--/.Panel-->
 
-      <h5>Lista eventów:</h5>
-      <ul class="list-group">
-        <li *ngFor="let party of partyEvents"
-         class="list-group-item"><strong>{{ party.name }}</strong> Położenie: {{ party.latitude }} x {{ party.longitude }}
-        </li>
-      </ul>
-
+      <!--Panel-->
+      <div class="card">
+          <div class="card-header deep-orange lighten-1 white-text">
+              Lista eventów:
+          </div>
+          <div class="card-body">
+              <ul class="list-group">
+                  <li *ngFor="let party of partyEvents"
+                   class="list-group-item"><strong>{{ party.name }}</strong> Położenie: {{ party.latitude }} x {{ party.longitude }}
+                  </li>
+                </ul>
+          </div>
+      </div>
+      <!--/.Panel-->
     </div>
+
     <div class="col-8">
       <agm-map 
           [latitude]="latitude"
@@ -45,5 +69,6 @@
         </agm-marker>
       </agm-map>
     </div>
+
   </div>
 </div>
