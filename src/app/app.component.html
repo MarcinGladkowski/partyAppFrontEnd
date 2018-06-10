@@ -1,6 +1,17 @@
 <div class="container-fluid">
-  <div class="row">
-    <div class="col-md-4">
+  <div class="row main-container">
+    <div class="col-4">
+
+      <!-- Material input -->
+      <div class="md-form">
+          <input type="text" id="form1" class="form-control">
+          <label for="form1" >Example label</label>
+      </div>
+      <!-- Material input -->
+      <div class="md-form">
+          <input type="text" id="form1" class="form-control">
+          <label for="form1" >Example label</label>
+      </div>
 
       <h3>Wprowadź adres:</h3>
       <div class="md-form">
@@ -11,11 +22,13 @@
 
       <h5>Lista eventów:</h5>
       <ul class="list-group">
-        <li *ngFor="let party of partyEvents" class="list-group-item">{{ party.name }}</li>
+        <li *ngFor="let party of partyEvents"
+         class="list-group-item"><strong>{{ party.name }}</strong> Położenie: {{ party.latitude }} x {{ party.longitude }}
+        </li>
       </ul>
 
     </div>
-    <div class="col-md-8 ">
+    <div class="col-8">
       <agm-map 
           [latitude]="latitude"
           [longitude]="longitude">
