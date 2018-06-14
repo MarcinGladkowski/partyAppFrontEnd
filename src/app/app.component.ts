@@ -1,7 +1,8 @@
-import { ElementRef, NgModule, Component, OnInit, NgZone, ViewChild  } from '@angular/core';
+import { ElementRef, NgModule, Component, OnInit, NgZone, ViewChild, Inject } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { AgmCoreModule } from '@agm/core';
 import { MapsAPILoader } from '@agm/core';
+import { PartyListsService } from './party-lists.service';
 import { } from 'googlemaps';
 
 @Component({
@@ -14,13 +15,17 @@ export class AppComponent implements OnInit {
   constructor(
     private mapsAPILoader: MapsAPILoader,
     private ngZone: NgZone,
-  ) {}
+    private partyListsService: PartyListsService
+  ) {
+    this.partyEvents = this.partyListsService.getPartyLists();
+  }
 
   public latitude: number;
   public longitude: number;
   public searchControl: FormControl;
   public newEvent: FormGroup;
   public zoom: number;
+
 
   @ViewChild('search')
   public searchElementRef: ElementRef;

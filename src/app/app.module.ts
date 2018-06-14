@@ -6,6 +6,7 @@ import { AgmCoreModule } from '@agm/core';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { PartyListsService } from './party-lists.service';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,9 @@ import { FormsModule } from '@angular/forms';
     MDBBootstrapModule.forRoot()
   ],
   schemas: [ NO_ERRORS_SCHEMA ],
-  providers: [],
+  providers: [
+    PartyListsService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
