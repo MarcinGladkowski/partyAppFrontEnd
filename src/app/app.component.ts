@@ -55,7 +55,7 @@ export class AppComponent implements OnInit {
     this.latitude = 50.254968;
     this.longitude = 19.0275632;
 
-    this.zoom = 4;
+    this.zoom = 12;
 
     // create search FormControl
     this.searchControl = new FormControl();

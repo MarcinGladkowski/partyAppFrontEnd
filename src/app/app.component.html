@@ -1,91 +1,124 @@
+<mdb-navbar SideClass="navbar navbar-expand-lg navbar-dark indigo" [containerInside]="false">
+  <!-- Navbar brand -->
+  <logo>
+    <a class="navbar-brand" href="#">Imprezownia</a>
+  </logo>
+
+  <!-- Collapsible content -->
+  <links>
+
+    <!-- Links -->
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link waves-light" mdbWavesEffect>Zaloguj
+          <span class="sr-only">(current)</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link waves-light" mdbWavesEffect>Zarejestruj</a>
+      </li>
+
+      <!-- Dropdown -->
+      <li class="nav-item dropdown" dropdown>
+        <a dropdownToggle mdbWavesEffect type="button" class="nav-link dropdown-toggle waves-light" mdbWavesEffect>
+          Wydarzenia
+          <span class="caret"></span>
+        </a>
+        <div *dropdownMenu class="dropdown-menu dropdown dropdown-primary" role="menu">
+          <!-- <a class="dropdown-item waves-light" mdbWavesEffect href="#">Dodaj</a> -->
+          <button type="button" class="btn btn-sm btn-primary waves-light" data-toggle="modal" data-target="#basicExample" (click)="fluid.show()"
+            mdbWavesEffect>
+            Dodaj
+          </button>
+        </div>
+      </li>
+
+    </ul>
+    <!-- Links -->
+
+    <!-- Search form -->
+    <form class="form-inline waves-light" mdbWavesEffect>
+      <div class="md-form mt-0">
+        <input class="form-control mr-sm-6" type="text" placeholder="Szukaj">
+      </div>
+    </form>
+  </links>
+  <!-- Collapsible content -->
+</mdb-navbar>
+
 <div class="container-fluid">
   <div class="row main-container">
-    <div class="col-4">
 
-      <!--Panel-->
+    <!-- <div class="col-4">
       <div class="card">
-          <div class="card-header primary-color lighten-1 white-text">
-              Nowe wydarzenie:
-          </div>
-          <div class="card-body">
-             <form [formGroup]="newParty">
-
-                <div class="md-form">
-                    <input 
-                     mdbInputDirective
-                     #partyName 
-                     type="text" 
-                     name="partyName" 
-                     id="partyName"
-                     class="form-control" 
-                     formControlName="partyName"
-                     [(ngModel)]="partyEvent.name">
-                    <label for="partyName" class="">Nazwa</label>
-                </div>
-
-                <div class="md-form">
-                    <input 
-                     mdbInputDirective
-                     #partyDesc 
-                     type="text" 
-                     name="partyDesc" 
-                     id="partyDesc"
-                     class="form-control" 
-                     formControlName="partyDesc"
-                     [(ngModel)]="partyEvent.desc">
-                    <label for="partyDesc" class="">Opis</label>
-                </div>
-
-                <div class="md-form">
-                  <input mdbInputDirective id="form1" placeholder="search for location" autocorrect="off" autocapitalize="off" spellcheck="off"
-                    type="text" class="form-control" #search [formControl]="searchControl">
-                </div>
-
-                <div class="md-form">
-                  <button (click)="add(partyEvent)" type="button" class="btn btn-sm btn-primary waves-light" mdbWavesEffect>Dodaj</button>
-                </div>
-              </form>
-          
-          </div>
+        <div class="card-header deep-orange lighten-1 white-text">
+          Lista eventów:
+        </div>
+        <div class="card-body">
+          <ul class="list-group">
+            <li *ngFor="let party of partyEvents" class="list-group-item">
+              <strong>{{ party.name }}</strong> Położenie: {{ party.latitude }} x {{ party.longitude }}
+            </li>
+          </ul>
+        </div>
       </div>
-      <!--/.Panel-->
+    </div> -->
 
-      <!--Panel-->
-      <div class="card">
-          <div class="card-header deep-orange lighten-1 white-text">
-              Lista eventów:
-          </div>
-          <div class="card-body">
-              <ul class="list-group">
-                  <li *ngFor="let party of partyEvents"
-                   class="list-group-item"><strong>{{ party.name }}</strong> Położenie: {{ party.latitude }} x {{ party.longitude }}
-                  </li>
-                </ul>
-          </div>
-      </div>
-      <!--/.Panel-->
-    </div>
+      <agm-map [latitude]="latitude" [longitude]="longitude">
+        <agm-marker class="mapMarker" *ngFor="let party of partyEvents; let i = index" [latitude]="party.latitude" [longitude]="party.longitude"
+          [markerDraggable]="party.draggable">
 
-    <div class="col-8">
-      <agm-map 
-          [latitude]="latitude"
-          [longitude]="longitude">
-        <agm-marker 
-            class="mapMarker" 
-            *ngFor="let party of partyEvents; let i = index" 
-            [latitude]="party.latitude" 
-            [longitude]="party.longitude"
-            [markerDraggable]="party.draggable"
-        >
-
-            <agm-info-window>
-              <strong>{{ party.name }}</strong>
-              <p>{{ party.desc }} </p>
-            </agm-info-window>
+          <agm-info-window>
+            <strong>{{ party.name }}</strong>
+            <p>{{ party.desc }} </p>
+          </agm-info-window>
 
         </agm-marker>
       </agm-map>
-    </div>
 
+  </div>
+</div>
+
+<div mdbModal #fluid="mdb-modal" class="modal fade left" id="fullHeightModalRight" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog modal-full-height modal-left" role="document">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <h4 class="modal-title w-100" id="myModalLabel">Dodaj wydarzenie</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="fluid.hide()">
+          <span aria-hidden="true">×</span>
+        </button>
+      </div>
+
+      <form [formGroup]="newParty">
+      <div class="modal-body">
+          <div class="md-form">
+            <input mdbInputDirective #partyName type="text" name="partyName" id="partyName" class="form-control" formControlName="partyName"
+              [(ngModel)]="partyEvent.name">
+            <label for="partyName" class="">Nazwa</label>
+          </div>
+
+          <div class="md-form">
+            <input mdbInputDirective #partyDesc type="text" name="partyDesc" id="partyDesc" class="form-control" formControlName="partyDesc"
+              [(ngModel)]="partyEvent.desc">
+            <label for="partyDesc" class="">Opis</label>
+          </div>
+
+          <div class="md-form">
+            <input mdbInputDirective id="form1" placeholder="search for location" autocorrect="off" autocapitalize="off" spellcheck="off"
+              type="text" class="form-control" #search [formControl]="searchControl">
+          </div>
+
+      </div>
+
+      <div class="modal-footer justify-content-center">
+        <button type="button" class="btn btn-secondary waves-light" data-dismiss="modal" (click)="fluid.hide()" mdbWavesEffect>Close</button>
+        <button (click)="add(partyEvent)" type="button" class="btn btn-primary waves-light" mdbWavesEffect>Dodaj</button>
+      </div>
+
+    </form>
+
+    </div>
   </div>
 </div>
