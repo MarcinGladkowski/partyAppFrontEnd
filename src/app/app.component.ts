@@ -42,12 +42,9 @@ export class AppComponent implements OnInit {
   };
 
   partyEvents = [];
-
-  add(event) {
-    console.log(event);
-    console.log(this.partyEvent.name);
-    console.log(this.partyEvent.desc);
-
+ 
+  add(partyEvent) {
+    console.log(partyEvent);
   }
 
   ngOnInit() {
@@ -65,7 +62,8 @@ export class AppComponent implements OnInit {
 
     // new form add party
     this.newParty = new FormGroup({
-      name: new FormControl()
+      partyName: new FormControl(),
+      partyDesc: new FormControl()
     });
 
     // set current position

@@ -14,13 +14,22 @@
             </div>
 
              <form [formGroup]="newParty">
-                <div class="form-group">
-                  <label class="center-block">Name:
-                    <input class="form-control" formControlName="name">
-                  </label>
+                <div class="md-form">
+                    <input #partyName type="text" required minlength="6" name="partyName" id="partyName" class="form-control" formControlName="partyName" [(ngModel)]="partyEvent.name">
+                    <!-- <label for="partyName" >Nazwa wydarzenia</label> -->
+                    <!-- {{ partyName.value }} not working => {{ partyName.valid }}  -->
                 </div>
+
+                <div class="md-form">
+                  <input type="text" id="form1" class="form-control" formControlName="partyDesc" [(ngModel)]="partyEvent.desc" name="eventDesc">
+                </div>
+
               </form>
-              <p>Form value: {{ newParty.value | json }}</p>
+
+              <div class="md-form">
+                <button (click)="add(partyEvent)" type="button" class="btn btn-sm btn-primary waves-light" mdbWavesEffect>Dodaj</button>
+              </div>
+              <!-- <p>Form value: {{ newParty.value | json }}</p> -->
 
             <!-- <form>
                 <div class="md-form">
