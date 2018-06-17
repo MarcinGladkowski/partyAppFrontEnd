@@ -16,15 +16,15 @@ export class AppComponent implements OnInit {
     private mapsAPILoader: MapsAPILoader,
     private ngZone: NgZone,
     private partyListsService: PartyListsService
-  ) {
-    this.partyEvents = this.partyListsService.getPartyLists();
-  }
+  ) {}
 
   public latitude: number;
   public longitude: number;
   public searchControl: FormControl;
   public newEvent: FormGroup;
   public zoom: number;
+  // refactoring of form add event
+  public newParty: FormGroup;
 
 
   @ViewChild('search')
@@ -41,22 +41,7 @@ export class AppComponent implements OnInit {
     draggable: true
   };
 
-  partyEvents = [
-    // {
-    //   id: 1,
-    //   name: 'Domówka',
-    //   desc: 'ciekawa impreza',
-    //   latitude: 50.1826663,
-    //   longitude: 19.1444923
-    // },
-    // {
-    //   id: 2,
-    //   name: 'Impreza muzyczna',
-    //   desc: 'tylko Bach',
-    //   latitude: 50.2548661,
-    //   longitude: 19.0350241
-    // }
-  ];
+  partyEvents = [];
 
   add(event) {
     console.log(event);
@@ -66,6 +51,8 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
+    // load from service when component is ready
+    this.partyEvents = this.partyListsService.getPartyLists();
 
     // set google maps defaults
     this.latitude = 50.254968;
@@ -75,6 +62,11 @@ export class AppComponent implements OnInit {
 
     // create search FormControl
     this.searchControl = new FormControl();
+
+    // new form add party
+    this.newParty = new FormGroup({
+      name: new FormControl()
+    });
 
     // set current position
     this.setCurrentPosition();

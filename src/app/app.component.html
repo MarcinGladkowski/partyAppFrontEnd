@@ -8,20 +8,29 @@
               Nowe wydarzenie:
           </div>
           <div class="card-body">
-            <!-- Login form -->
             <div class="md-form">
               <input mdbInputDirective id="form1" placeholder="search for location" autocorrect="off" autocapitalize="off" spellcheck="off"
                 type="text" class="form-control" #search [formControl]="searchControl">
             </div>
-            <form>
+
+             <form [formGroup]="newParty">
+                <div class="form-group">
+                  <label class="center-block">Name:
+                    <input class="form-control" formControlName="name">
+                  </label>
+                </div>
+              </form>
+              <p>Form value: {{ newParty.value | json }}</p>
+
+            <!-- <form>
                 <div class="md-form">
                     <input type="text" id="form1" class="form-control" [(ngModel)]="partyEvent.name" name="eventName">
-                    <!-- <label for="form1" >Nazwa wydarzenia</label> -->
+                    <label for="form1" >Nazwa wydarzenia</label>
                 </div>
 
                 <div class="md-form">
                     <input type="text" id="form1" class="form-control" [(ngModel)]="partyEvent.desc" name="eventDesc">
-                    <!-- <label for="form1" >Opis wydarzenia</label> -->
+                    <label for="form1" >Opis wydarzenia</label>
                 </div>
 
                 <div class="form-check">
@@ -32,9 +41,7 @@
                  <div class="form-group">
                     <button (click)="add($event)" type="button" class="btn btn-sm btn-primary waves-light" mdbWavesEffect>Dodaj</button>
                 </div>
-
-            </form>
-            <!-- form -->
+            </form> -->
           </div>
       </div>
       <!--/.Panel-->
