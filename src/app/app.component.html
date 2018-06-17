@@ -8,49 +8,44 @@
               Nowe wydarzenie:
           </div>
           <div class="card-body">
-            <div class="md-form">
-              <input mdbInputDirective id="form1" placeholder="search for location" autocorrect="off" autocapitalize="off" spellcheck="off"
-                type="text" class="form-control" #search [formControl]="searchControl">
-            </div>
-
              <form [formGroup]="newParty">
+
                 <div class="md-form">
-                    <input #partyName type="text" required minlength="6" name="partyName" id="partyName" class="form-control" formControlName="partyName" [(ngModel)]="partyEvent.name">
-                    <!-- <label for="partyName" >Nazwa wydarzenia</label> -->
-                    <!-- {{ partyName.value }} not working => {{ partyName.valid }}  -->
+                    <input 
+                     mdbInputDirective
+                     #partyName 
+                     type="text" 
+                     name="partyName" 
+                     id="partyName"
+                     class="form-control" 
+                     formControlName="partyName"
+                     [(ngModel)]="partyEvent.name">
+                    <label for="partyName" class="">Nazwa</label>
                 </div>
 
                 <div class="md-form">
-                  <input type="text" id="form1" class="form-control" formControlName="partyDesc" [(ngModel)]="partyEvent.desc" name="eventDesc">
+                    <input 
+                     mdbInputDirective
+                     #partyDesc 
+                     type="text" 
+                     name="partyDesc" 
+                     id="partyDesc"
+                     class="form-control" 
+                     formControlName="partyDesc"
+                     [(ngModel)]="partyEvent.desc">
+                    <label for="partyDesc" class="">Opis</label>
                 </div>
 
+                <div class="md-form">
+                  <input mdbInputDirective id="form1" placeholder="search for location" autocorrect="off" autocapitalize="off" spellcheck="off"
+                    type="text" class="form-control" #search [formControl]="searchControl">
+                </div>
+
+                <div class="md-form">
+                  <button (click)="add(partyEvent)" type="button" class="btn btn-sm btn-primary waves-light" mdbWavesEffect>Dodaj</button>
+                </div>
               </form>
-
-              <div class="md-form">
-                <button (click)="add(partyEvent)" type="button" class="btn btn-sm btn-primary waves-light" mdbWavesEffect>Dodaj</button>
-              </div>
-              <!-- <p>Form value: {{ newParty.value | json }}</p> -->
-
-            <!-- <form>
-                <div class="md-form">
-                    <input type="text" id="form1" class="form-control" [(ngModel)]="partyEvent.name" name="eventName">
-                    <label for="form1" >Nazwa wydarzenia</label>
-                </div>
-
-                <div class="md-form">
-                    <input type="text" id="form1" class="form-control" [(ngModel)]="partyEvent.desc" name="eventDesc">
-                    <label for="form1" >Opis wydarzenia</label>
-                </div>
-
-                <div class="form-check">
-                  <input class="form-check-input" mdbInputDirective type="checkbox" id="checkbox1" [(ngModel)]="partyEvent.close" name="evemtDesc">
-                  <label class="form-check-label" for="checkbox1">Zamknięta</label>
-                 </div>
-
-                 <div class="form-group">
-                    <button (click)="add($event)" type="button" class="btn btn-sm btn-primary waves-light" mdbWavesEffect>Dodaj</button>
-                </div>
-            </form> -->
+          
           </div>
       </div>
       <!--/.Panel-->

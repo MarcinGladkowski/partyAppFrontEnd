@@ -42,7 +42,7 @@ export class AppComponent implements OnInit {
   };
 
   partyEvents = [];
- 
+
   add(partyEvent) {
     console.log(partyEvent);
   }
