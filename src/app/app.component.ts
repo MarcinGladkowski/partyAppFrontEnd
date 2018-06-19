@@ -1,9 +1,8 @@
-import { ElementRef, NgModule, Component, OnInit, NgZone, ViewChild, Inject } from '@angular/core';
+import { ElementRef, Component, OnInit, NgZone, ViewChild } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
-import { AgmCoreModule } from '@agm/core';
 import { MapsAPILoader } from '@agm/core';
 import { PartyListsService } from './party-lists.service';
-import { } from 'googlemaps';
+// import {} from 'googlemaps';
 
 @Component({
   selector: 'app-root',

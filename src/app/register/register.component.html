@@ -1,0 +1,31 @@
+<form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+  <div class="md-form form-sm">
+    <i class="fa fa-user prefix"></i>
+    <input type="text" formControlName="name" id="orangeForm-name" class="form-control" mdbInputDirective>
+    <label for="orangeForm-name">Your name</label>
+  </div>
+
+  <div class="md-form form-sm">
+    <i class="fa fa-envelope prefix"></i>
+    <input mdbInputDirective formControlName="email" type="text" id="form32" class="form-control">
+    <label for="form32">Your email</label>
+  </div>
+
+  <div class="md-form form-sm">
+    <i class="fa fa-lock prefix"></i>
+    <input mdbInputDirective formControlName="password" type="password" id="form33" class="form-control">
+    <label for="form33">Your password</label>
+  </div>
+
+  <div class="md-form form-sm">
+    <i class="fa fa-lock prefix"></i>
+    <input mdbInputDirective formControlName="repeatPassword" type="password" id="form34" class="form-control">
+    <label for="form34">Repeat password</label>
+  </div>
+
+  <div class="text-center mt-2">
+    <button type="submit" class="btn btn-info waves-light" mdbWavesEffect>Sign up
+      <i class="fa fa-sign-in ml-1"></i>
+    </button>
+  </div>
+</form>

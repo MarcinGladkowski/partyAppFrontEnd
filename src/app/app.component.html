@@ -15,7 +15,7 @@
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link waves-light" mdbWavesEffect>Zarejestruj</a>
+        <a class="nav-link waves-light" mdbWavesEffect (click)="form.show()">Zarejestruj</a>
       </li>
 
       <!-- Dropdown -->
@@ -46,24 +46,9 @@
   <!-- Collapsible content -->
 </mdb-navbar>
 
+
 <div class="container-fluid">
   <div class="row main-container">
-
-    <!-- <div class="col-4">
-      <div class="card">
-        <div class="card-header deep-orange lighten-1 white-text">
-          Lista eventów:
-        </div>
-        <div class="card-body">
-          <ul class="list-group">
-            <li *ngFor="let party of partyEvents" class="list-group-item">
-              <strong>{{ party.name }}</strong> Położenie: {{ party.latitude }} x {{ party.longitude }}
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div> -->
-
       <agm-map [latitude]="latitude" [longitude]="longitude">
         <agm-marker class="mapMarker" *ngFor="let party of partyEvents; let i = index" [latitude]="party.latitude" [longitude]="party.longitude"
           [markerDraggable]="party.draggable">
@@ -78,6 +63,8 @@
 
   </div>
 </div>
+
+
 
 <div mdbModal #fluid="mdb-modal" class="modal fade left" id="fullHeightModalRight" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
   aria-hidden="true">
@@ -122,3 +109,36 @@
     </div>
   </div>
 </div>
+
+
+<!--Modal: Register Form-->
+<div mdbModal #form="mdb-modal" class="modal fade" id="modalRegister" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog cascading-modal" role="document">
+        <!--Content-->
+        <div class="modal-content">
+
+            <!--Header-->
+            <div class="modal-header light-blue darken-3 white-text">
+                <h4 class="title"><i class="fa fa-user-plus"></i> Register</h4>
+                <button type="button" class="close waves-effect waves-light" data-dismiss="modal" aria-label="Close" (click)="form.hide()">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <!--Body-->
+            <div class="modal-body">
+               
+              <app-register></app-register>
+
+            </div>
+            <!--Footer-->
+            <div class="modal-footer">
+                <div class="options text-center text-md-right mt-1">
+                    <p>Already have an account? <a href="#">Log In</a></p>
+                </div>
+                <button type="button" class="btn btn-outline-info ml-auto" data-dismiss="modal" (click)="form.hide()" mdbWavesEffect>Close</button>
+            </div>
+        </div>
+        <!--/.Content-->
+    </div>
+</div>
+<!--Modal: Register Form-->
