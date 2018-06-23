@@ -32,6 +32,13 @@ http://brianflove.com/2016/10/18/angular-2-google-maps-places-autocomplete/
 https://stackblitz.com/edit/angular-google-maps-demo
 
 
+### TO DO 
+do obsluzenia sytuacja gdy jest brak internetu - nie zaladuje sie mapa.
+
+### REJESTRACJA
+http://jasonwatmore.com/post/2018/05/16/angular-6-user-registration-and-login-example-tutorial
+
+
 # PartyApp
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.7.3.

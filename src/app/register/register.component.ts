@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { repeat } from 'rxjs/operators';
+import { UserService  } from '../services/user.service';
 
 @Component({
   selector: 'app-register',
@@ -11,12 +12,7 @@ export class RegisterComponent implements OnInit {
 
   public registerForm: FormGroup;
 
-
-  constructor() { }
-
-  register() {
-    console.log('test');
-  }
+  constructor(private userService: UserService) { }
 
   ngOnInit() {
     this.registerForm = new FormGroup({
@@ -29,6 +25,10 @@ export class RegisterComponent implements OnInit {
 
   onSubmit() {
     console.log(this.registerForm.value);
+    // this.userService.test();
+    this.userService.register(JSON.stringify(this.registerForm.value)).subscribe(res => {
+      console.log(res);
+    });
   }
 
 }
