@@ -42,11 +42,15 @@ export class AppComponent implements OnInit {
 
   partyEvents = [];
 
+  add(partyEvent) {
+    console.log(partyEvent);
+  }
+
 
   ngOnInit() {
     // load from service when component is ready
     this.partyListsService.getPartyLists().subscribe(
-      (data) => { this.partyEvents = data.parties };
+      (data) => { this.partyEvents = data.parties }
     );
     // this.partyEvents = this.partyListsService.getPartyLists();
 

@@ -22,8 +22,6 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.loginForm.valid);
-
     this.authService.login(JSON.stringify(this.loginForm.value));
   }
 
