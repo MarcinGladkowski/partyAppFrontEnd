@@ -13,7 +13,7 @@ export class AuthService {
 
   login(user) {
     return this.http.post(`http://localhost:8080/api/auth`, user, { headers: this.headers })
-      .subscribe((data) => {
+      .subscribe((data: any) => {
 
         if (data) {
           // store user details and jwt token in local storage to keep user logged in between page refreshes
