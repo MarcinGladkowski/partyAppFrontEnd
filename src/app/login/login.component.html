@@ -1,3 +1,20 @@
-<p>
-  login works!
-</p>
+<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+  <div class="md-form form-sm">
+    <i class="fa fa-envelope prefix"></i>
+    <input formControlName="email" mdbInputDirective type="text" id="form30" class="form-control">
+    <label for="form30">Your email</label>
+  </div>
+  
+  <div class="md-form form-sm">
+    <i class="fa fa-lock prefix"></i>
+    <input formControlName="password" mdbInputDirective type="password" id="form31" class="form-control">
+    <label for="form31">Your password</label>
+  </div>
+  
+  <div class="text-center mt-2">
+    <button type="submit" class="btn btn-info waves-light" mdbWavesEffect>Log in <i class="fa fa-sign-in ml-1"></i></button>
+  </div>
+</form>
+
+
+
