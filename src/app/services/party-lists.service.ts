@@ -27,8 +27,12 @@ export class PartyListsService {
   ];
 
   getPartyLists() {
-    return this.partyEvents;
+    return this.http.get(`http://localhost:8080/api/party`);
   }
+
+  // getPartyLists() {
+  //   return this.partyEvents;
+  // }
 
   create(party) {
     return this.http.post(`http://localhost:8080/api/party`, JSON.stringify(party), {headers: this.headers})
