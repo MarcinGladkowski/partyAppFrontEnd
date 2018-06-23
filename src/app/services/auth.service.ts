@@ -7,12 +7,8 @@ export class AuthService {
 
   constructor(private http: HttpClient) { }
 
-  headers = new HttpHeaders({
-    'Content-Type': 'application/json'
-  });
-
   login(user) {
-    return this.http.post(`http://localhost:8080/api/auth`, user, { headers: this.headers })
+    return this.http.post(`http://localhost:8080/api/auth`, user)
       .subscribe((data: any) => {
 
         if (data) {
