@@ -12,7 +12,17 @@ export class AuthService {
   });
 
   login(user) {
-    return this.http.post(`http://localhost:8080/api/auth`, user, {headers: this.headers});
+    return this.http.post(`http://localhost:8080/api/auth`, user, { headers: this.headers })
+      .subscribe((data) => {
+
+        if (data) {
+          // store user details and jwt token in local storage to keep user logged in between page refreshes
+          localStorage.setItem('currentUser', JSON.stringify(user));
+        }
+
+        return data;
+
+      });
   }
 
 }

@@ -11,6 +11,7 @@ export class UserService {
   });
 
   register(user) {
-    return this.http.post(`http://localhost:8080/api/users`, user, {headers: this.headers});
+    return this.http.post(`http://localhost:8080/api/users`, user, {headers: this.headers})
+    .subscribe(data => console.log(data));
   }
 }
