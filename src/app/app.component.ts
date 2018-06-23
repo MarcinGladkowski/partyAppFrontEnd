@@ -42,13 +42,13 @@ export class AppComponent implements OnInit {
 
   partyEvents = [];
 
-  add(partyEvent) {
-    console.log(partyEvent);
-  }
 
   ngOnInit() {
     // load from service when component is ready
-    this.partyEvents = this.partyListsService.getPartyLists();
+    this.partyListsService.getPartyLists().subscribe(
+      (data) => { this.partyEvents = data.parties };
+    );
+    // this.partyEvents = this.partyListsService.getPartyLists();
 
     // set google maps defaults
     this.latitude = 50.254968;
@@ -92,7 +92,9 @@ export class AppComponent implements OnInit {
             draggable: true
           };
           // set latitude, longitude and zoom
-          this.partyEvents.push(newPlace);
+          // this.partyEvents.push(newPlace);
+
+          this.partyListsService.create(newPlace);
 
           this.partyEvent.name = '';
           this.partyEvent.desc = '';

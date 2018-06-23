@@ -24,9 +24,7 @@ export class RegisterComponent implements OnInit {
   }
 
   onSubmit() {
-    this.userService.register(JSON.stringify(this.registerForm.value)).subscribe(res => {
-      console.log(res);
-    });
+    this.userService.register(JSON.stringify(this.registerForm.value));
   }
 
 }
