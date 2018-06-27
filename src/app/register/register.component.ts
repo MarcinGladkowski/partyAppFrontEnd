@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { repeat } from 'rxjs/operators';
 import { UserService  } from '../services/user.service';
+import { ModalDirective } from 'angular-bootstrap-md';
 
 @Component({
   selector: 'app-register',
@@ -12,7 +13,13 @@ export class RegisterComponent implements OnInit {
 
   public registerForm: FormGroup;
 
+  @ViewChild('modal') public modalRef: ModalDirective;
+
   constructor(private userService: UserService) { }
+
+  showModal() {
+    this.modalRef.show();
+  }
 
   ngOnInit() {
     this.registerForm = new FormGroup({

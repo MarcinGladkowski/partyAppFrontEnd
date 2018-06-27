@@ -42,6 +42,8 @@ export class AppComponent implements OnInit, AfterViewInit {
 
   @ViewChild('search') public searchElementRef: ElementRef;
   @ViewChild('loginModal') public loginModalRef: ModalDirective;
+  @ViewChild('registerModal') public registerModalRef: ModalDirective;
+
 
   partyEvent = {
     id: null,

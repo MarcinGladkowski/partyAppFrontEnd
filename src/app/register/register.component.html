@@ -1,31 +1,65 @@
-<form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
-  <div class="md-form form-sm">
-    <i class="fa fa-user prefix"></i>
-    <input type="text" formControlName="username" id="orangeForm-name" class="form-control" mdbInputDirective>
-    <label for="orangeForm-name">Your name</label>
-  </div>
+<!--Modal: Register Form-->
+<div mdbModal #modal="mdb-modal" class="modal fade" id="modalRegister" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog cascading-modal" role="document">
+    <!--Content-->
+    <div class="modal-content">
 
-  <div class="md-form form-sm">
-    <i class="fa fa-envelope prefix"></i>
-    <input mdbInputDirective formControlName="email" type="text" id="form32" class="form-control">
-    <label for="form32">Your email</label>
-  </div>
+      <!--Header-->
+      <div class="modal-header light-blue darken-3 white-text">
+        <h4 class="title">
+          <i class="fa fa-user-plus"></i> Register</h4>
+        <button type="button" class="close waves-effect waves-light" data-dismiss="modal" aria-label="Close" (click)="modal.hide()">
+          <span aria-hidden="true">×</span>
+        </button>
+      </div>
+      <!--Body-->
+      <div class="modal-body">
 
-  <div class="md-form form-sm">
-    <i class="fa fa-lock prefix"></i>
-    <input mdbInputDirective formControlName="password" type="password" id="form33" class="form-control">
-    <label for="form33">Your password</label>
-  </div>
+        <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+          <div class="md-form form-sm">
+            <i class="fa fa-user prefix"></i>
+            <input type="text" formControlName="username" id="orangeForm-name" class="form-control" mdbInputDirective>
+            <label for="orangeForm-name">Your name</label>
+          </div>
+        
+          <div class="md-form form-sm">
+            <i class="fa fa-envelope prefix"></i>
+            <input mdbInputDirective formControlName="email" type="text" id="form32" class="form-control">
+            <label for="form32">Your email</label>
+          </div>
+        
+          <div class="md-form form-sm">
+            <i class="fa fa-lock prefix"></i>
+            <input mdbInputDirective formControlName="password" type="password" id="form33" class="form-control">
+            <label for="form33">Your password</label>
+          </div>
+        
+          <div class="md-form form-sm">
+            <i class="fa fa-lock prefix"></i>
+            <input mdbInputDirective formControlName="repeatPassword" type="password" id="form34" class="form-control">
+            <label for="form34">Repeat password</label>
+          </div>
+        
+          <div class="text-center mt-2">
+            <button type="submit" class="btn btn-info waves-light" mdbWavesEffect>Sign up
+              <i class="fa fa-sign-in ml-1"></i>
+            </button>
+          </div>
+        </form>
 
-  <div class="md-form form-sm">
-    <i class="fa fa-lock prefix"></i>
-    <input mdbInputDirective formControlName="repeatPassword" type="password" id="form34" class="form-control">
-    <label for="form34">Repeat password</label>
+      </div>
+      <!--Footer-->
+      <div class="modal-footer">
+        <div class="options text-center text-md-right mt-1">
+          <p>Already have an account?
+            <a href="#">Log In</a>
+          </p>
+        </div>
+        <button type="button" class="btn btn-outline-info ml-auto" data-dismiss="modal" (click)="modal.hide()" mdbWavesEffect>Close</button>
+      </div>
+    </div>
+    <!--/.Content-->
   </div>
-
-  <div class="text-center mt-2">
-    <button type="submit" class="btn btn-info waves-light" mdbWavesEffect>Sign up
-      <i class="fa fa-sign-in ml-1"></i>
-    </button>
-  </div>
-</form>
+</div>
+<!--Modal: Register Form-->
