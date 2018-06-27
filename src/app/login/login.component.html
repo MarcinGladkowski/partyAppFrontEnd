@@ -1,5 +1,5 @@
 <!--Modal: Login Form-->
-<div mdbModal #loginModal="mdb-modal" class="modal fade" id="modalLogin" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+<div mdbModal #modal="mdb-modal" class="modal fade" id="modalLogin" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
   aria-hidden="true">
   <div class="modal-dialog cascading-modal" role="document">
     <!--Content-->
@@ -9,7 +9,7 @@
       <div class="modal-header light-blue darken-3 white-text">
         <h4 class="title">
           <i class="fa fa-user"></i> Log in</h4>
-        <button type="button" class="close waves-effect waves-light" data-dismiss="modal" aria-label="Close" (click)="loginModal.hide()">
+        <button type="button" class="close waves-effect waves-light" data-dismiss="modal" aria-label="Close" (click)="modal.hide()">
           <span aria-hidden="true">×</span>
         </button>
       </div>
@@ -43,7 +43,7 @@
             <a href="#">Password?</a>
           </p>
         </div>
-        <button type="button" class="btn btn-outline-info ml-auto" data-dismiss="modal" (click)="loginModal.hide()" mdbWavesEffect>Close</button>
+        <button type="button" class="btn btn-outline-info ml-auto" data-dismiss="modal" (click)="modal.hide()" mdbWavesEffect>Close</button>
       </div>
     </div>
     <!--/.Content-->

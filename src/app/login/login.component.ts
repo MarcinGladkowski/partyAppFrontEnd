@@ -9,26 +9,19 @@ import { ModalDirective } from 'angular-bootstrap-md';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent implements OnInit, AfterViewInit {
+export class LoginComponent implements OnInit {
 
   public loginForm: FormGroup;
 
-  @Input()
-  master: string;
-
-  @ViewChild('loginModal') public loginModalRef: ModalDirective;
+  @ViewChild('modal') public modalRef: ModalDirective;
 
   constructor(private authService: AuthService) { }
 
   showModal() {
-    this.loginModalRef.show();
+    this.modalRef.show();
   }
 
-
   ngOnInit() {
-
-    console.log('zmienna z parent component: ', this.master);
-
     this.loginForm = new FormGroup({
       email: new FormControl(),
       password: new FormControl(),
@@ -39,11 +32,5 @@ export class LoginComponent implements OnInit, AfterViewInit {
     console.log(this.loginForm.value);
     this.authService.login(JSON.stringify(this.loginForm.value));
   }
-
-  ngAfterViewInit()	{
-    // this.loginModalRef.show();
-  }
-
-
 
 }
