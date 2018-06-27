@@ -17,13 +17,17 @@ import { AuthService } from './services/auth.service';
 
 import { JwtInterceptor } from './helpers/jwt';
 import { HeaderComponent } from './header/header.component';
+import { MatComponent } from './mat/mat.component';
+import { MapComponent } from './map/map.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     RegisterComponent,
     LoginComponent,
-    HeaderComponent
+    HeaderComponent,
+    MatComponent,
+    MapComponent
   ],
   imports: [
     BrowserModule,
