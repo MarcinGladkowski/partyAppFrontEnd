@@ -16,12 +16,14 @@ import { UserService } from './services/user.service';
 import { AuthService } from './services/auth.service';
 
 import { JwtInterceptor } from './helpers/jwt';
+import { HeaderComponent } from './header/header.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     RegisterComponent,
-    LoginComponent
+    LoginComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,

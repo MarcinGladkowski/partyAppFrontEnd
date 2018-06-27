@@ -1,52 +1,7 @@
-<mdb-navbar SideClass="navbar navbar-expand-lg navbar-dark indigo" [containerInside]="false">
-  <!-- Navbar brand -->
-
-  <logo>
-    <a class="navbar-brand" href="#">Imprezownia</a>
-  </logo>
-
-  <!-- Collapsible content -->
-  <links>
-
-    <!-- Links -->
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item">
-        <a class="nav-link waves-light" mdbWavesEffect (click)="loginModalRef.showModal()">Zaloguj</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link waves-light" mdbWavesEffect (click)="registerModalRef.showModal()">Zarejestruj</a>
-      </li>
-
-      <li class="nav-item">
-        <a class="nav-link waves-light" mdbWavesEffect (click)="showModal()">Test</a>
-      </li>
-
-      <!-- Dropdown -->
-      <li class="nav-item dropdown" dropdown>
-        <a dropdownToggle mdbWavesEffect type="button" class="nav-link dropdown-toggle waves-light" mdbWavesEffect>
-          Wydarzenia
-          <span class="caret"></span>
-        </a>
-        <div *dropdownMenu class="dropdown-menu dropdown dropdown-primary" role="menu">
-          <a class="dropdown-item waves-light" data-toggle="modal" data-target="#basicExample" (click)="fluid.show()" mdbWavesEffect
-            href="#">Dodaj</a>
-        </div>
-      </li>
-
-
-
-    </ul>
-    <!-- Links -->
-
-    <!-- Search form -->
-    <form class="form-inline waves-light" mdbWavesEffect>
-      <div class="md-form mt-0">
-        <input class="form-control mr-sm-6" type="text" placeholder="Szukaj">
-      </div>
-    </form>
-  </links>
-  <!-- Collapsible content -->
-</mdb-navbar>
+<app-header
+  (openLogin)="loginModal.showModal()"
+  (openRegistration)="registerModal.showModal()" >
+</app-header>
 
 
 <div class="container-fluid">
