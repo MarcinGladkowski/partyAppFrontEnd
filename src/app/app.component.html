@@ -1,5 +1,6 @@
 <mdb-navbar SideClass="navbar navbar-expand-lg navbar-dark indigo" [containerInside]="false">
   <!-- Navbar brand -->
+
   <logo>
     <a class="navbar-brand" href="#">Imprezownia</a>
   </logo>
@@ -10,12 +11,16 @@
     <!-- Links -->
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
-        <a class="nav-link waves-light" mdbWavesEffect (click)="loginForm.show()">Zaloguj</a>
+        <a class="nav-link waves-light" mdbWavesEffect (click)="loginModalRef.showModal()">Zaloguj</a>
       </li>
       <li class="nav-item">
         <a class="nav-link waves-light" mdbWavesEffect (click)="form.show()">Zarejestruj</a>
       </li>
-    
+
+      <li class="nav-item">
+        <a class="nav-link waves-light" mdbWavesEffect (click)="showModal()">Test</a>
+      </li>
+
       <!-- Dropdown -->
       <li class="nav-item dropdown" dropdown>
         <a dropdownToggle mdbWavesEffect type="button" class="nav-link dropdown-toggle waves-light" mdbWavesEffect>
@@ -23,9 +28,12 @@
           <span class="caret"></span>
         </a>
         <div *dropdownMenu class="dropdown-menu dropdown dropdown-primary" role="menu">
-          <a class="dropdown-item waves-light"  data-toggle="modal" data-target="#basicExample" (click)="fluid.show()" mdbWavesEffect href="#">Dodaj</a>
+          <a class="dropdown-item waves-light" data-toggle="modal" data-target="#basicExample" (click)="fluid.show()" mdbWavesEffect
+            href="#">Dodaj</a>
         </div>
       </li>
+
+
 
     </ul>
     <!-- Links -->
@@ -43,17 +51,17 @@
 
 <div class="container-fluid">
   <div class="row main-container">
-      <agm-map [latitude]="latitude" [longitude]="longitude">
-        <agm-marker class="mapMarker" *ngFor="let party of partyEvents; let i = index" [latitude]="party.latitude" [longitude]="party.longitude"
-          [markerDraggable]="party.draggable">
+    <agm-map [latitude]="latitude" [longitude]="longitude">
+      <agm-marker class="mapMarker" *ngFor="let party of partyEvents; let i = index" [latitude]="party.latitude" [longitude]="party.longitude"
+        [markerDraggable]="party.draggable">
 
-          <agm-info-window>
-            <strong>{{ party.name }}</strong>
-            <p>{{ party.desc }} </p>
-          </agm-info-window>
+        <agm-info-window>
+          <strong>{{ party.name }}</strong>
+          <p>{{ party.desc }} </p>
+        </agm-info-window>
 
-        </agm-marker>
-      </agm-map>
+      </agm-marker>
+    </agm-map>
 
   </div>
 </div>
@@ -73,7 +81,7 @@
       </div>
 
       <form [formGroup]="newParty">
-      <div class="modal-body">
+        <div class="modal-body">
           <div class="md-form">
             <input mdbInputDirective #partyName type="text" name="partyName" id="partyName" class="form-control" formControlName="partyName"
               [(ngModel)]="partyEvent.name">
@@ -91,14 +99,14 @@
               type="text" class="form-control" #search [formControl]="searchControl">
           </div>
 
-      </div>
+        </div>
 
-      <div class="modal-footer justify-content-center">
-        <button type="button" class="btn btn-secondary waves-light" data-dismiss="modal" (click)="fluid.hide()" mdbWavesEffect>Close</button>
-        <button (click)="add(partyEvent)" type="button" class="btn btn-primary waves-light" mdbWavesEffect>Dodaj</button>
-      </div>
+        <div class="modal-footer justify-content-center">
+          <button type="button" class="btn btn-secondary waves-light" data-dismiss="modal" (click)="fluid.hide()" mdbWavesEffect>Close</button>
+          <button (click)="add(partyEvent)" type="button" class="btn btn-primary waves-light" mdbWavesEffect>Dodaj</button>
+        </div>
 
-    </form>
+      </form>
 
     </div>
   </div>
@@ -106,66 +114,40 @@
 
 
 <!--Modal: Register Form-->
-<div mdbModal #form="mdb-modal" class="modal fade" id="modalRegister" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog cascading-modal" role="document">
-        <!--Content-->
-        <div class="modal-content">
+<div mdbModal #form="mdb-modal" class="modal fade" id="modalRegister" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog cascading-modal" role="document">
+    <!--Content-->
+    <div class="modal-content">
 
-            <!--Header-->
-            <div class="modal-header light-blue darken-3 white-text">
-                <h4 class="title"><i class="fa fa-user-plus"></i> Register</h4>
-                <button type="button" class="close waves-effect waves-light" data-dismiss="modal" aria-label="Close" (click)="form.hide()">
-                    <span aria-hidden="true">×</span>
-                </button>
-            </div>
-            <!--Body-->
-            <div class="modal-body">
-               
-              <app-register></app-register>
+      <!--Header-->
+      <div class="modal-header light-blue darken-3 white-text">
+        <h4 class="title">
+          <i class="fa fa-user-plus"></i> Register</h4>
+        <button type="button" class="close waves-effect waves-light" data-dismiss="modal" aria-label="Close" (click)="form.hide()">
+          <span aria-hidden="true">×</span>
+        </button>
+      </div>
+      <!--Body-->
+      <div class="modal-body">
 
-            </div>
-            <!--Footer-->
-            <div class="modal-footer">
-                <div class="options text-center text-md-right mt-1">
-                    <p>Already have an account? <a href="#">Log In</a></p>
-                </div>
-                <button type="button" class="btn btn-outline-info ml-auto" data-dismiss="modal" (click)="form.hide()" mdbWavesEffect>Close</button>
-            </div>
+        <app-register></app-register>
+
+      </div>
+      <!--Footer-->
+      <div class="modal-footer">
+        <div class="options text-center text-md-right mt-1">
+          <p>Already have an account?
+            <a href="#">Log In</a>
+          </p>
         </div>
-        <!--/.Content-->
+        <button type="button" class="btn btn-outline-info ml-auto" data-dismiss="modal" (click)="form.hide()" mdbWavesEffect>Close</button>
+      </div>
     </div>
+    <!--/.Content-->
+  </div>
 </div>
 <!--Modal: Register Form-->
 
-<!--Modal: Login Form-->
-<div mdbModal #loginForm="mdb-modal" class="modal fade" id="modalLogin" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog cascading-modal" role="document">
-        <!--Content-->
-        <div class="modal-content">
 
-            <!--Header-->
-            <div class="modal-header light-blue darken-3 white-text">
-                <h4 class="title"><i class="fa fa-user"></i> Log in</h4>
-                <button type="button" class="close waves-effect waves-light" data-dismiss="modal" aria-label="Close" (click)="loginForm.hide()">
-                    <span aria-hidden="true">×</span>
-                </button>
-            </div>
-            <!--Body-->
-            <div class="modal-body">
-               
-              <app-login></app-login>
-
-            </div>
-            <!--Footer-->
-            <div class="modal-footer">
-                <div class="options text-center text-md-right mt-1">
-                    <p>Not a member? <a href="#">Sign Up</a></p>
-                    <p>Forgot <a href="#">Password?</a></p>
-                </div>
-                <button type="button" class="btn btn-outline-info ml-auto" data-dismiss="modal" (click)="loginForm.hide()" mdbWavesEffect>Close</button>
-            </div>
-        </div>
-        <!--/.Content-->
-    </div>
-</div>
-<!--Modal: Login Form-->
+<app-login #loginModal *ngIf="loginComponent" [master]="openLoginModal"></app-login>

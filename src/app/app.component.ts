@@ -1,7 +1,10 @@
-import { ElementRef, Component, OnInit, NgZone, ViewChild } from '@angular/core';
+import { ElementRef, Component, OnInit, NgZone, ViewChild, AfterViewInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { MapsAPILoader } from '@agm/core';
 import { PartyListsService } from './services/party-lists.service';
+import { AuthService } from './services/auth.service';
+import { ModalDirective } from 'angular-bootstrap-md';
+
 import {} from 'googlemaps';
 
 @Component({
@@ -9,13 +12,19 @@ import {} from 'googlemaps';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit, AfterViewInit {
 
   constructor(
     private mapsAPILoader: MapsAPILoader,
     private ngZone: NgZone,
-    private partyListsService: PartyListsService
-  ) {}
+    private partyListsService: PartyListsService,
+    private authService: AuthService
+  ) {
+    this.loggedIn = false;
+
+  }
+
+  loginComponent = true;
 
   public latitude: number;
   public longitude: number;
@@ -24,10 +33,15 @@ export class AppComponent implements OnInit {
   public zoom: number;
   // refactoring of form add event
   public newParty: FormGroup;
+  // check is logged
+  loggedIn: any;
 
+  public isModalShown = true;
 
-  @ViewChild('search')
-  public searchElementRef: ElementRef;
+  openLoginModal = true;
+
+  @ViewChild('search') public searchElementRef: ElementRef;
+  @ViewChild('loginModal') public loginModalRef: ModalDirective;
 
   partyEvent = {
     id: null,
@@ -40,14 +54,21 @@ export class AppComponent implements OnInit {
     draggable: true
   };
 
+
   partyEvents = [];
 
   add(partyEvent) {
-    console.log(partyEvent);
   }
 
-
   ngOnInit() {
+
+    this.authService.isLoggedIn.subscribe(
+      (data) => {
+        console.log(data);
+        this.loggedIn = data;
+      }
+    );
+
     // load from service when component is ready
     this.partyListsService.getPartyLists().subscribe(
       (data: any) => {
@@ -124,6 +145,9 @@ export class AppComponent implements OnInit {
         this.zoom = 12;
       });
     }
+  }
+
+  ngAfterViewInit()	{
   }
 
 }

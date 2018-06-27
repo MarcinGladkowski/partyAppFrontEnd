@@ -3,7 +3,7 @@ import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { AgmCoreModule } from '@agm/core';
-import { MDBBootstrapModule } from 'angular-bootstrap-md';
+import { MDBBootstrapModule, ModalModule } from 'angular-bootstrap-md';
 import { CommonModule } from '@angular/common';
 
 import { RegisterComponent } from './register/register.component';
@@ -30,6 +30,7 @@ import { JwtInterceptor } from './helpers/jwt';
     ReactiveFormsModule,
     HttpModule,
     HttpClientModule,
+    ModalModule.forRoot(),
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyAt9ym5lJu_8pguSVm6idX0nfQtgy-12dw',
       libraries: ['places']
