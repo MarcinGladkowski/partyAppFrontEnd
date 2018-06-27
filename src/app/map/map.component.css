@@ -1,0 +1,13 @@
+agm-map {
+    height: 100%;
+    width: 100%;
+}
+
+.modal-backdrop
+{
+    opacity:0.5 !important;
+}
+
+.main-container {
+  height: 100vh;
+}

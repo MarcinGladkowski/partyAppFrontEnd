@@ -1,3 +1,12 @@
-<p>
-  map works!
-</p>
+<div class="container-fluid">
+  <div class="row main-container">
+    <agm-map [latitude]="latitude" [longitude]="longitude">
+      <agm-marker class="mapMarker" *ngFor="let party of partyEvents; let i = index" [latitude]="party.latitude" [longitude]="party.longitude">
+        <agm-info-window>
+          <strong>{{ party.name }}</strong>
+          <p>{{ party.desc }} </p>
+        </agm-info-window>
+      </agm-marker>
+    </agm-map>
+  </div>
+</div>

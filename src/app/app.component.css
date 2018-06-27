@@ -3,11 +3,6 @@
     opacity:0.5 !important;
 }
 
-agm-map {
-    height: 100%;
-    width: 100%;
-}
-
 .main-container {
   height: 100vh;
 }

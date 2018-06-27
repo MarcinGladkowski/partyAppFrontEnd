@@ -17,7 +17,6 @@ import { AuthService } from './services/auth.service';
 
 import { JwtInterceptor } from './helpers/jwt';
 import { HeaderComponent } from './header/header.component';
-import { MatComponent } from './mat/mat.component';
 import { MapComponent } from './map/map.component';
 
 @NgModule({
@@ -26,7 +25,6 @@ import { MapComponent } from './map/map.component';
     RegisterComponent,
     LoginComponent,
     HeaderComponent,
-    MatComponent,
     MapComponent
   ],
   imports: [
