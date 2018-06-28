@@ -2,40 +2,37 @@
   aria-hidden="true">
   <div class="modal-dialog modal-full-height modal-left" role="document">
     <div class="modal-content">
-
       <div class="modal-header">
         <h4 class="modal-title w-100" id="myModalLabel">Dodaj wydarzenie</h4>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="modal.hide()">
           <span aria-hidden="true">×</span>
         </button>
       </div>
-
       <form [formGroup]="partyForm" (ngSubmit)="onSubmit()">
         <div class="modal-body">
           <div class="md-form">
-            <input mdbInputDirective #partyName type="text" name="partyName" id="partyName" class="form-control" formControlName="name">
-            <label for="partyName" class="">Nazwa</label>
+            <input mdbInputDirective formControlName="name" type="text" id="partyName" class="form-control">
+            <label for="name" class="">Nazwa</label>
           </div>
 
           <div class="md-form">
-            <input mdbInputDirective #partyDesc type="text" name="partyDesc" id="partyDesc" class="form-control" formControlName="desc">
-            <label for="partyDesc" class="">Opis</label>
+            <input mdbInputDirective formControlName="desc" type="text" id="partyDesc" class="form-control">
+            <label for="desc" class="">Opis</label>
           </div>
 
-          <!-- <div class="md-form">
+          <div class="md-form">
             <input mdbInputDirective id="form1" placeholder="search for location" autocorrect="off" autocapitalize="off" spellcheck="off"
               type="text" class="form-control" #search [formControl]="searchControl">
-          </div> -->
+          </div>
 
         </div>
-
+        
         <div class="modal-footer justify-content-center">
           <button type="button" class="btn btn-secondary waves-light" data-dismiss="modal" (click)="modal.hide()" mdbWavesEffect>Close</button>
           <button type="submit" class="btn btn-primary waves-light" mdbWavesEffect>Dodaj</button>
         </div>
 
       </form>
-
     </div>
   </div>
 </div>
