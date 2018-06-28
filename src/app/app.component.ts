@@ -1,10 +1,8 @@
-import { ElementRef, Component, OnInit, NgZone, ViewChild, AfterViewInit } from '@angular/core';
+import { ElementRef, Component, OnInit, NgZone, ViewChild } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { MapsAPILoader } from '@agm/core';
 import { PartyListsService } from './services/party-lists.service';
 import { AuthService } from './services/auth.service';
-import { ModalDirective } from 'angular-bootstrap-md';
-
 import {} from 'googlemaps';
 
 @Component({
@@ -12,11 +10,11 @@ import {} from 'googlemaps';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit, AfterViewInit {
+export class AppComponent implements OnInit {
 
   constructor(
-    private mapsAPILoader: MapsAPILoader,
-    private ngZone: NgZone,
+    // private mapsAPILoader: MapsAPILoader,
+    // private ngZone: NgZone,
     private partyListsService: PartyListsService,
     private authService: AuthService
   ) {
@@ -42,22 +40,20 @@ export class AppComponent implements OnInit, AfterViewInit {
 
   @ViewChild('search') public searchElementRef: ElementRef;
 
-  partyEvent = {
-    id: null,
-    name: '',
-    desc: '',
-    close: false,
-    latitude: null,
-    longitude: null,
-    label: 'A',
-    draggable: true
-  };
+  // partyEvent = {
+  //   id: null,
+  //   name: '',
+  //   desc: '',
+  //   close: false,
+  //   latitude: null,
+  //   longitude: null,
+  //   label: 'A',
+  //   draggable: true
+  // };
 
 
   partyEvents = [];
 
-  add(partyEvent) {
-  }
 
   ngOnInit() {
 
@@ -85,68 +81,54 @@ export class AppComponent implements OnInit, AfterViewInit {
     // create search FormControl
     this.searchControl = new FormControl();
 
-    // new form add party
-    this.newParty = new FormGroup({
-      partyName: new FormControl(),
-      partyDesc: new FormControl()
-    });
-
     // set current position
-    this.setCurrentPosition();
+    // this.setCurrentPosition();
 
     // load Places Autocomplete
-    this.mapsAPILoader.load().then(() => {
-      const autocomplete = new google.maps.places.Autocomplete(this.searchElementRef.nativeElement, {
-        types: ['address']
-      });
-      autocomplete.addListener('place_changed', () => {
-        this.ngZone.run(() => {
-          // get the place result
-          const place: google.maps.places.PlaceResult = autocomplete.getPlace();
+    // this.mapsAPILoader.load().then(() => {
+    //   const autocomplete = new google.maps.places.Autocomplete(this.searchElementRef.nativeElement, {
+    //     types: ['address']
+    //   });
+    //   autocomplete.addListener('place_changed', () => {
+    //     this.ngZone.run(() => {
+    //       const place: google.maps.places.PlaceResult = autocomplete.getPlace();
 
-          // verify result
-          if (place.geometry === undefined || place.geometry === null) {
-            return;
-          }
-          const newPlace = {
-            id: 3,
-            name: this.partyEvent.name,
-            desc: this.partyEvent.desc,
-            latitude: place.geometry.location.lat(),
-            longitude: place.geometry.location.lng(),
-            label: 'A',
-            draggable: true
-          };
+    //       if (place.geometry === undefined || place.geometry === null) {
+    //         return;
+    //       }
+          // const newPlace = {
+          //   id: 3,
+          //   name: this.partyEvent.name,
+          //   desc: this.partyEvent.desc,
+          //   latitude: place.geometry.location.lat(),
+          //   longitude: place.geometry.location.lng(),
+          //   label: 'A',
+          //   draggable: true
+          // };
           // set latitude, longitude and zoom
           // this.partyEvents.push(newPlace);
-
-          this.partyListsService.create(newPlace);
-
-          this.partyEvent.name = '';
-          this.partyEvent.desc = '';
-
+          // this.partyListsService.create(newPlace);
+          // this.partyEvent.name = '';
+          // this.partyEvent.desc = '';
           // set latitude, longitude and zoom
           // this.latitude = place.geometry.location.lat();
           // this.longitude = place.geometry.location.lng();
           // this.zoom = 12;
-
-          this.zoom = 12;
-        });
-      });
-    });
+    //       this.zoom = 12;
+    //     });
+    //   });
+    // });
   }
 
-  private setCurrentPosition() {
-    if ('geolocation' in navigator) {
-      navigator.geolocation.getCurrentPosition((position) => {
-        this.latitude = position.coords.latitude;
-        this.longitude = position.coords.longitude;
-        this.zoom = 12;
-      });
-    }
-  }
+  // private setCurrentPosition() {
+  //   if ('geolocation' in navigator) {
+  //     navigator.geolocation.getCurrentPosition((position) => {
+  //       this.latitude = position.coords.latitude;
+  //       this.longitude = position.coords.longitude;
+  //       this.zoom = 12;
+  //     });
+  //   }
+  // }
 
-  ngAfterViewInit()	{
-  }
 
 }

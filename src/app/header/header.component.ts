@@ -9,6 +9,7 @@ export class HeaderComponent implements OnInit {
 
   @Output() openRegistration = new EventEmitter();
   @Output() openLogin = new EventEmitter();
+  @Output() openParty = new EventEmitter();
 
   openRegistrationModal () {
     this.openRegistration.emit();
@@ -16,6 +17,10 @@ export class HeaderComponent implements OnInit {
 
   openLoginModal() {
     this.openLogin.emit();
+  }
+
+  openPartyModal() {
+    this.openParty.emit();
   }
 
   constructor() { }

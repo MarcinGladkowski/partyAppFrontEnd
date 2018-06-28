@@ -1,6 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
-import { repeat } from 'rxjs/operators';
 import { UserService  } from '../services/user.service';
 import { ModalDirective } from 'angular-bootstrap-md';
 
