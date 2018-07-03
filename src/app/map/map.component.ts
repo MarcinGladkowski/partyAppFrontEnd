@@ -256,13 +256,12 @@ export class MapComponent implements OnInit {
     this.latitude = 50.254968;
     this.longitude = 19.0275632;
     this.zoom = 12;
-     // load from service when component is ready
-     this.partyListsService.getPartyLists().subscribe(
-      (data: any) => {
-        this.partyEvents = data.parties;
-      }
-    );
 
+    this.partyListsService.getPartyLists();
+
+    this.partyListsService.getPartyStream().subscribe((parties: any) => {
+      this.partyEvents = parties;
+    });
   }
 
 }
