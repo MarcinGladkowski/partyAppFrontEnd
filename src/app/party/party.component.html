@@ -1,13 +1,16 @@
-<div mdbModal #modal="mdb-modal" class="modal fade left" id="fullHeightModalRight" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+<div mdbModal #modal="mdb-modal" class="modal fade"  tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
   aria-hidden="true">
-  <div class="modal-dialog modal-full-height modal-left" role="document">
+  <div class="modal-dialog cascading-modal" role="document">
     <div class="modal-content">
-      <div class="modal-header">
-        <h4 class="modal-title w-100" id="myModalLabel">Dodaj wydarzenie</h4>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="modal.hide()">
-          <span aria-hidden="true">×</span>
-        </button>
-      </div>
+       <!--Header-->
+       <div class="modal-header light-blue darken-3 white-text">
+          <h4 class="title">
+            <i class="fa fa-user-plus"></i>Dodaj wydarzenie</h4>
+          <button type="button" class="close waves-effect waves-light" data-dismiss="modal" aria-label="Close" (click)="modal.hide()">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+
       <form [formGroup]="partyForm" (ngSubmit)="onSubmit()">
         <div class="modal-body">
           <div class="md-form">
