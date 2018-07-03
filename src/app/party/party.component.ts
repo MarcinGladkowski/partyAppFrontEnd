@@ -2,6 +2,8 @@ import { Component, OnInit, ViewChild, NgZone, ElementRef } from '@angular/core'
 import { FormGroup, FormControl } from '@angular/forms';
 import { ModalDirective } from 'angular-bootstrap-md';
 import { MapsAPILoader } from '@agm/core';
+import { PartyListsService } from '../services/party-lists.service';
+
 
 @Component({
   selector: 'app-party',
@@ -12,6 +14,8 @@ export class PartyComponent implements OnInit {
 
   public partyForm: FormGroup;
   public searchControl: FormControl;
+  public latitude: number;
+  public longitude: number;
 
   @ViewChild('modal') public modalRef: ModalDirective;
   @ViewChild('search') public searchElementRef: ElementRef;
@@ -19,6 +23,7 @@ export class PartyComponent implements OnInit {
   constructor(
      private mapsAPILoader: MapsAPILoader,
      private ngZone: NgZone,
+     private partyListsService: PartyListsService
   ) { }
 
   showModal() {
@@ -59,6 +64,9 @@ export class PartyComponent implements OnInit {
           console.log(place.geometry.location.lat());
           console.log(place.geometry.location.lng());
 
+          this.latitude = place.geometry.location.lat();
+          this.longitude = place.geometry.location.lng();
+
           // set latitude, longitude and zoom
           // this.latitude = place.geometry.location.lat();
           // this.longitude = place.geometry.location.lng();
@@ -70,6 +78,15 @@ export class PartyComponent implements OnInit {
 
   onSubmit() {
     console.log(this.partyForm.value);
+
+    this.partyForm.value.latitude = this.latitude;
+    this.partyForm.value.longitude = this.longitude;
+
+    const newParty = this.partyForm.value;
+
+    console.log(newParty);
+
+    // this.partyListsService.create()
   }
 
 }

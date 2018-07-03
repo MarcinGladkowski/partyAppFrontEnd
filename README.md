@@ -12,6 +12,8 @@ party-app-206319
 Api do wlaczenia w panelu:
 Places API
 
+Narzedzie do stylizacji kodu:
+https://mapstyle.withgoogle.com/
 
 Do rozwazenia: - czadowa stylizacja map:
 https://angular-maps.com/guides/snazzy-info-window/custom-info-windows-with-snazzy-info-window/

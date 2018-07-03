@@ -8,5 +8,6 @@
 }
 
 .pac-container  {
-  z-index: 99999 !important;
+  z-index: 1051 !important;
+  display: block !important;
 }

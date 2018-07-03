@@ -5,6 +5,7 @@ import { AppComponent } from './app.component';
 import { AgmCoreModule } from '@agm/core';
 import { MDBBootstrapModule, ModalModule } from 'angular-bootstrap-md';
 import { CommonModule } from '@angular/common';
+import { AgmSnazzyInfoWindowModule } from '@agm/snazzy-info-window';
 
 import { RegisterComponent } from './register/register.component';
 import { HttpModule } from '@angular/http';
@@ -41,6 +42,7 @@ import { PartyComponent } from './party/party.component';
       apiKey: 'AIzaSyAt9ym5lJu_8pguSVm6idX0nfQtgy-12dw',
       libraries: ['places']
     }),
+    AgmSnazzyInfoWindowModule,
     MDBBootstrapModule.forRoot()
   ],
   schemas: [ NO_ERRORS_SCHEMA ],
