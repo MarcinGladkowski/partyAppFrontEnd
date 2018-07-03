@@ -44,7 +44,7 @@ export class PartyComponent implements OnInit {
       desc: new FormControl(),
     });
 
-    this.searchControl = new FormControl();
+     this.searchControl = new FormControl();
 
      // load Places Autocomplete
      this.mapsAPILoader.load().then(() => {
@@ -77,7 +77,6 @@ export class PartyComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.partyForm.value);
 
     this.partyForm.value.latitude = this.latitude;
     this.partyForm.value.longitude = this.longitude;
@@ -86,7 +85,10 @@ export class PartyComponent implements OnInit {
 
     console.log(newParty);
 
-    // this.partyListsService.create()
+    if (this.partyForm.value.latitude !== undefined && this.partyForm.value.longitude !== undefined) {
+      this.partyListsService.create(newParty);
+    }
+
   }
 
 }
