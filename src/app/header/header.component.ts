@@ -27,6 +27,10 @@ export class HeaderComponent implements OnInit {
     this.openParty.emit();
   }
 
+  logout() {
+    this.authService.logout();
+  }
+
   constructor(
     private authService: AuthService
   ) {}
