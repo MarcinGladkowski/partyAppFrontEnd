@@ -7,14 +7,20 @@
   <links>
     <!-- Links -->
     <ul class="navbar-nav mr-auto">
+
       <li class="nav-item">
         <a class="nav-link waves-light" mdbWavesEffect (click)="openLoginModal()">Zaloguj</a>
       </li>
+
+      <li class="nav-item" *ngSwitch="isLoggedIn">
+        <a class="nav-link waves-light" mdbWavesEffect (click)="openLoginModal()">Wyloguj</a>
+      </li>
+
       <li class="nav-item">
         <a class="nav-link waves-light" mdbWavesEffect (click)="openRegistrationModal()">Zarejestruj</a>
       </li>
       <!-- Dropdown -->
-      <li class="nav-item dropdown" dropdown>
+      <li class="nav-item dropdown" *ngSwitch="isLoggedIn" dropdown>
         <a dropdownToggle mdbWavesEffect type="button" class="nav-link dropdown-toggle waves-light" mdbWavesEffect>
           Wydarzenia
           <span class="caret"></span>

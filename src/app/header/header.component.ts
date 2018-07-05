@@ -1,4 +1,6 @@
 import { Component, OnInit, Output, EventEmitter} from '@angular/core';
+import { AuthService } from '../services/auth.service';
+import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'app-header',
@@ -6,6 +8,8 @@ import { Component, OnInit, Output, EventEmitter} from '@angular/core';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
+
+  isLoggedIn: Observable<boolean>;
 
   @Output() openRegistration = new EventEmitter();
   @Output() openLogin = new EventEmitter();
@@ -23,10 +27,20 @@ export class HeaderComponent implements OnInit {
     this.openParty.emit();
   }
 
-  constructor() { }
+  constructor(
+    private authService: AuthService
+  ) {}
 
 
   ngOnInit() {
+
+    console.log(`logged in header: ${this.isLoggedIn}`);
+
+    this.authService.isLoggedIn().subscribe((data: any) => {
+      console.log(`logged in header: ${data}`);
+      this.isLoggedIn = data;
+    });
+
   }
 
 }

@@ -9,6 +9,9 @@ export class JwtInterceptor implements HttpInterceptor {
         const authToken = JSON.parse(localStorage.getItem('authToken'));
 
         if (authToken) {
+
+            console.log('akcess token is in browser');
+
             request = request.clone({
                 setHeaders: {
                     'Content-Type': 'application/json',
