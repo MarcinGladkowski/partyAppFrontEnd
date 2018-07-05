@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
 import 'rxjs/add/observable/from';
+import 'rxjs/add/operator/startWith';
 
 @Injectable()
 export class PartyListsService {
@@ -14,21 +15,21 @@ export class PartyListsService {
   private apiUrl = `http://localhost:8080/api/party`;
   partyEvents = [];
 
-  partyStream = new Subject();
+  partyStream$ = new Subject();
+
+  // getPartyStream() {
+  //   return Observable.from(this.partyStream);
+  // }
 
   getPartyStream() {
-    return Observable.from(this.partyStream);
+    return this.partyStream$.startWith(this.partyEvents);
   }
-
-  // getPartyLists() {
-  //   return this.http.get(this.apiUrl);
-  // }
 
    getPartyLists() {
     return this.http.get(this.apiUrl).subscribe((data: any) => {
       const parties = data.parties;
       this.partyEvents = parties;
-      this.partyStream.next(this.partyEvents);
+      this.partyStream$.next(this.partyEvents);
     });
   }
 
@@ -38,7 +39,7 @@ export class PartyListsService {
       console.log('dodano do bazy: ');
       console.log(response.data);
       this.partyEvents.push(response.data);
-      this.partyStream.next(this.partyEvents);
+      this.partyStream$.next(this.partyEvents);
     });
   }
 
