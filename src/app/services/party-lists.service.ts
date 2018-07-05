@@ -34,10 +34,17 @@ export class PartyListsService {
 
   create(party) {
     return this.http.post(this.apiUrl, JSON.stringify(party), {headers: this.headers})
-    .subscribe(data => console.log(data));
+    .subscribe((response: any) => {
+      console.log('dodano do bazy: ');
+      console.log(response.data);
+      this.partyEvents.push(response.data);
+      this.partyStream.next(this.partyEvents);
+    });
   }
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+    this.getPartyLists();
+  }
 
 
 }

@@ -257,7 +257,7 @@ export class MapComponent implements OnInit {
     this.longitude = 19.0275632;
     this.zoom = 12;
 
-    this.partyListsService.getPartyLists();
+    // this.partyListsService.getPartyLists();
 
     this.partyListsService.getPartyStream().subscribe((parties: any) => {
       this.partyEvents = parties;

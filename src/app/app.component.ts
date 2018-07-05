@@ -3,7 +3,7 @@ import { FormGroup, FormControl } from '@angular/forms';
 import { MapsAPILoader } from '@agm/core';
 import { PartyListsService } from './services/party-lists.service';
 import { AuthService } from './services/auth.service';
-import {} from 'googlemaps';
+import { } from 'googlemaps';
 
 @Component({
   selector: 'app-root',
