@@ -9,7 +9,7 @@ import { Observable } from 'rxjs/Observable';
 })
 export class HeaderComponent implements OnInit {
 
-  isLoggedIn: Observable<boolean>;
+  isLoggedIn;
 
   @Output() openRegistration = new EventEmitter();
   @Output() openLogin = new EventEmitter();

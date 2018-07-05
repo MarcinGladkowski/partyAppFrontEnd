@@ -12,7 +12,7 @@ import { Observable } from 'rxjs/Observable';
 export class LoginComponent implements OnInit {
 
   public loginForm: FormGroup;
-  isLoggedIn: Observable<boolean>;
+  isLoggedIn;
 
   @ViewChild('modal') public modalRef: ModalDirective;
 

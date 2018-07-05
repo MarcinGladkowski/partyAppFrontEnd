@@ -24,7 +24,7 @@ export class AppComponent implements OnInit {
     console.log(`logged in main: ${this.isLoggedIn}`);
 
     this.authService.isLoggedIn().subscribe((data: any) => {
-      console.log(data);
+      console.log(`logged in app: ${data}`);
       this.isLoggedIn = data;
     });
   }
