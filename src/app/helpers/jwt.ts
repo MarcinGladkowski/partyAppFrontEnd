@@ -6,16 +6,16 @@ import { Observable } from 'rxjs/Observable';
 export class JwtInterceptor implements HttpInterceptor {
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         // add authorization header with jwt token if available
-        const authToken = JSON.parse(localStorage.getItem('authToken'));
+        const auth = JSON.parse(localStorage.getItem('auth'));
 
-        if (authToken) {
+        if (auth) {
 
             console.log('akcess token is in browser');
 
             request = request.clone({
                 setHeaders: {
                     'Content-Type': 'application/json',
-                    'x-access-token': authToken
+                    'x-access-token': auth.token
                 }
             });
         }

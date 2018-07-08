@@ -31,7 +31,7 @@ export class AuthService {
       .subscribe((data: any) => {
         if (data && data.auth) {
           // store user details and jwt token in local storage to keep user logged in between page refreshes
-          localStorage.setItem('authToken', JSON.stringify(data.token));
+          localStorage.setItem('auth', JSON.stringify(data));
           this.loggedIn.next(true);
         }
         return data;
@@ -39,7 +39,7 @@ export class AuthService {
   }
 
   logout() {
-    localStorage.removeItem('authToken');
+    localStorage.removeItem('auth');
     this.loggedIn.next(false);
   }
 
