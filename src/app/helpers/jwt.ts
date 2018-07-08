@@ -8,7 +8,7 @@ export class JwtInterceptor implements HttpInterceptor {
         // add authorization header with jwt token if available
         const auth = JSON.parse(localStorage.getItem('auth'));
 
-        if (auth) {
+        if (auth && auth.token) {
 
             console.log('akcess token is in browser');
 

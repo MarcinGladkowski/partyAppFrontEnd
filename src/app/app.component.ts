@@ -21,6 +21,9 @@ export class AppComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+
+    this.authService.checkIsUserLogin();
+
     console.log(`logged in main: ${this.isLoggedIn}`);
 
     this.authService.isLoggedIn().subscribe((data: any) => {

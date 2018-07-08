@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { Subject } from 'rxjs/Subject';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Observable } from 'rxjs/Observable';
@@ -30,7 +30,6 @@ export class AuthService {
     return this.http.post(`${this.baseApiUrl}auth`, user, {headers: this.headers})
       .subscribe((data: any) => {
         if (data && data.auth) {
-          // store user details and jwt token in local storage to keep user logged in between page refreshes
           localStorage.setItem('auth', JSON.stringify(data));
           this.loggedIn.next(true);
         }
@@ -41,6 +40,23 @@ export class AuthService {
   logout() {
     localStorage.removeItem('auth');
     this.loggedIn.next(false);
+  }
+
+  checkIsUserLogin() {
+    return this.http.post(`${this.baseApiUrl}auth/check`, {headers: this.headers})
+    .subscribe(
+      (data: any) => {
+      if (data && data.auth) {
+        localStorage.setItem('auth', JSON.stringify(data));
+        this.loggedIn.next(true);
+      }},
+      (error) => {
+        console.log(`bad response: `);
+        console.log(error.error.auth);
+        localStorage.setItem('auth', JSON.stringify({auth: false, token: null}));
+        this.loggedIn.next(false);
+      }
+  );
   }
 
 }
