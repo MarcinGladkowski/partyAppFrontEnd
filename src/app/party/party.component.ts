@@ -12,6 +12,14 @@ import { PartyListsService } from '../services/party-lists.service';
 })
 export class PartyComponent implements OnInit {
 
+  partyTypes = [
+    {name: `Grill`, value: 1},
+    {name: `Domówka`, value: 2},
+    {name: `Urodziny`, value: 3},
+    {name: `Klub`, value: 4},
+    {name: `Bar/Pub`, value: 5}
+  ];
+
   public partyForm: FormGroup;
   public searchControl: FormControl;
   public latitude: number;
@@ -30,6 +38,8 @@ export class PartyComponent implements OnInit {
   showModal() {
     this.modalRef.show();
   }
+
+ 
 
   ngOnInit() {
 

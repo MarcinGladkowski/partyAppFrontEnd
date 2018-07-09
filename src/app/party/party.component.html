@@ -26,6 +26,26 @@
             <input mdbInputDirective id="form1" placeholder="search for location" autocorrect="off" autocapitalize="off" spellcheck="off"
               type="text" class="form-control" #search [formControl]="searchControl">
           </div>
+          
+         <div class="md-form mt-5">
+            <select name="options" id="select" class="browser-default md-select form-control">
+            <option *ngFor="let type of partyTypes" [ngValue]="type.value">
+              {{type.name}}
+            </option>
+            </select>
+            <label class="active" for="form6">Choose your option</label>
+          </div> 
+
+          <!-- <div class="md-form mt-5">
+            <select name="options" id="select" class="browser-default md-select form-control">
+            <option value="1">Option 1</option>
+            <option value="2">Option 2</option>
+            <option value="3">Option 3</option>
+            <option value="4">Option 4</option>
+            <option value="5">Option 5</option>
+            </select>
+            <label class="active" for="form6">Choose your option</label>
+          </div> -->
 
         </div>
         <div class="modal-footer justify-content-center">
