@@ -12,6 +12,7 @@ import { PartyListsService } from '../services/party-lists.service';
 })
 export class PartyComponent implements OnInit {
 
+  // save in db in future
   partyTypes = [
     {name: `Grill`, value: 1},
     {name: `Domówka`, value: 2},
@@ -39,21 +40,12 @@ export class PartyComponent implements OnInit {
     this.modalRef.show();
   }
 
- 
-
   ngOnInit() {
-
-  // Add fields to party form
-  //   close: false,
-  //   latitude: null,
-  //   longitude: null,
-  //   label: 'A',
-  //   draggable: true
-
-
     this.partyForm = this.formBuilder.group({
       'name': [null, Validators.required],
-      'desc': [null, Validators.required]
+      'desc': [null, Validators.required],
+      'type': [null, Validators.required],
+      'private': [null, Validators.required]
     });
 
      this.searchControl = new FormControl();
@@ -65,10 +57,9 @@ export class PartyComponent implements OnInit {
       });
       autocomplete.addListener('place_changed', () => {
         this.ngZone.run(() => {
-          // get the place result
+
           const place: google.maps.places.PlaceResult = autocomplete.getPlace();
 
-          // verify result
           if (place.geometry === undefined || place.geometry === null) {
             return;
           }
@@ -79,10 +70,6 @@ export class PartyComponent implements OnInit {
           this.latitude = place.geometry.location.lat();
           this.longitude = place.geometry.location.lng();
 
-          // set latitude, longitude and zoom
-          // this.latitude = place.geometry.location.lat();
-          // this.longitude = place.geometry.location.lng();
-          // this.zoom = 12;
         });
       });
     });

@@ -17,10 +17,6 @@ export class PartyListsService {
 
   partyStream$ = new Subject();
 
-  // getPartyStream() {
-  //   return Observable.from(this.partyStream);
-  // }
-
   getPartyStream() {
     return this.partyStream$.startWith(this.partyEvents);
   }
@@ -28,6 +24,7 @@ export class PartyListsService {
    getPartyLists() {
     return this.http.get(this.apiUrl).subscribe((data: any) => {
       const parties = data.parties;
+      console.log(data.parties);
       this.partyEvents = parties;
       this.partyStream$.next(this.partyEvents);
     });

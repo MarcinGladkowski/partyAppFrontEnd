@@ -1,17 +1,22 @@
-<div mdbModal #modal="mdb-modal" class="modal fade"  tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-  aria-hidden="true">
+<div mdbModal #modal="mdb-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog cascading-modal" role="document">
     <div class="modal-content">
-       <!--Header-->
-       <div class="modal-header light-blue darken-3 white-text">
-          <h4 class="title">
-            <i class="fa fa-user-plus"></i>Dodaj wydarzenie</h4>
-          <button type="button" class="close waves-effect waves-light" data-dismiss="modal" aria-label="Close" (click)="modal.hide()">
-            <span aria-hidden="true">×</span>
-          </button>
-        </div>
+      <!--Header-->
+      <div class="modal-header light-blue darken-3 white-text">
+        <h4 class="title">
+          <i class="fa fa-user-plus"></i>Dodaj wydarzenie</h4>
+        <button type="button" class="close waves-effect waves-light" data-dismiss="modal" aria-label="Close" (click)="modal.hide()">
+          <span aria-hidden="true">×</span>
+        </button>
+      </div>
       <form [formGroup]="partyForm" (ngSubmit)="onSubmit()">
         <div class="modal-body">
+
+          <div class="md-form">
+            <input mdbInputDirective id="form1" placeholder="search for location" autocorrect="off" autocapitalize="off" spellcheck="off"
+              type="text" class="form-control" #search [formControl]="searchControl">
+          </div>
+
           <div class="md-form">
             <input mdbInputDirective formControlName="name" type="text" id="partyName" class="form-control">
             <label for="name" class="">Nazwa</label>
@@ -22,32 +27,23 @@
             <label for="desc" class="">Opis</label>
           </div>
 
-          <div class="md-form">
-            <input mdbInputDirective id="form1" placeholder="search for location" autocorrect="off" autocapitalize="off" spellcheck="off"
-              type="text" class="form-control" #search [formControl]="searchControl">
+          <div class="md-form mt-5">
+            <select formControlName="type" name="options" id="select" class="browser-default md-select form-control">
+              <option *ngFor="let type of partyTypes" [ngValue]="type.value">
+                {{type.name}}
+              </option>
+            </select>
+            <label class="active" for="form6">Choose your option</label>
+          </div>
+
+          <div class="custom-control custom-checkbox">
+            <input formControlName="private" type="checkbox" class="custom-control-input" id="defaultIndeterminate2" checked>
+            <label class="custom-control-label" for="defaultIndeterminate2">Prywatna</label>
+          </div>
+
+
           </div>
           
-         <div class="md-form mt-5">
-            <select name="options" id="select" class="browser-default md-select form-control">
-            <option *ngFor="let type of partyTypes" [ngValue]="type.value">
-              {{type.name}}
-            </option>
-            </select>
-            <label class="active" for="form6">Choose your option</label>
-          </div> 
-
-          <!-- <div class="md-form mt-5">
-            <select name="options" id="select" class="browser-default md-select form-control">
-            <option value="1">Option 1</option>
-            <option value="2">Option 2</option>
-            <option value="3">Option 3</option>
-            <option value="4">Option 4</option>
-            <option value="5">Option 5</option>
-            </select>
-            <label class="active" for="form6">Choose your option</label>
-          </div> -->
-
-        </div>
         <div class="modal-footer justify-content-center">
           <button type="button" class="btn btn-secondary waves-light" data-dismiss="modal" (click)="modal.hide()" mdbWavesEffect>Close</button>
           <button type="submit" class="btn btn-primary waves-light" mdbWavesEffect>Dodaj</button>
