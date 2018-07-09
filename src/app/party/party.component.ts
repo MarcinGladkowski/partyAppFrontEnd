@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild, NgZone, ElementRef } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl,  Validators, FormBuilder } from '@angular/forms';
 import { ModalDirective } from 'angular-bootstrap-md';
 import { MapsAPILoader } from '@agm/core';
 import { PartyListsService } from '../services/party-lists.service';
@@ -23,7 +23,8 @@ export class PartyComponent implements OnInit {
   constructor(
      private mapsAPILoader: MapsAPILoader,
      private ngZone: NgZone,
-     private partyListsService: PartyListsService
+     private partyListsService: PartyListsService,
+     private formBuilder: FormBuilder
   ) { }
 
   showModal() {
@@ -39,9 +40,10 @@ export class PartyComponent implements OnInit {
   //   label: 'A',
   //   draggable: true
 
-    this.partyForm = new FormGroup({
-      name: new FormControl(),
-      desc: new FormControl(),
+
+    this.partyForm = this.formBuilder.group({
+      'name': [null, Validators.required],
+      'desc': [null, Validators.required]
     });
 
      this.searchControl = new FormControl();
