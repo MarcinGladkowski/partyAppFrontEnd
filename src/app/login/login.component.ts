@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild, ElementRef, Input, AfterViewInit} from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { AuthService } from '../services/auth.service';
 import { ModalDirective } from 'angular-bootstrap-md';
 import { Observable } from 'rxjs/Observable';
@@ -16,7 +16,10 @@ export class LoginComponent implements OnInit {
 
   @ViewChild('modal') public modalRef: ModalDirective;
 
-  constructor(private authService: AuthService) { }
+  constructor(
+    private authService: AuthService,
+    private formBuilder: FormBuilder
+  ) { }
 
   showModal() {
     this.modalRef.show();
@@ -28,9 +31,9 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
 
-    this.loginForm = new FormGroup({
-      email: new FormControl(),
-      password: new FormControl(),
+    this.loginForm = this.formBuilder.group({
+      'email': [null, Validators.email],
+      'password': [null, Validators.required],
     });
 
     this.authService.isLoggedIn().subscribe((data: any) => {
