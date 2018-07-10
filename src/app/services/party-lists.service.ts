@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
+import 'rxjs/add/operator/map';
 import 'rxjs/add/observable/from';
 import 'rxjs/add/operator/startWith';
 
@@ -24,6 +25,7 @@ export class PartyListsService {
    getPartyLists() {
     return this.http.get(this.apiUrl).subscribe((data: any) => {
       const parties = data.parties;
+      console.log(`otrzymane z api`);
       console.log(data.parties);
       this.partyEvents = parties;
       this.partyStream$.next(this.partyEvents);
