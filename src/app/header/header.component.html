@@ -9,15 +9,15 @@
     <ul class="navbar-nav mr-auto">
 
       <li class="nav-item" *ngIf="!isLoggedIn">
-        <a class="nav-link waves-light" mdbWavesEffect (click)="openLoginModal()">Zaloguj</a>
+        <a class="nav-link waves-light" routerLink="/" mdbWavesEffect>Zaloguj</a>
       </li>
 
       <li class="nav-item" *ngIf="isLoggedIn">
-        <a class="nav-link waves-light" mdbWavesEffect (click)="logout()">Wyloguj</a>
+        <a class="nav-link waves-light" mdbWavesEffect>Wyloguj</a>
       </li>
 
       <li class="nav-item" *ngIf="!isLoggedIn">
-        <a class="nav-link waves-light" mdbWavesEffect (click)="openRegistrationModal()">Zarejestruj</a>
+        <a class="nav-link waves-light" routerLink="/register" mdbWavesEffect>Zarejestruj</a>
       </li>
       <!-- Dropdown -->
       <li class="nav-item dropdown" dropdown *ngIf="isLoggedIn"> 
