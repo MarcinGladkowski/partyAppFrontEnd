@@ -11,7 +11,8 @@ import { RegisterComponent } from './register/register.component';
 import { HttpModule } from '@angular/http';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { LoginComponent } from './login/login.component';
-
+import { SettingsComponent } from './settings/settings.component';
+// services
 import { PartyListsService} from './services/party-lists.service';
 import { UserService } from './services/user.service';
 import { AuthService } from './services/auth.service';
@@ -20,15 +21,8 @@ import { JwtInterceptor } from './helpers/jwt';
 import { HeaderComponent } from './header/header.component';
 import { MapComponent } from './map/map.component';
 import { PartyComponent } from './party/party.component';
-// create routing
-import { RouterModule, Routes } from '@angular/router';
-
-const routesConfig: Routes = [
-  {path: '', component: AppComponent}
-];
-
-const routerModule = RouterModule.forRoot(routesConfig);
-
+// routing
+import { routerModule } from './app.routing';
 
 @NgModule({
   declarations: [
@@ -37,7 +31,8 @@ const routerModule = RouterModule.forRoot(routesConfig);
     LoginComponent,
     HeaderComponent,
     MapComponent,
-    PartyComponent
+    PartyComponent,
+    SettingsComponent
   ],
   imports: [
     BrowserModule,
