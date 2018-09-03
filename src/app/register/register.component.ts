@@ -12,13 +12,7 @@ export class RegisterComponent implements OnInit {
 
   public registerForm: FormGroup;
 
-  @ViewChild('modal') public modalRef: ModalDirective;
-
   constructor(private userService: UserService) { }
-
-  showModal() {
-    this.modalRef.show();
-  }
 
   ngOnInit() {
     this.registerForm = new FormGroup({

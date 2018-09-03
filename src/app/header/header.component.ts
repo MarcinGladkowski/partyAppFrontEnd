@@ -11,22 +11,6 @@ export class HeaderComponent implements OnInit {
 
   isLoggedIn;
 
-  @Output() openRegistration = new EventEmitter();
-  @Output() openLogin = new EventEmitter();
-  @Output() openParty = new EventEmitter();
-
-  openRegistrationModal () {
-    this.openRegistration.emit();
-  }
-
-  openLoginModal() {
-    this.openLogin.emit();
-  }
-
-  openPartyModal() {
-    this.openParty.emit();
-  }
-
   logout() {
     this.authService.logout();
   }
