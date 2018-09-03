@@ -20,6 +20,15 @@ import { JwtInterceptor } from './helpers/jwt';
 import { HeaderComponent } from './header/header.component';
 import { MapComponent } from './map/map.component';
 import { PartyComponent } from './party/party.component';
+// create routing
+import { RouterModule, Routes } from '@angular/router';
+
+const routesConfig: Routes = [
+  {path: '', component: AppComponent}
+];
+
+const routerModule = RouterModule.forRoot(routesConfig);
+
 
 @NgModule({
   declarations: [
@@ -43,7 +52,8 @@ import { PartyComponent } from './party/party.component';
       libraries: ['places']
     }),
     AgmSnazzyInfoWindowModule,
-    MDBBootstrapModule.forRoot()
+    MDBBootstrapModule.forRoot(),
+    routerModule
   ],
   schemas: [ NO_ERRORS_SCHEMA ],
   providers: [
