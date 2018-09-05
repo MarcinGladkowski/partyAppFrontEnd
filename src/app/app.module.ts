@@ -23,6 +23,8 @@ import { MapComponent } from './map/map.component';
 import { PartyComponent } from './party/party.component';
 // routing
 import { routerModule } from './app.routing';
+// config
+import config from './app.config';
 
 @NgModule({
   declarations: [
@@ -43,7 +45,7 @@ import { routerModule } from './app.routing';
     HttpClientModule,
     ModalModule.forRoot(),
     AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyAt9ym5lJu_8pguSVm6idX0nfQtgy-12dw',
+      apiKey: config.googleApiKey,
       libraries: ['places']
     }),
     AgmSnazzyInfoWindowModule,
