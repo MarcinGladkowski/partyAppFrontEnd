@@ -1,59 +1,42 @@
-<p>
-  Party
-</p>
+<div class="h-100 row justify-content-center align-items-center">
+  <div class="col-6">
+    <form [formGroup]="partyForm" (ngSubmit)="onSubmit()">
+      <p class="h5 text-center mb-4">Add party</p>
 
-<!-- <div mdbModal #modal="mdb-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog cascading-modal" role="document">
-    <div class="modal-content">
-      Header-->
-      <!-- <div class="modal-header light-blue darken-3 white-text">
-        <h4 class="title">
-          <i class="fa fa-user-plus"></i>Dodaj wydarzenie</h4>
-        <button type="button" class="close waves-effect waves-light" data-dismiss="modal" aria-label="Close" (click)="modal.hide()">
-          <span aria-hidden="true">×</span>
-        </button>
+      <div class="md-form">
+          <input mdbInputDirective id="form1" placeholder="search for location" autocorrect="off" autocapitalize="off" spellcheck="off"
+            type="text" class="form-control" #search [formControl]="searchControl">
       </div>
-      <form [formGroup]="partyForm" (ngSubmit)="onSubmit()">
-        <div class="modal-body">
 
-          <div class="md-form">
-            <input mdbInputDirective id="form1" placeholder="search for location" autocorrect="off" autocapitalize="off" spellcheck="off"
-              type="text" class="form-control" #search [formControl]="searchControl">
-          </div>
+      <div class="md-form">
+        <i class="fa fa-user prefix grey-text"></i>
+        <input type="text" formControlName="name" id="name" class="form-control" mdbInputDirective>
+        <label for="name">Name</label>
+      </div>
 
-          <div class="md-form">
-            <input mdbInputDirective formControlName="name" type="text" id="partyName" class="form-control">
-            <label for="name" class="">Nazwa</label>
-          </div>
+      <div class="md-form">
+        <i class="fa fa-envelope prefix grey-text"></i>
+        <input type="text" formControlName="desc" id="desc" class="form-control" mdbInputDirective>
+        <label for="desc">Description</label>
+      </div>
 
-          <div class="md-form">
-            <input mdbInputDirective formControlName="desc" type="text" id="partyDesc" class="form-control">
-            <label for="desc" class="">Opis</label>
-          </div>
+      <div class="md-form mt-5">
+        <select formControlName="type" name="options" id="select" class="browser-default md-select form-control">
+          <option *ngFor="let type of partyTypes" [ngValue]="type.value">
+            {{type.name}}
+          </option>
+        </select>
+        <label class="active" for="form6">Choose your option</label>
+      </div>
 
-          <div class="md-form mt-5">
-            <select formControlName="type" name="options" id="select" class="browser-default md-select form-control">
-              <option *ngFor="let type of partyTypes" [ngValue]="type.value">
-                {{type.name}}
-              </option>
-            </select>
-            <label class="active" for="form6">Choose your option</label>
-          </div>
+      <div class="custom-control custom-checkbox">
+        <input formControlName="private" type="checkbox" class="custom-control-input" id="private" checked>
+        <label class="custom-control-label" for="private">Private</label>
+      </div>
 
-          <div class="custom-control custom-checkbox">
-            <input formControlName="private" type="checkbox" class="custom-control-input" id="defaultIndeterminate2" checked>
-            <label class="custom-control-label" for="defaultIndeterminate2">Prywatna</label>
-          </div>
-
-
-          </div>
-          
-        <div class="modal-footer justify-content-center">
-          <button type="button" class="btn btn-secondary waves-light" data-dismiss="modal" (click)="modal.hide()" mdbWavesEffect>Close</button>
-          <button type="submit" class="btn btn-primary waves-light" mdbWavesEffect>Dodaj</button>
-        </div>
-
-      </form>
-    </div>
+      <div class="text-center">
+        <input type="submit" mdbBtn color="default" sclass="waves-light" mdbWavesEffect value="Save">
+      </div>
+    </form>
   </div>
-</div> --> -->
+</div>

@@ -26,9 +26,6 @@ export class PartyComponent implements OnInit {
   public latitude: number;
   public longitude: number;
 
-  @ViewChild('modal') public modalRef: ModalDirective;
-  @ViewChild('search') public searchElementRef: ElementRef;
-
   constructor(
      private mapsAPILoader: MapsAPILoader,
      private ngZone: NgZone,
@@ -36,9 +33,7 @@ export class PartyComponent implements OnInit {
      private formBuilder: FormBuilder
   ) { }
 
-  showModal() {
-    this.modalRef.show();
-  }
+  @ViewChild('search') public searchElementRef: ElementRef;
 
   ngOnInit() {
     this.partyForm = this.formBuilder.group({
