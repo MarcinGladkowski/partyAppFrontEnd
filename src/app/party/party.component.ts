@@ -78,8 +78,9 @@ export class PartyComponent implements OnInit {
     const newParty = this.partyForm.value;
 
     console.log(newParty);
+    /** @TODO if place is not found (lat, lng) not send request */
 
-    if (this.partyForm.value.latitude !== undefined && this.partyForm.value.longitude !== undefined) {
+    if (this.partyForm.value.latitude !== undefined || this.partyForm.value.longitude !== undefined) {
       this.partyListsService.create(newParty);
     }
 
