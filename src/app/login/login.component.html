@@ -1,34 +1,28 @@
-<p>
-  Login page
-</p>
-        <!-- <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-          <div class="md-form form-sm">
-            <i class="fa fa-envelope prefix"></i>
-            <input formControlName="email" mdbInputDirective type="text" id="form30" class="form-control">
-            <label for="form30">Your email</label>
-          </div>
-          <div class="md-form form-sm">
-            <i class="fa fa-lock prefix"></i>
-            <input formControlName="password" mdbInputDirective type="password" id="form31" class="form-control">
-            <label for="form31">Your password</label>
-          </div>
-          <div class="text-center mt-2">
-            <button type="submit" class="btn btn-info waves-light" mdbWavesEffect>Log in
-              <i class="fa fa-sign-in ml-1"></i>
-            </button>
-          </div>
-        </form>
-      </div>
-      Footer-->
-      <!-- <div class="modal-footer">
-        <div class="options text-center text-md-right mt-1">
-          <p>Not a member?
-            <a href="#">Sign Up</a>
-          </p>
-          <p>Forgot
-            <a href="#">Password?</a>
-          </p>
-        </div>
-        <button type="button" class="btn btn-outline-info ml-auto" data-dismiss="modal" (click)="modal.hide()" mdbWavesEffect>Close</button>
-      </div> -->
+
+<div class="h-100 row justify-content-center align-items-center">
+    <div class="col-6">
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+            <p class="h5 text-center mb-4">Sign in</p>
+          
+            <div class="md-form">
+              <i class="fa fa-envelope prefix grey-text"></i>
+              <input type="text" formControlName="defaultFormEmail" id="defaultForm-email" class="form-control" mdbInputDirective>
+              <label for="defaultForm-email">Your email</label>
+            </div>
+          
+            <div class="md-form">
+              <i class="fa fa-lock prefix grey-text"></i>
+              <input type="password" formControlName="defaultFormPass" id="defaultForm-pass" class="form-control" mdbInputDirective>
+              <label for="defaultForm-pass">Your password</label>
+            </div>
+        
+            <div class="text-center">
+              <input type="submit" mdbBtn color="default" sclass="waves-light" mdbWavesEffect value="Login">
+            </div>
+          </form>
+    </div>
+</div>
+
+
+  
 
