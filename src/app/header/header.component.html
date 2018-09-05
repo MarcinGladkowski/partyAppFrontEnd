@@ -1,11 +1,12 @@
-<mdb-navbar SideClass="navbar navbar-expand-lg navbar-dark indigo" [containerInside]="false">
-  <!-- Navbar brand -->
+
+<button mdbBtn type="button" color="primary" class="waves-light" mdbWavesEffect>Primary</button>
+
+
+<!-- <mdb-navbar SideClass="navbar navbar-expand-lg navbar-dark indigo" [containerInside]="false">
   <logo>
     <a class="navbar-brand" href="#">Imprezownia</a>
   </logo>
-  <!-- Collapsible content -->
   <links>
-    <!-- Links -->
     <ul class="navbar-nav mr-auto">
 
       <li class="nav-item" *ngIf="!isLoggedIn">
@@ -19,7 +20,6 @@
       <li class="nav-item" *ngIf="!isLoggedIn">
         <a class="nav-link waves-light" routerLink="/register" mdbWavesEffect>Zarejestruj</a>
       </li>
-      <!-- Dropdown -->
       <li class="nav-item dropdown" dropdown *ngIf="isLoggedIn"> 
         <a dropdownToggle mdbWavesEffect type="button" class="nav-link dropdown-toggle waves-light" mdbWavesEffect>
           Wydarzenia
@@ -31,13 +31,10 @@
         </div>
       </li>
     </ul>
-    <!-- Links -->
-    <!-- Search form -->
     <form class="form-inline waves-light" mdbWavesEffect>
       <div class="md-form mt-0">
         <input class="form-control mr-sm-6" type="text" placeholder="Szukaj">
       </div>
     </form>
   </links>
-  <!-- Collapsible content -->
-</mdb-navbar>
+</mdb-navbar> -->
