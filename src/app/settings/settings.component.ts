@@ -1,24 +1,11 @@
-import { ElementRef, Component, OnInit, ViewChild, AfterContentChecked, AfterContentInit } from '@angular/core';
-import { ModalDirective } from 'angular-bootstrap-md';
+import { ElementRef, Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-settings',
   templateUrl: './settings.component.html',
   styleUrls: ['./settings.component.css']
 })
-export class SettingsComponent implements AfterContentInit {
+export class SettingsComponent implements OnInit {
 
-  @ViewChild('content') public contentModal;
-  @ViewChild('openModal') openModal;
-
-
-    show() {
-        this.contentModal.show();
-        console.log(this.contentModal);
-    }
-
-    ngAfterContentInit() {
-      this.openModal.click();
-    }
-
+    ngOnInit () {}
 }
