@@ -30,7 +30,7 @@ export class LoginComponent implements OnInit {
       console.log(`logged in login: ${data}`);
       this.isLoggedIn = data;
       if (data) {
-         // action
+         // if login - redirect to panel
       }
 
     });
