@@ -1,62 +1,35 @@
-<p>
-  Registration
-</p>
-
-<!-- <div mdbModal #modal="mdb-modal" class="modal fade" id="modalRegister" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-  aria-hidden="true">
-  <div class="modal-dialog cascading-modal" role="document">
-    <div class="modal-content">
-
-      <div class="modal-header light-blue darken-3 white-text">
-        <h4 class="title">
-          <i class="fa fa-user-plus"></i> Register</h4>
-        <button type="button" class="close waves-effect waves-light" data-dismiss="modal" aria-label="Close" (click)="modal.hide()">
-          <span aria-hidden="true">×</span>
-        </button>
-      </div>
-
-      <div class="modal-body">
+<div class="h-100 row justify-content-center align-items-center">
+    <div class="col-6">
         <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
-          <div class="md-form form-sm">
-            <i class="fa fa-user prefix"></i>
-            <input type="text" formControlName="username" id="orangeForm-name" class="form-control" mdbInputDirective>
-            <label for="orangeForm-name">Your name</label>
-          </div>
-        
-          <div class="md-form form-sm">
-            <i class="fa fa-envelope prefix"></i>
-            <input mdbInputDirective formControlName="email" type="text" id="form32" class="form-control">
-            <label for="form32">Your email</label>
-          </div>
-        
-          <div class="md-form form-sm">
-            <i class="fa fa-lock prefix"></i>
-            <input mdbInputDirective formControlName="password" type="password" id="form33" class="form-control">
-            <label for="form33">Your password</label>
-          </div>
-        
-          <div class="md-form form-sm">
-            <i class="fa fa-lock prefix"></i>
-            <input mdbInputDirective formControlName="repeatPassword" type="password" id="form34" class="form-control">
-            <label for="form34">Repeat password</label>
-          </div>
-        
-          <div class="text-center mt-2">
-            <button type="submit" class="btn btn-info waves-light" mdbWavesEffect>Sign up
-              <i class="fa fa-sign-in ml-1"></i>
-            </button>
-          </div>
-        </form>
+            <p class="h5 text-center mb-4">Sign in</p>
+          
+            <div class="md-form">
+              <i class="fa fa-user prefix grey-text"></i>
+              <input type="text" formControlName="username" id="username" class="form-control" mdbInputDirective>
+              <label for="username">Your name</label>
+            </div>
+          
+            <div class="md-form">
+              <i class="fa fa-envelope prefix grey-text"></i>
+              <input type="text" formControlName="email" id="email" class="form-control" mdbInputDirective>
+              <label for="email">Your email</label>
+            </div>
 
-      </div>
-      <div class="modal-footer">
-        <div class="options text-center text-md-right mt-1">
-          <p>Already have an account?
-            <a href="#">Log In</a>
-          </p>
-        </div>
-        <button type="button" class="btn btn-outline-info ml-auto" data-dismiss="modal" (click)="modal.hide()" mdbWavesEffect>Close</button>
-      </div>
+            <div class="md-form">
+                <i class="fa fa-lock prefix grey-text"></i>
+                <input type="password" formControlName="password" id="password" class="form-control" mdbInputDirective>
+                <label for="password">Your password</label>
+              </div>
+
+            <div class="md-form">
+                  <i class="fa fa-lock prefix grey-text"></i>
+                  <input type="password" formControlName="repeatPassword"  id="repeatPassword" class="form-control" mdbInputDirective>
+                  <label for="repeatPassword">Repeat password</label>
+            </div>
+        
+            <div class="text-center">
+              <input type="submit" mdbBtn color="default" sclass="waves-light" mdbWavesEffect value="Sign up">
+            </div>
+          </form>
     </div>
-  </div>
-</div> -->
+</div>
