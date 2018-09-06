@@ -6,6 +6,7 @@ import { PartyComponent } from './party/party.component';
 import { PartylistComponent } from './party/partylist/partylist.component';
 import { PartymainComponent } from './party/partymain/partymain.component';
 import { AdminComponent } from './admin/admin.component';
+import { ActionComponent } from './action/action.component';
 
 const routesConfig: Routes = [
   {path: '', component: LoginComponent},
@@ -17,6 +18,7 @@ const routesConfig: Routes = [
     {path: 'add', component: PartyComponent },
     {path: 'list', component: PartylistComponent },
   ]},
+  {path: 'action/activate/:hash', component: ActionComponent},
   {path: 'admin', component: AdminComponent}
 ];
 
