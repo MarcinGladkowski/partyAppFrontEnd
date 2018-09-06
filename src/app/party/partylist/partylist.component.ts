@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { PartyListsService } from '../../services/party-lists.service';
 
 @Component({
   selector: 'app-partylist',
@@ -7,9 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PartylistComponent implements OnInit {
 
-  constructor() { }
+  constructor(private partyListsService: PartyListsService) { }
+
+  partyEvents = [];
 
   ngOnInit() {
+
+    this.partyListsService.getPartyStream().subscribe((parties: any) => {
+      this.partyEvents = parties;
+      console.log(`dane w kompomencie:`);
+      console.log(this.partyEvents);
+    });
+
   }
 
 }
