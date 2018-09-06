@@ -3,6 +3,8 @@ import { SettingsComponent } from './settings/settings.component';
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { PartyComponent } from './party/party.component';
+import { PartylistComponent } from './party/partylist/partylist.component';
+import { PartymainComponent } from './party/partymain/partymain.component';
 import { AdminComponent } from './admin/admin.component';
 
 const routesConfig: Routes = [
@@ -10,7 +12,11 @@ const routesConfig: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
   {path: 'settings', component: SettingsComponent},
-  {path: 'party', component: PartyComponent},
+  {path: 'party', component: PartymainComponent, children: [
+    {path: '', redirectTo: 'list', pathMatch: 'full'},
+    {path: 'add', component: PartyComponent },
+    {path: 'list', component: PartylistComponent },
+  ]},
   {path: 'admin', component: AdminComponent}
 ];
 

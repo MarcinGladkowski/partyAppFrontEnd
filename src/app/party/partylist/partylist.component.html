@@ -1,0 +1,15 @@
+<div class="h-100 row justify-content-center align-items-center">
+    <div class="col-10">
+            <!--Panel-->
+            <div class="card w-100 mt-4" *ngFor="let party of partyEvents">
+                <div class="card-body">
+                    <h3 class="card-title">{{ party.name }}</h3>
+                    <p class="card-text">{{ party.desc }}</p>
+                </div>
+            </div>
+                <!--/.Panel-->     
+    </div>
+</div>
+
+
+

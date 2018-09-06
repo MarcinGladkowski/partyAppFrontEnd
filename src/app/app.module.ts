@@ -26,6 +26,8 @@ import { routerModule } from './app.routing';
 // config
 import config from './app.config';
 import { AdminComponent } from './admin/admin.component';
+import { PartylistComponent } from './party/partylist/partylist.component';
+import { PartymainComponent } from './party/partymain/partymain.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +38,9 @@ import { AdminComponent } from './admin/admin.component';
     MapComponent,
     PartyComponent,
     SettingsComponent,
-    AdminComponent
+    AdminComponent,
+    PartylistComponent,
+    PartymainComponent
   ],
   imports: [
     BrowserModule,
