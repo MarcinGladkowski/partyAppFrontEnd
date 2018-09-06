@@ -253,9 +253,8 @@ export class MapComponent implements OnInit {
 
   ngOnInit() {
 
-    this.latitude = 50.254968;
-    this.longitude = 19.0275632;
-    this.zoom = 12;
+    this.getUserPositon();
+    this.zoom = 4;
 
     this.partyListsService.getPartyStream().subscribe((parties: any) => {
       this.partyEvents = parties;
@@ -263,6 +262,21 @@ export class MapComponent implements OnInit {
       console.log(this.partyEvents);
     });
 
+  }
+
+  /**
+   * Function uses native geolocation form browser
+   */
+  getUserPositon() {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition((position) => {
+        console.log(position);
+        this.latitude = position.coords.latitude;
+        this.longitude = position.coords.longitude;
+      });
+    } else {
+      alert(`Geolocation is not supported by this browser.`);
+    }
   }
 
 }
