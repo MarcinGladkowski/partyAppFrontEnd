@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 
 @Component({
   selector: 'app-action',
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ActionComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private route: ActivatedRoute,
+  ) { }
 
   ngOnInit() {
+
+    const hash = this.route.snapshot.paramMap.get('hash');
+    console.log(hash);
+
   }
 
 }
