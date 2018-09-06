@@ -2,7 +2,8 @@ import { Component, OnInit, ViewChild, ElementRef, Input, AfterViewInit} from '@
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { AuthService } from '../services/auth.service';
 import { Observable } from 'rxjs/Observable';
-
+import { Router } from '@angular/router';
+ 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -16,7 +17,8 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private authService: AuthService,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -31,6 +33,7 @@ export class LoginComponent implements OnInit {
       this.isLoggedIn = data;
       if (data) {
          // if login - redirect to panel
+         this.router.navigate(['/party/list']);
       }
 
     });
