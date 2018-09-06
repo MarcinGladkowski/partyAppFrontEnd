@@ -35,8 +35,8 @@ export class LoginComponent implements OnInit {
          // if login - redirect to panel
          this.router.navigate(['/party/list']);
       }
-
     });
+
   }
 
   onSubmit() {
