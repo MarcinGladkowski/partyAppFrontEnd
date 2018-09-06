@@ -28,6 +28,7 @@ import config from './app.config';
 import { AdminComponent } from './admin/admin.component';
 import { PartylistComponent } from './party/partylist/partylist.component';
 import { PartymainComponent } from './party/partymain/partymain.component';
+import { ActionComponent } from './action/action.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { PartymainComponent } from './party/partymain/partymain.component';
     SettingsComponent,
     AdminComponent,
     PartylistComponent,
-    PartymainComponent
+    PartymainComponent,
+    ActionComponent
   ],
   imports: [
     BrowserModule,
