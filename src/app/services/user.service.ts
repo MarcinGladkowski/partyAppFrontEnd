@@ -16,7 +16,10 @@ export class UserService {
    */
   register(user) {
     return this.http.post(`http://localhost:8080/api/users`, user, {headers: this.headers})
-    .subscribe(data => console.log(data));
+    .subscribe(data => {
+      console.log(data);
+      return data;
+    });
   }
 
   /**
@@ -24,7 +27,6 @@ export class UserService {
    * @param hash
    */
   activate(hash) {
-    return this.http.post(`http://localhost:8080/api/users/activate`, hash, {headers: this.headers})
-    .subscribe(data => console.log(data));
+    return this.http.post(`http://localhost:8080/api/users/activate`, hash, {headers: this.headers});
   }
 }
