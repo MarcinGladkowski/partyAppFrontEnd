@@ -15,11 +15,7 @@ export class UserService {
    * @param user
    */
   register(user) {
-    return this.http.post(`http://localhost:8080/api/users`, user, {headers: this.headers})
-    .subscribe(data => {
-      console.log(data);
-      return data;
-    });
+    return this.http.post(`http://localhost:8080/api/users`, user, {headers: this.headers});
   }
 
   /**
