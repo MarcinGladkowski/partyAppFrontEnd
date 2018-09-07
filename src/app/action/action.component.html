@@ -1,3 +1,21 @@
-<p>
-  action works!
-</p>
+
+<div class="row h-100 flex-column justify-content-center align-items-center">
+    <div class="col-10">
+
+        <div [hidden]="!activate" class="alert alert-success" role="alert">
+            <h4 class="alert-heading">Gratulacje! {{activate}}</h4>
+            <p>Udało Ci się aktywować aplikację.</p>
+            <p>Zaloguj się</p>
+            <button routerLink="/" mdbBtn type="button" color="success" outline="true" mdbWavesEffect>Zaloguj</button>
+            <hr>
+            <p class="mb-0">Jeśli masz jakiś problem z aktywacją konta napisz do nas wiadomość!</p>
+        </div>
+        
+        <div [hidden]="activate" class="alert alert-danger" role="alert">
+            <h4 class="alert-heading">Ups!</h4>
+            <p>Coś poszło nie tak. Link aktywacyjny jest nie poprawny.</p>
+            <hr>
+            <p class="mb-0">Jeśli masz jakiś problem z aktywacją konta napisz do nas wiadomość!</p>
+        </div> 
+    </div>
+</div>

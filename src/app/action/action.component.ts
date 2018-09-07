@@ -9,7 +9,7 @@ import { UserService } from '../services/user.service';
 })
 export class ActionComponent implements OnInit {
 
-  activate = false;
+  public activate = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -20,15 +20,11 @@ export class ActionComponent implements OnInit {
 
     const hash = this.route.snapshot.paramMap.get('hash');
 
-    console.log(JSON.stringify({'hash': hash}));
-
     this.userService.activate(JSON.stringify({'hash': hash}))
     .subscribe((data: any) => {
-
       if (data.status === 'ok') {
         this.activate = true;
       }
-
     });
   }
 }
