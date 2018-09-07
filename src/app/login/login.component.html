@@ -1,6 +1,11 @@
 
 
-<div class="h-100 row justify-content-center align-items-center">
+<div class="row h-100 flex-column justify-content-center align-items-center">
+
+    <!-- navigation -->
+    <app-header></app-header>
+    <!-- navigation -->
+    <br>
     <div class="col-6">
         <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
             <p class="h5 text-center mb-4">Sign in</p>
