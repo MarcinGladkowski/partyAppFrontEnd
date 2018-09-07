@@ -12,6 +12,8 @@ export class RegisterComponent implements OnInit {
 
   public registerForm: FormGroup;
 
+  @ViewChild('content') public contentModal;
+
   constructor(private userService: UserService) { }
 
   ngOnInit() {
@@ -23,8 +25,18 @@ export class RegisterComponent implements OnInit {
     });
   }
 
+  showModal() {
+    this.contentModal.show();
+  }
+
   onSubmit() {
-    this.userService.register(JSON.stringify(this.registerForm.value));
+    this.userService.register(JSON.stringify(this.registerForm.value))
+    .subscribe((data: any) => {
+      if (data.status === 'ok') {
+        this.showModal();
+      }
+      return data;
+    });
   }
 
 }
