@@ -3,7 +3,7 @@ import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms'
 import { AuthService } from '../services/auth.service';
 import { Observable } from 'rxjs/Observable';
 import { Router } from '@angular/router';
- 
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -40,7 +40,6 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.loginForm.value);
     this.authService.login(JSON.stringify(this.loginForm.value));
   }
 
