@@ -47,12 +47,12 @@ export class AuthService {
     .subscribe(
       (data: any) => {
       if (data && data.auth) {
+        console.log('good response ', data);
         localStorage.setItem('auth', JSON.stringify(data));
         this.loggedIn.next(true);
       }},
       (error) => {
-        console.log(`bad response: `);
-        console.log(error.error.auth);
+        console.log(`bad response: `, error.error.auth);
         localStorage.setItem('auth', JSON.stringify({auth: false, token: null}));
         this.loggedIn.next(false);
       }
