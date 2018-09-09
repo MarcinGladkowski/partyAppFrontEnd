@@ -1,4 +1,10 @@
 <div class="row d-flex justify-content-center">
-    <button routerLink="/register" mdbBtn type="button" color="primary" outline="true" mdbWavesEffect>Register</button>
-    <button routerLink="/" mdbBtn type="button" color="primary" outline="true" mdbWavesEffect>Login</button>
+    <button *ngIf="!isLoggedIn" routerLink="/register" mdbBtn type="button" color="primary" outline="true" mdbWavesEffect>Rejestracja</button>
+    <button *ngIf="!isLoggedIn" routerLink="/" mdbBtn type="button" color="primary" outline="true" mdbWavesEffect>Logowanie</button>
+    <button (click)="logout()" mdbBtn type="button" color="primary" outline="true" mdbWavesEffect>Wyloguj</button>
+    <button routerLink="/party/list" mdbBtn type="button" color="primary" outline="true" mdbWavesEffect>Lista</button>
+    <button  routerLink="/party/add" mdbBtn type="button" color="primary" outline="true" mdbWavesEffect>Dodaj</button>
 </div>
+
+
+
