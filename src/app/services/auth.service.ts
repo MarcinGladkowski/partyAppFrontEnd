@@ -26,9 +26,9 @@ export class AuthService {
     return this.loggedIn.asObservable();
   }
 
-  login(user) {
+   login(user) {
     return this.http.post(`${this.baseApiUrl}auth`, user, {headers: this.headers})
-      .subscribe((data: any) => {
+      .map((data: any) => {
         if (data && data.auth) {
           localStorage.setItem('auth', JSON.stringify(data));
           this.loggedIn.next(true);
@@ -44,15 +44,12 @@ export class AuthService {
 
   checkIsUserLogin() {
     return this.http.post(`${this.baseApiUrl}auth/check`, {headers: this.headers})
-    .subscribe(
-      (data: any) => {
+    .subscribe((data: any) => {
       if (data && data.auth) {
-        console.log('good response ', data);
         localStorage.setItem('auth', JSON.stringify(data));
         this.loggedIn.next(true);
       }},
       (error) => {
-        console.log(`bad response: `, error.error.auth);
         localStorage.setItem('auth', JSON.stringify({auth: false, token: null}));
         this.loggedIn.next(false);
       }

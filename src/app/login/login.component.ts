@@ -27,20 +27,18 @@ export class LoginComponent implements OnInit {
       'email': [null, Validators.email],
       'password': [null, Validators.required],
     });
-
-    this.authService.isLoggedIn().subscribe((data: any) => {
-      console.log(`logged in login: ${data}`);
-      this.isLoggedIn = data;
-      if (data) {
-         // if login - redirect to panel
-         this.router.navigate(['/party/list']);
-      }
-    });
-
   }
 
+  /**
+   * Send login form to service
+   */
   onSubmit() {
-    this.authService.login(JSON.stringify(this.loginForm.value));
+    this.authService.login(JSON.stringify(this.loginForm.value))
+    .subscribe((data: any) => {
+      if (data && (data.auth === true)) {
+        this.router.navigate(['/party/list']);
+      }
+    });
   }
 
 }

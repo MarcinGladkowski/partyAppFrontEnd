@@ -3,7 +3,7 @@ import { FormGroup, FormControl,  Validators, FormBuilder } from '@angular/forms
 import { ModalDirective } from 'angular-bootstrap-md';
 import { MapsAPILoader } from '@agm/core';
 import { PartyListsService } from '../services/party-lists.service';
-
+import { AuthService } from './../services/auth.service';
 
 @Component({
   selector: 'app-party',
@@ -30,12 +30,16 @@ export class PartyComponent implements OnInit {
      private mapsAPILoader: MapsAPILoader,
      private ngZone: NgZone,
      private partyListsService: PartyListsService,
-     private formBuilder: FormBuilder
+     private formBuilder: FormBuilder,
+     private authService: AuthService
   ) { }
 
   @ViewChild('search') public searchElementRef: ElementRef;
 
   ngOnInit() {
+
+    this.authService.checkIsUserLogin();
+
     this.partyForm = this.formBuilder.group({
       'name': [null, Validators.required],
       'desc': [null, Validators.required],

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PartyListsService } from '../../services/party-lists.service';
+import { AuthService } from './../../services/auth.service';
 
 @Component({
   selector: 'app-partylist',
@@ -8,15 +9,19 @@ import { PartyListsService } from '../../services/party-lists.service';
 })
 export class PartylistComponent implements OnInit {
 
-  constructor(private partyListsService: PartyListsService) { }
+  constructor(
+    private partyListsService: PartyListsService,
+    private authService: AuthService
+  ) { }
 
   partyEvents = [];
 
   ngOnInit() {
 
+    this.authService.checkIsUserLogin();
+
     this.partyListsService.getPartyStream().subscribe((parties: any) => {
       this.partyEvents = parties;
-      console.log(`dane w kompomencie: `, this.partyEvents);
     });
 
   }
