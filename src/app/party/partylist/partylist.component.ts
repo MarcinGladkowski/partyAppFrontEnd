@@ -16,8 +16,7 @@ export class PartylistComponent implements OnInit {
 
     this.partyListsService.getPartyStream().subscribe((parties: any) => {
       this.partyEvents = parties;
-      console.log(`dane w kompomencie:`);
-      console.log(this.partyEvents);
+      console.log(`dane w kompomencie: `, this.partyEvents);
     });
 
   }
