@@ -10,7 +10,7 @@ export class JwtInterceptor implements HttpInterceptor {
 
         if (auth && auth.token) {
 
-            console.log('akcess token is in browser');
+            // console.log('akcess token is in browser');
 
             request = request.clone({
                 setHeaders: {

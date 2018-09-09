@@ -258,8 +258,7 @@ export class MapComponent implements OnInit {
 
     this.partyListsService.getPartyStream().subscribe((parties: any) => {
       this.partyEvents = parties;
-      console.log(`dane w kompomencie:`);
-      console.log(this.partyEvents);
+      // console.log(`dane w kompomencie: `, this.partyEvents);
     });
 
   }
@@ -270,7 +269,6 @@ export class MapComponent implements OnInit {
   getUserPositon() {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition((position) => {
-        console.log(position);
         this.latitude = position.coords.latitude;
         this.longitude = position.coords.longitude;
       });

@@ -13,7 +13,9 @@ export class PartyListsService {
     'Content-Type': 'application/json'
   });
 
-  constructor(private http: HttpClient) {
+  constructor(
+    private http: HttpClient,
+  ) {
     this.getPartyLists();
   }
 
@@ -26,10 +28,10 @@ export class PartyListsService {
     return this.partyStream$.startWith(this.partyEvents);
   }
 
-   getPartyLists() {
+  getPartyLists() {
     return this.http.get(this.apiUrl).subscribe((data: any) => {
       const parties = data.parties;
-      console.log(`otrzymane z api`, data.parties);
+      // console.log(`otrzymane z api`, data.parties);
       this.partyEvents = parties;
       this.partyStream$.next(this.partyEvents);
     });
@@ -38,7 +40,7 @@ export class PartyListsService {
   create(party) {
     return this.http.post(this.apiUrl, JSON.stringify(party), {headers: this.headers})
     .subscribe((response: any) => {
-      console.log('dodano do bazy: ', response.data);
+      // console.log('dodano do bazy: ', response.data);
       this.partyEvents.push(response.data);
       this.partyStream$.next(this.partyEvents);
     });
