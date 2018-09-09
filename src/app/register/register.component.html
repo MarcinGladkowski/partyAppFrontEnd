@@ -51,7 +51,7 @@
       <div class="modal-header">
         <p class="heading lead">Zarejestrowałeś się w aplikacji!</p>
 
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="frame.hide()">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="content.hide()">
           <span aria-hidden="true" class="white-text">&times;</span>
         </button>
       </div>
@@ -59,17 +59,13 @@
       <div class="modal-body">
         <div class="text-center">
           <i class="fa fa-check fa-4x mb-3 animated rotateIn"></i>
-          <p>W tej chwili na Twoją pocztę został wysłany link aktywacyjny konto.</p>
+          <p>W tej chwili na Twoją pocztę został wysłany link aktywacyjny konto. Proszę zaloguj się na konto pocztowe które podałeś w rejestracji i kliknij link aktywujący.</p>
         </div>
       </div>
 
       <div class="modal-footer justify-content-center">
-        <a type="button" mdbBtn color="primary" class="waves-light" mdbWavesEffect>
-          <i class="fa fa-diamond ml-1"></i>
-        </a>
-        <a type="button" mdbBtn color="primary" outline="true" class="waves-effect" mdbWavesEffect (click)="frame.hide()" data-dismiss="modal">No, thanks</a>
+        <a routerLink="/" type="button" mdbBtn color="primary" outline="true" class="waves-effect" mdbWavesEffect (click)="content.hide()" data-dismiss="modal">Strona główna</a>
       </div>
-
     </div>
   </div>
 </div>
