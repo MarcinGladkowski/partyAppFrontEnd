@@ -4,6 +4,7 @@ import { MapsAPILoader } from '@agm/core';
 import { PartyListsService } from './services/party-lists.service';
 import { AuthService } from './services/auth.service';
 import { Observable } from 'rxjs/Observable';
+import { Router } from '@angular/router';
 
 import { } from 'googlemaps';
 
@@ -17,8 +18,13 @@ export class AppComponent implements OnInit {
   isLoggedIn: Observable<boolean>;
 
   constructor(
-    private authService: AuthService
-  ) {}
+    private authService: AuthService,
+    private router: Router
+  ) {
+    this.router.events.subscribe((event) => {
+      this.authService.checkIsUserLogin();
+    });
+  }
 
   ngOnInit() {
     this.authService.checkIsUserLogin();
