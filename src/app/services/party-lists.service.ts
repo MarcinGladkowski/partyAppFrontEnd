@@ -31,7 +31,6 @@ export class PartyListsService {
   getPartyLists() {
     return this.http.get(this.apiUrl).subscribe((data: any) => {
       const parties = data.parties;
-      // console.log(`otrzymane z api`, data.parties);
       this.partyEvents = parties;
       this.partyStream$.next(this.partyEvents);
     });
