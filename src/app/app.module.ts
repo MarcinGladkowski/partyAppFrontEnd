@@ -29,6 +29,7 @@ import { AdminComponent } from './admin/admin.component';
 import { PartylistComponent } from './party/partylist/partylist.component';
 import { PartymainComponent } from './party/partymain/partymain.component';
 import { ActionComponent } from './action/action.component';
+import { PartyTypeComponent } from './admin/party-type/party-type.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { ActionComponent } from './action/action.component';
     AdminComponent,
     PartylistComponent,
     PartymainComponent,
-    ActionComponent
+    ActionComponent,
+    PartyTypeComponent
   ],
   imports: [
     BrowserModule,
