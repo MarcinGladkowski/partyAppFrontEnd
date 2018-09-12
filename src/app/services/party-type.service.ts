@@ -10,8 +10,8 @@ export class PartyTypeService {
     'Content-Type': 'application/json'
   });
 
-  creater(partyType) {
-    return this.http.post(`http://localhost:8080/api/users`, partyType, {headers: this.headers});
+  create(partyType) {
+    return this.http.post(`http://localhost:8080/api/party-type`, partyType, {headers: this.headers});
   }
 
 }
