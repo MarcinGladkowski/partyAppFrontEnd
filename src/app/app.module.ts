@@ -14,6 +14,7 @@ import { LoginComponent } from './login/login.component';
 import { SettingsComponent } from './settings/settings.component';
 // services
 import { PartyListsService} from './services/party-lists.service';
+import { PartyTypeService } from './services/party-type.service';
 import { UserService } from './services/user.service';
 import { AuthService } from './services/auth.service';
 
@@ -65,6 +66,7 @@ import { PartyTypeComponent } from './admin/party-type/party-type.component';
   schemas: [ NO_ERRORS_SCHEMA ],
   providers: [
     PartyListsService,
+    PartyTypeService,
     UserService,
     AuthService,
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
