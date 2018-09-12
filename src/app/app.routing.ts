@@ -20,7 +20,7 @@ const routesConfig: Routes = [
     {path: 'list', component: PartylistComponent },
   ]},
   {path: 'admin', component: AdminComponent, children: [
-    {path: '', redirectTo: 'users', pathMatch: 'full'},
+    {path: '', redirectTo: 'type', pathMatch: 'full'},
     {path: 'type', component: PartyTypeComponent },
   ]},
   {path: 'action/activate/:hash', component: ActionComponent}
