@@ -24,14 +24,18 @@
       <div class="input-group-prepend">
         <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
       </div>
+
       <div class="custom-file">
-        <input formControlName="icon" type="file" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
-        <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+        <input formControlName="icon" type="file" class="custom-file-input" id="iconFile" aria-describedby="inputGroupFileAddon01"
+        (change)="onFileChange($event)">
+        <label class="custom-file-label" for="iconFile">Choose file</label>
       </div>
+
     </div>
 
      <div class="text-center">
-       <input type="submit" mdbBtn color="default" sclass="waves-light" mdbWavesEffect value="Save">
+        <input [disabled]="!partyTypeForm.valid" type="submit" mdbBtn color="default" sclass="waves-light" mdbWavesEffect value="Save">
+        <!-- <input [disabled]="!partyTypeForm.valid" type="submit" mdbBtn color="default" sclass="waves-light" mdbWavesEffect value="Save"> -->
      </div>
    </form>
  </div>
