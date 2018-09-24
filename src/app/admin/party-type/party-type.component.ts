@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl,  Validators, FormBuilder } from '@angular/forms';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { PartyTypeService } from '../../services/party-type.service';
 
 @Component({
@@ -10,6 +10,7 @@ import { PartyTypeService } from '../../services/party-type.service';
 export class PartyTypeComponent implements OnInit {
 
   public partyTypeForm: FormGroup;
+  public fileUpload: File = null;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -21,7 +22,7 @@ export class PartyTypeComponent implements OnInit {
     this.partyTypeForm = this.formBuilder.group({
       'name': [null, Validators.required],
       'desc': [null, Validators.required],
-      'icon': ['', Validators.required]
+      'path': [null, Validators.required]
     });
 
   }
@@ -43,8 +44,13 @@ export class PartyTypeComponent implements OnInit {
 
       reader.onload = () => {
 
-        this.partyTypeForm.get('icon').setValue(file ? file.name : '');
+        this.fileUpload = file;
 
+         console.log(this.fileUpload);
+
+        this.partyTypeService.upload(this.fileUpload).subscribe(res => {
+           console.log(res);
+        });
 
       };
     }
