@@ -29,8 +29,12 @@ export class PartyTypeComponent implements OnInit {
 
   onSubmit() {
 
-    this.partyTypeService.create(this.partyTypeForm.value).subscribe((data: any) => {
-      // console.log(data);
+    const form = {
+     data: this.partyTypeForm.value,
+     icon: this.fileUpload
+    };
+
+    this.partyTypeService.create(form).subscribe((data: any) => {
     });
 
   }
@@ -44,8 +48,6 @@ export class PartyTypeComponent implements OnInit {
 
       reader.onload = () => {
         this.fileUpload = file;
-
-        console.log('test');
 
         this.partyTypeService.upload(this.fileUpload).subscribe(res => {
           console.log(res);

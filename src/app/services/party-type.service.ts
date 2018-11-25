@@ -10,8 +10,15 @@ export class PartyTypeService {
     'Content-Type': 'application/json'
   });
 
-  create(partyType) {
-    return this.http.post(`http://localhost:8080/api/party-type`, partyType, {headers: this.headers});
+  create(partyTypeForm) {
+
+    const formData = new FormData();
+    formData.append('name', partyTypeForm.data.name);
+    formData.append('desc', partyTypeForm.data.desc);
+    formData.append('path', partyTypeForm.data.path);
+    formData.append('icon', partyTypeForm.icon, partyTypeForm.icon.name);
+
+    return this.http.post(`http://localhost:8080/api/party-type`, formData);
   }
 
   upload(file: any) {
