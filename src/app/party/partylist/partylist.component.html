@@ -4,14 +4,9 @@
    <!-- navigation -->
    <br>
     <div class="col-10">
-            <!--Panel-->
-            <div class="card w-100 mt-4" *ngFor="let party of partyEvents">
-                <div class="card-body">
-                    <h3 class="card-title">{{ party.name }}</h3>
-                    <p class="card-text">{{ party.desc }}</p>
-                </div>
-            </div>
-                <!--/.Panel-->     
+            <ul *ngFor="let party of partyEvents" class="list-group">
+                <li class="list-group-item">{{ party.name }} {{ party.desc }}</li>
+            </ul>
     </div>
 </div>
 

@@ -7,7 +7,7 @@ import { PartylistComponent } from './party/partylist/partylist.component';
 import { PartymainComponent } from './party/partymain/partymain.component';
 import { AdminComponent } from './admin/admin.component';
 import { ActionComponent } from './action/action.component';
-import { PartyTypeComponent } from './admin/party-type/party-type.component';
+import { PartyTypeComponent } from './party/party-type/party-type.component';
 
 const routesConfig: Routes = [
   {path: '', component: LoginComponent},

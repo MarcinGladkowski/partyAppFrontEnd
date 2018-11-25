@@ -1,0 +1,43 @@
+<div class="h-100 row justify-content-center align-items-center">
+  <!-- navigation -->
+  <!-- <app-header></app-header> -->
+  <!-- navigation -->
+  <br>
+  <div class="col-8">
+   <form [formGroup]="partyTypeForm" (ngSubmit)="onSubmit()">
+     <p class="h5 text-center mb-4">Add party</p>
+
+
+     <div class="md-form">
+       <i class="fa fa-user prefix grey-text"></i>
+       <input type="text" formControlName="name" id="name" class="form-control" mdbInputDirective>
+       <label for="name">Name</label>
+     </div>
+
+     <div class="md-form">
+       <i class="fa fa-envelope prefix grey-text"></i>
+       <input type="text" formControlName="desc" id="desc" class="form-control" mdbInputDirective>
+       <label for="desc">Description</label>
+     </div>
+
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
+      </div>
+
+      <div class="custom-file">
+        <input type="file" class="custom-file-input" id="iconFile" aria-describedby="inputGroupFileAddon01"
+        (change)="onFileChange($event)">
+        <label  class="custom-file-label" for="iconFile">{{ fileUpload === null ? 'Choose file' :  fileUpload.filename }}</label>
+      </div>
+
+    </div>
+
+
+     <div class="text-center">
+        <input [disabled]="!partyTypeForm.valid" type="submit" mdbBtn color="default" sclass="waves-light" mdbWavesEffect value="Save">
+        <!-- <input [disabled]="!partyTypeForm.valid" type="submit" mdbBtn color="default" sclass="waves-light" mdbWavesEffect value="Save"> -->
+     </div>
+   </form>
+ </div>
+</div>

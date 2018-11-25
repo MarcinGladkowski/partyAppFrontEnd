@@ -37,9 +37,8 @@ export class PartyListsService {
   }
 
   create(party) {
-    return this.http.post(this.apiUrl, JSON.stringify(party), {headers: this.headers})
+    return this.http.post(this.apiUrl, party, {headers: this.headers})
     .subscribe((response: any) => {
-      // console.log('dodano do bazy: ', response.data);
       this.partyEvents.push(response.data);
       this.partyStream$.next(this.partyEvents);
     });

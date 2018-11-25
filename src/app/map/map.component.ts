@@ -258,7 +258,6 @@ export class MapComponent implements OnInit {
 
     this.partyListsService.getPartyStream().subscribe((parties: any) => {
       this.partyEvents = parties;
-      // console.log(`dane w kompomencie: `, this.partyEvents);
     });
 
   }
