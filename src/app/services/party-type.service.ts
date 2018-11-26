@@ -4,6 +4,9 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 @Injectable()
 export class PartyTypeService {
 
+  private partyTypes = [];
+  private apiUrl = `http://localhost:8080/api/party-type`;
+
   constructor(private http: HttpClient) { }
 
   headers = new HttpHeaders({
@@ -15,16 +18,12 @@ export class PartyTypeService {
     const formData = new FormData();
     formData.append('name', partyTypeForm.data.name);
     formData.append('desc', partyTypeForm.data.desc);
-    formData.append('path', partyTypeForm.data.path);
     formData.append('icon', partyTypeForm.icon, partyTypeForm.icon.name);
 
-    return this.http.post(`http://localhost:8080/api/party-type`, formData);
+    return this.http.post(this.apiUrl, formData);
   }
 
-  upload(file: any) {
-    const formData = new FormData();
-    formData.append('icon', file, file.name);
-
-    return this.http.post(`http://localhost:8080/api/party-type/upload`, formData);
+  getPartyLists() {
+    return this.http.get(this.apiUrl);
   }
 }

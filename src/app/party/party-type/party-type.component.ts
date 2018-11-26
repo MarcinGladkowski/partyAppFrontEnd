@@ -22,7 +22,6 @@ export class PartyTypeComponent implements OnInit {
     this.partyTypeForm = this.formBuilder.group({
       'name': [null, Validators.required],
       'desc': [null, Validators.required],
-      'path': [null, Validators.required]
     });
 
   }
@@ -48,11 +47,6 @@ export class PartyTypeComponent implements OnInit {
 
       reader.onload = () => {
         this.fileUpload = file;
-
-        this.partyTypeService.upload(this.fileUpload).subscribe(res => {
-          console.log(res);
-        });
-
       };
     }
   }

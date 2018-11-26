@@ -26,7 +26,7 @@
 
       <div class="md-form mt-5">
         <select formControlName="type" name="options" id="select" class="browser-default md-select form-control">
-          <option *ngFor="let type of partyTypes" [ngValue]="type.value">
+          <option *ngFor="let type of partyTypes" [ngValue]="type._id">
             {{type.name}}
           </option>
         </select>

@@ -1,3 +1,4 @@
+import { PartyTypeService } from './../services/party-type.service';
 import { Component, OnInit, ViewChild, NgZone, ElementRef } from '@angular/core';
 import { FormGroup, FormControl,  Validators, FormBuilder } from '@angular/forms';
 import { ModalDirective } from 'angular-bootstrap-md';
@@ -12,24 +13,17 @@ import { AuthService } from './../services/auth.service';
 })
 export class PartyComponent implements OnInit {
 
-  // save in db in future
-  partyTypes = [
-    {name: `Grill`, value: 1},
-    {name: `Domówka`, value: 2},
-    {name: `Urodziny`, value: 3},
-    {name: `Klub`, value: 4},
-    {name: `Bar/Pub`, value: 5}
-  ];
-
-  public partyForm: FormGroup;
-  public searchControl: FormControl;
-  public latitude: number;
-  public longitude: number;
+  partyForm: FormGroup;
+  searchControl: FormControl;
+  latitude: number;
+  longitude: number;
+  partyTypes = [];
 
   constructor(
      private mapsAPILoader: MapsAPILoader,
      private ngZone: NgZone,
      private partyListsService: PartyListsService,
+     private partyTypeService: PartyTypeService,
      private formBuilder: FormBuilder,
      private authService: AuthService
   ) { }
@@ -37,6 +31,10 @@ export class PartyComponent implements OnInit {
   @ViewChild('search') public searchElementRef: ElementRef;
 
   ngOnInit() {
+
+    this.partyTypeService.getPartyLists().subscribe((data: any) => {
+      this.partyTypes = data.types;
+    });
 
     this.authService.checkIsUserLogin();
 
@@ -62,9 +60,6 @@ export class PartyComponent implements OnInit {
           if (place.geometry === undefined || place.geometry === null) {
             return;
           }
-
-          console.log(place.geometry.location.lat());
-          console.log(place.geometry.location.lng());
 
           this.latitude = place.geometry.location.lat();
           this.longitude = place.geometry.location.lng();
