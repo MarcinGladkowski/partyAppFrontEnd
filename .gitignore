@@ -44,3 +44,7 @@ testem.log
 Thumbs.db
 
 src/app/app.config.ts
+
+#assets
+src/assets/icons/*
+!src/assets/icons/.gitkeep
