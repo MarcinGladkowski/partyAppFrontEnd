@@ -1,6 +1,6 @@
+import { environment } from './../../environments/environment';
 import { Component, OnInit } from '@angular/core';
 import { PartyListsService } from '../services/party-lists.service';
-
 
 @Component({
   selector: 'app-map',
@@ -10,6 +10,8 @@ import { PartyListsService } from '../services/party-lists.service';
 export class MapComponent implements OnInit {
 
   partyEvents = [];
+
+  imagesPath = environment.iconsDir;
 
   customStyles = [
     {
