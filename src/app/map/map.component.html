@@ -1,7 +1,13 @@
 <div class="container-fluid">
   <div class="row main-container">
     <agm-map [latitude]="latitude" [longitude]="longitude" [styles]="customStyles">
-      <agm-marker class="mapMarker" *ngFor="let party of partyEvents; let i = index" [latitude]="party.latitude" [longitude]="party.longitude">
+      <agm-marker 
+        class="mapMarker" 
+        *ngFor="let party of partyEvents; let i = index" 
+        [latitude]="party.latitude" 
+        [longitude]="party.longitude"
+        [iconUrl]="imagesPath + party.partyType.filename"
+        >
         <agm-info-window>
           <strong>Dodał: {{ party.userCreated.username }}</strong><br>
           <strong>Tytuł: {{ party.name }}</strong>
