@@ -23,7 +23,7 @@ export class PartyTypeService {
     return this.http.post(this.apiUrl, formData);
   }
 
-  getPartyLists() {
+  getPartyTypesLists() {
     return this.http.get(this.apiUrl);
   }
 }

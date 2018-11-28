@@ -249,19 +249,17 @@ export class MapComponent implements OnInit {
 
   public latitude: number;
   public longitude: number;
-  public zoom: number;
+  public zoom = 4;
 
   constructor(private partyListsService: PartyListsService) { }
 
   ngOnInit() {
 
     this.getUserPositon();
-    this.zoom = 4;
 
-    this.partyListsService.getPartyStream().subscribe((parties: any) => {
-      this.partyEvents = parties;
+    this.partyListsService.getParties().subscribe((data: any) => {
+      this.partyEvents = data.parties;
     });
-
   }
 
   /**

@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
+import { map } from 'rxjs/operators';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/observable/from';
 import 'rxjs/add/operator/startWith';
@@ -13,35 +14,28 @@ export class PartyListsService {
     'Content-Type': 'application/json'
   });
 
-  constructor(
-    private http: HttpClient,
-  ) {
-    this.getPartyLists();
+  constructor(private http: HttpClient) {
+    this.getParties();
   }
 
   private apiUrl = `http://localhost:8080/api/party`;
   partyEvents = [];
 
-  partyStream$ = new Subject();
-
-  getPartyStream() {
-    return this.partyStream$.startWith(this.partyEvents);
+  private createParty(partyAttrs) {
+    return this.http.post(this.apiUrl, partyAttrs);
   }
 
-  getPartyLists() {
-    return this.http.get(this.apiUrl).subscribe((data: any) => {
-      const parties = data.parties;
-      this.partyEvents = parties;
-      this.partyStream$.next(this.partyEvents);
-    });
+  private updateParty(partyAttrs) {
+    // @TODO implement update
   }
 
-  create(party) {
-    return this.http.post(this.apiUrl, party, {headers: this.headers})
-    .subscribe((response: any) => {
-      this.partyEvents.push(response.data);
-      this.partyStream$.next(this.partyEvents);
-    });
+  saveParty(partyAttrs) {
+    if (partyAttrs.id) { return this.updateParty(partyAttrs); }
+    return this.createParty(partyAttrs);
+  }
+
+  getParties(): Observable<any[]> {
+    return this.http.get<any[]>(this.apiUrl);
   }
 
 }
