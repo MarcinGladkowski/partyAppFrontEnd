@@ -19,9 +19,8 @@ export class PartyListsService {
   }
 
   private apiUrl = `http://localhost:8080/api/party`;
-  partyEvents = [];
 
-  private createParty(partyAttrs) {
+  private createParty(partyAttrs): Observable<any> {
     return this.http.post(this.apiUrl, partyAttrs);
   }
 
@@ -30,7 +29,7 @@ export class PartyListsService {
   }
 
   saveParty(partyAttrs) {
-    if (partyAttrs.id) { return this.updateParty(partyAttrs); }
+    // if (partyAttrs.id) { return this.updateParty(partyAttrs); }
     return this.createParty(partyAttrs);
   }
 

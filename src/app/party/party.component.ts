@@ -32,7 +32,7 @@ export class PartyComponent implements OnInit {
 
   ngOnInit() {
 
-    this.partyTypeService.getPartyLists().subscribe((data: any) => {
+    this.partyTypeService.getPartyTypesLists().subscribe((data: any) => {
       this.partyTypes = data.types;
     });
 
@@ -76,11 +76,11 @@ export class PartyComponent implements OnInit {
 
     const newParty = this.partyForm.value;
 
-    console.log(newParty);
     /** @TODO if place is not found (lat, lng) not send request */
-
     if (this.partyForm.value.latitude !== undefined || this.partyForm.value.longitude !== undefined) {
-      this.partyListsService.create(newParty);
+      this.partyListsService.saveParty(newParty).subscribe(data => {
+        console.log(data);
+      });
     }
 
   }

@@ -20,8 +20,8 @@ export class PartylistComponent implements OnInit {
 
     this.authService.checkIsUserLogin();
 
-    this.partyListsService.getPartyStream().subscribe((parties: any) => {
-      this.partyEvents = parties;
+    this.partyListsService.getParties().subscribe((data: any) => {
+      this.partyEvents = data.parties;
     });
 
   }
