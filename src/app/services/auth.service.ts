@@ -1,9 +1,9 @@
+import { environment } from './../../environments/environment';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { Subject } from 'rxjs/Subject';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Observable } from 'rxjs/Observable';
-
 
 @Injectable()
 export class AuthService {
@@ -14,10 +14,10 @@ export class AuthService {
   }
 
   headers = new HttpHeaders({
-    'Content-Type': 'application/json'
+    'Content-Type': 'application/json',
+    // 'Cache-Control': 'max-age=5'
   });
 
-  private baseApiUrl = 'http://localhost:8080/api/';
   // change loggedIn to a subject
   public loggedIn = new Subject<boolean>();
 
@@ -27,7 +27,7 @@ export class AuthService {
   }
 
    login(user) {
-    return this.http.post(`${this.baseApiUrl}auth`, user, {headers: this.headers})
+    return this.http.post(`${environment.api}/auth`, user)
       .map((data: any) => {
         if (data && data.auth) {
           localStorage.setItem('auth', JSON.stringify(data));
@@ -43,7 +43,7 @@ export class AuthService {
   }
 
   checkIsUserLogin() {
-    return this.http.post(`${this.baseApiUrl}auth/check`, {headers: this.headers})
+    return this.http.post(`${environment.api}/auth/check`, null, {headers: this.headers})
     .subscribe((data: any) => {
       if (data && data.auth) {
         localStorage.setItem('auth', JSON.stringify(data));

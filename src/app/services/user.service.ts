@@ -1,3 +1,4 @@
+import { environment } from './../../environments/environment';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
@@ -15,7 +16,7 @@ export class UserService {
    * @param user
    */
   register(user) {
-    return this.http.post(`http://localhost:8080/api/users`, user, {headers: this.headers});
+    return this.http.post(`${environment.api}/users`, user);
   }
 
   /**
@@ -23,6 +24,6 @@ export class UserService {
    * @param hash
    */
   activate(hash) {
-    return this.http.post(`http://localhost:8080/api/users/activate`, hash, {headers: this.headers});
+    return this.http.post(`${environment.api}/users/activate`, hash);
   }
 }

@@ -1,3 +1,4 @@
+import { environment } from './../../environments/environment';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
@@ -5,7 +6,6 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 export class PartyTypeService {
 
   private partyTypes = [];
-  private apiUrl = `http://localhost:8080/api/party-type`;
 
   constructor(private http: HttpClient) { }
 
@@ -20,10 +20,10 @@ export class PartyTypeService {
     formData.append('desc', partyTypeForm.data.desc);
     formData.append('icon', partyTypeForm.icon, partyTypeForm.icon.name);
 
-    return this.http.post(this.apiUrl, formData);
+    return this.http.post(`${environment.api}/party-type`, formData);
   }
 
   getPartyTypesLists() {
-    return this.http.get(this.apiUrl);
+    return this.http.get(`${environment.api}/party-type`);
   }
 }
