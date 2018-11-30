@@ -78,11 +78,10 @@ export class PartyComponent implements OnInit {
 
     /** @TODO if place is not found (lat, lng) not send request */
     if (this.partyForm.value.latitude !== undefined || this.partyForm.value.longitude !== undefined) {
-      this.partyListsService.saveParty(newParty).subscribe(data => {
-        console.log(data);
-      });
+      this.partyListsService.saveParty(newParty);
     }
 
+    this.partyForm.reset();
+    this.searchControl.setValue('');
   }
-
 }

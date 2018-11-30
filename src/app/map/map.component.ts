@@ -257,11 +257,10 @@ export class MapComponent implements OnInit {
 
     this.getUserPositon();
 
-    this.partyListsService.getParties().subscribe((data: any) => {
-      this.partyEvents = data.parties;
+    this.partyListsService.parties$.subscribe((data: any) => {
+      this.partyEvents = data;
     });
   }
-
   /**
    * Function uses native geolocation form browser
    */
