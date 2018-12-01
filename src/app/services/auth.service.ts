@@ -4,6 +4,8 @@ import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http
 import { Subject } from 'rxjs/Subject';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Observable } from 'rxjs/Observable';
+import { map } from 'rxjs/operators';
+import 'rxjs/add/operator/map';
 
 @Injectable()
 export class AuthService {
@@ -27,7 +29,7 @@ export class AuthService {
   }
 
    login(user) {
-    return this.http.post(`${environment.api}/auth`, user)
+    return this.http.post(`${environment.api}/auth`, user, {headers: this.headers})
       .map((data: any) => {
         if (data && data.auth) {
           localStorage.setItem('auth', JSON.stringify(data));
