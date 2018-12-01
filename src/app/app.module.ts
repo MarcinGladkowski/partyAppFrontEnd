@@ -3,7 +3,7 @@ import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { AgmCoreModule } from '@agm/core';
-import { MDBBootstrapModule, ModalModule } from 'angular-bootstrap-md';
+import { MDBBootstrapModule, ModalModule, ButtonsModule } from 'angular-bootstrap-md';
 import { CommonModule } from '@angular/common';
 import { AgmSnazzyInfoWindowModule } from '@agm/snazzy-info-window';
 
@@ -45,9 +45,10 @@ import { PartyTypeComponent } from './party/party-type/party-type.component';
     PartylistComponent,
     PartymainComponent,
     ActionComponent,
-    PartyTypeComponent
+    PartyTypeComponent,
   ],
   imports: [
+    ButtonsModule,
     BrowserModule,
     CommonModule,
     FormsModule,

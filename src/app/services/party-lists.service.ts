@@ -1,9 +1,7 @@
 import { environment } from './../../environments/environment';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
-import { Observable } from 'rxjs/Observable';
-import { Subject } from 'rxjs/Subject';
-import { map } from 'rxjs/operators';
+import { Observable, Subject} from 'rxjs';
 
 @Injectable()
 export class PartyListsService {

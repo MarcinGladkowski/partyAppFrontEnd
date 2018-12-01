@@ -1,11 +1,8 @@
+import { map } from 'rxjs/operators';
 import { environment } from './../../environments/environment';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
-import { Subject } from 'rxjs/Subject';
-import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-import { Observable } from 'rxjs/Observable';
-import { map } from 'rxjs/operators';
-import 'rxjs/add/operator/map';
+import { Subject, Observable } from 'rxjs';
 
 @Injectable()
 export class AuthService {
@@ -29,14 +26,15 @@ export class AuthService {
   }
 
    login(user) {
-    return this.http.post(`${environment.api}/auth`, user, {headers: this.headers})
-      .map((data: any) => {
+    return this.http.post(`${environment.api}/auth`, user, {headers: this.headers}).pipe(
+      map((data: any) => {
         if (data && data.auth) {
           localStorage.setItem('auth', JSON.stringify(data));
           this.loggedIn.next(true);
         }
         return data;
-      });
+      })
+    );
   }
 
   logout() {
@@ -55,7 +53,7 @@ export class AuthService {
         localStorage.setItem('auth', JSON.stringify({auth: false, token: null}));
         this.loggedIn.next(false);
       }
-  );
+    );
   }
 
 }

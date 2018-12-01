@@ -3,9 +3,8 @@ import { FormGroup, FormControl } from '@angular/forms';
 import { MapsAPILoader } from '@agm/core';
 import { PartyListsService } from './services/party-lists.service';
 import { AuthService } from './services/auth.service';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
-
 import { } from 'googlemaps';
 
 @Component({

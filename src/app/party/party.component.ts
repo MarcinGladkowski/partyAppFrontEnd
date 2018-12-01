@@ -1,7 +1,6 @@
 import { PartyTypeService } from './../services/party-type.service';
 import { Component, OnInit, ViewChild, NgZone, ElementRef } from '@angular/core';
 import { FormGroup, FormControl,  Validators, FormBuilder } from '@angular/forms';
-import { ModalDirective } from 'angular-bootstrap-md';
 import { MapsAPILoader } from '@agm/core';
 import { PartyListsService } from '../services/party-lists.service';
 import { AuthService } from './../services/auth.service';

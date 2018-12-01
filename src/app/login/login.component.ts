@@ -1,7 +1,7 @@
+import { UserValidator } from './../validators/user-validator';
 import { Component, OnInit, ViewChild, ElementRef, Input, AfterViewInit} from '@angular/core';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { AuthService } from '../services/auth.service';
-import { Observable } from 'rxjs/Observable';
 import { Router } from '@angular/router';
 
 @Component({
@@ -24,7 +24,11 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
 
     this.loginForm = this.formBuilder.group({
-      'email': [null, Validators.email],
+      'email': [
+        null,
+        [Validators.email],
+        [UserValidator.userExists]
+      ],
       'password': [null, Validators.required],
     });
   }

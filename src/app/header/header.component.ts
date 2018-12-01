@@ -1,6 +1,5 @@
 import { Component, OnInit, Output, EventEmitter} from '@angular/core';
 import { AuthService } from '../services/auth.service';
-import { Observable } from 'rxjs/Observable';
 import { Router } from '@angular/router';
 
 @Component({
