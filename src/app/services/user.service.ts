@@ -5,12 +5,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 @Injectable()
 export class UserService {
 
-  constructor(private http: HttpClient) { }
-
-  headers = new HttpHeaders({
-    'Content-Type': 'application/json'
-  });
-
+  constructor(private http: HttpClient) {}
   /**
    * Send data to register user in db
    * @param user

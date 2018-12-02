@@ -4,7 +4,6 @@ import { Validators, FormControl } from '@angular/forms';
 import { of } from 'rxjs';
 import { ajax } from 'rxjs/ajax';
 import { map, catchError } from 'rxjs/operators';
-// import { environment } from 'src/environments/environment';
 
 export class UserValidator implements Validators {
 
@@ -12,10 +11,10 @@ export class UserValidator implements Validators {
         if (!formControl.value) { return of(null); }
         return ajax.get(`${environment.api}/auth/is-exists?email=${formControl.value}`).pipe(
             map((ajaxResponse) => {
-                if (ajaxResponse.response.status) { return {userExists: true}; }
+                if (ajaxResponse.response.status) { return null; }
             }),
             catchError((res: HttpErrorResponse) => {
-                return of(null);
+                return of({userExists: {message: 'Brak podanego adresu w aplikacji'}});
             })
         );
     }

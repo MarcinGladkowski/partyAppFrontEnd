@@ -4,22 +4,35 @@
 <div class="row h-100 flex-column justify-content-center align-items-center">
     <div class="col-6">
         <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-            <p class="h5 text-center mb-4">Sign in</p>
+            <p class="h5 text-center mb-4">Zaloguj</p>
           
             <div class="md-form">
               <i class="fa fa-envelope prefix grey-text"></i>
-              <input type="text" formControlName="email" id="email" class="form-control" mdbInputDirective>
-              <label for="email">Your email</label>
+              <input type="text" 
+              data-error="nieprawidłowy adress email" 
+              data-success="prawidłowy adres email" 
+              formControlName="email" id="email" class="form-control" 
+              mdbInputDirective>
+              <label for="email">Email</label>
             </div>
           
             <div class="md-form">
               <i class="fa fa-lock prefix grey-text"></i>
-              <input type="password" formControlName="password" id="password" class="form-control" mdbInputDirective>
-              <label for="password">Your password</label>
+              <input type="password" 
+              [mdbValidate]="false" 
+              formControlName="password" 
+              id="password" class="form-control"
+               mdbInputDirective>
+              <label for="password">Hasło</label>
             </div>
         
             <div class="text-center">
-              <input type="submit" mdbBtn color="default" sclass="waves-light" mdbWavesEffect value="Login">
+              <input [disabled]='loginForm.valid === false'
+               type="submit"
+               mdbBtn 
+               color="default" 
+               sclass="waves-light" 
+               mdbWavesEffect value="Login">
             </div>
           </form>
     </div>

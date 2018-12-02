@@ -17,10 +17,10 @@ export class AuthService {
     // 'Cache-Control': 'max-age=5'
   });
 
-  // change loggedIn to a subject
+  /** change loggedIn to a subject */
   public loggedIn = new Subject<boolean>();
 
-  // make isLoggedIn public readonly
+  /** make isLoggedIn public readonly */
   isLoggedIn(): Observable<boolean> {
     return this.loggedIn.asObservable();
   }
@@ -49,7 +49,7 @@ export class AuthService {
         localStorage.setItem('auth', JSON.stringify(data));
         this.loggedIn.next(true);
       }},
-      (error) => {
+      (err) => {
         localStorage.setItem('auth', JSON.stringify({auth: false, token: null}));
         this.loggedIn.next(false);
       }
