@@ -17,13 +17,7 @@ export class PartylistComponent implements OnInit {
   partyEvents = [];
 
   ngOnInit() {
-
     this.authService.checkIsUserLogin();
-
-    this.partyListsService.parties$.subscribe((data: any) => {
-      this.partyEvents = data;
-    });
-
+    this.partyEvents = this.partyListsService.getpartiesList();
   }
-
 }

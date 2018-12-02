@@ -13,6 +13,10 @@ export class PartyListsService {
     this.getParties();
   }
 
+  getpartiesList() {
+    return this.partiesList;
+  }
+
   private createParty(partyAttrs) {
     return this.http.post(`${environment.api}/party`, partyAttrs).subscribe((response: any) => {
       this.partiesList.push(response.data);
