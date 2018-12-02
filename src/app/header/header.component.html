@@ -4,24 +4,25 @@
     </mdb-navbar-brand>
     <links>
         <ul class="navbar-nav mr-auto">
-            <!-- <li class="nav-item active waves-light" mdbWavesEffect>
-                <a class="nav-link">Home <span class="sr-only">(current)</span></a>
-            </li> -->
-            <li *ngIf="!isLoggedIn" class="nav-item waves-light" mdbWavesEffect>
-                <a routerLink="/" class="nav-link">Logowanie</a>
-            </li>
-            <li *ngIf="!isLoggedIn" class="nav-item waves-light" mdbWavesEffect>
-                <a routerLink="/register" class="nav-link">Rejestracja</a>
-            </li>
-            <li *ngIf="isLoggedIn" class="nav-item waves-light" mdbWavesEffect>
-                <a (click)="logout()" class="nav-link">Wyloguj</a>
-            </li>
-            <li *ngIf="isLoggedIn" class="nav-item waves-light" mdbWavesEffect>
-                <a routerLink="/party/list" class="nav-link">Lista</a>
-            </li>
-            <li *ngIf="isLoggedIn" class="nav-item waves-light" mdbWavesEffect>
-                <a routerLink="/party/add" class="nav-link">Dodaj</a>
-            </li>
+            <ng-template [ngIf]="!isLoggedIn">
+                <li class="nav-item waves-light" mdbWavesEffect>
+                    <a routerLink="/" class="nav-link">Logowanie</a>
+                </li>
+                <li class="nav-item waves-light" mdbWavesEffect>
+                    <a routerLink="/register" class="nav-link">Rejestracja</a>
+                </li>
+            </ng-template>
+            <ng-template [ngIf]="isLoggedIn">
+                <li  class="nav-item waves-light" mdbWavesEffect>
+                    <a (click)="logout()" class="nav-link">Wyloguj</a>
+                </li>
+                <li *ngIf="isLoggedIn" class="nav-item waves-light" mdbWavesEffect>
+                    <a routerLink="/party/list" class="nav-link">Lista</a>
+                </li>
+                <li *ngIf="isLoggedIn" class="nav-item waves-light" mdbWavesEffect>
+                    <a routerLink="/party/add" class="nav-link">Dodaj</a>
+                </li>
+            </ng-template>
         </ul>
         <ul class="navbar-nav nav-flex-icons">
             <li class="nav-item waves-light" mdbWavesEffect>
