@@ -6,6 +6,7 @@ import { AgmCoreModule } from '@agm/core';
 import { MDBBootstrapModule, ModalModule, ButtonsModule } from 'angular-bootstrap-md';
 import { CommonModule } from '@angular/common';
 import { AgmSnazzyInfoWindowModule } from '@agm/snazzy-info-window';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { RegisterComponent } from './register/register.component';
 import { HttpModule } from '@angular/http';
@@ -62,6 +63,7 @@ import { PartyTypeComponent } from './party/party-type/party-type.component';
     }),
     AgmSnazzyInfoWindowModule,
     MDBBootstrapModule.forRoot(),
+    BrowserAnimationsModule,
     routerModule
   ],
   schemas: [ NO_ERRORS_SCHEMA ],
