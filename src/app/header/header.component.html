@@ -13,18 +13,32 @@
                 </li>
             </ng-template>
             <ng-template [ngIf]="isLoggedIn">
-                <li  class="nav-item waves-light" mdbWavesEffect>
+                <li class="nav-item waves-light" mdbWavesEffect>
                     <a (click)="logout()" class="nav-link">Wyloguj</a>
                 </li>
-                <li *ngIf="isLoggedIn" class="nav-item waves-light" mdbWavesEffect>
+                <li class="nav-item waves-light" mdbWavesEffect>
                     <a routerLink="/party/list" class="nav-link">Lista</a>
                 </li>
-                <li *ngIf="isLoggedIn" class="nav-item waves-light" mdbWavesEffect>
+                <li class="nav-item waves-light" mdbWavesEffect>
                     <a routerLink="/party/add" class="nav-link">Dodaj</a>
                 </li>
             </ng-template>
         </ul>
         <ul class="navbar-nav nav-flex-icons">
+            <ng-template [ngIf]="isLoggedIn">
+            <li class="nav-item dropdown" dropdown>
+                    <a dropdownToggle mdbWavesEffect type="button" class="nav-link dropdown-toggle waves-light" mdbWavesEffect>
+                    <!-- <img style="width: auto; height: 23px;" src="https://mdbootstrap.com/img/Photos/Avatars/img%20(10).jpg" alt="avatar mx-auto white" class="rounded-circle img-fluid"> -->
+                    <!-- jesli nie ma zaladowanego obrazka -->
+                    <i class="fa fa-user-o" aria-hidden="true"></i>
+                    <span class="caret"></span></a>
+                    <div *dropdownMenu class="dropdown-menu dropdown dropdown-primary" role="menu">
+                        <a routerLink="/user/profile" class="dropdown-item waves-light" mdbWavesEffect href="#">Mój profil</a>
+                        <div class="divider dropdown-divider"></div>
+                        <a class="dropdown-item waves-light" mdbWavesEffect href="#">Wyloguj</a>
+                    </div>
+                </li>
+            </ng-template>
             <li class="nav-item waves-light" mdbWavesEffect>
                 <a class="nav-link"><i class="fa fa-facebook"></i></a>
             </li>
