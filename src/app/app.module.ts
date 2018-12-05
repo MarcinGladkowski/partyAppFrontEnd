@@ -32,6 +32,8 @@ import { PartylistComponent } from './party/partylist/partylist.component';
 import { PartymainComponent } from './party/partymain/partymain.component';
 import { ActionComponent } from './action/action.component';
 import { PartyTypeComponent } from './party/party-type/party-type.component';
+import { ProfileComponent } from './user/profile/profile.component';
+import { UserComponent } from './user/user.component';
 
 @NgModule({
   declarations: [
@@ -47,6 +49,8 @@ import { PartyTypeComponent } from './party/party-type/party-type.component';
     PartymainComponent,
     ActionComponent,
     PartyTypeComponent,
+    ProfileComponent,
+    UserComponent,
   ],
   imports: [
     ButtonsModule,

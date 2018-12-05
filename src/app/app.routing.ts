@@ -1,3 +1,5 @@
+import { UserComponent } from './user/user.component';
+import { ProfileComponent } from './user/profile/profile.component';
 import { RouterModule, Routes } from '@angular/router';
 import { SettingsComponent } from './settings/settings.component';
 import { RegisterComponent } from './register/register.component';
@@ -22,6 +24,10 @@ const routesConfig: Routes = [
   {path: 'admin', component: AdminComponent, children: [
     {path: '', redirectTo: 'type', pathMatch: 'full'},
     {path: 'type', component: PartyTypeComponent },
+  ]},
+  {path: 'user', component: UserComponent, children: [
+    {path: '', redirectTo: 'profile', pathMatch: 'full'},
+    {path: 'profile', component: ProfileComponent },
   ]},
   {path: 'action/activate/:hash', component: ActionComponent}
 ];
