@@ -1,0 +1,38 @@
+<div class="row h-75 justify-content-center align-items-center">
+  <form class="col-8" [formGroup]="partyForm" (ngSubmit)="onSubmit()">
+    <p class="h5 text-center mb-4">Utwórz nowe wydarzenie</p>
+
+    <div class="md-form">
+      <input mdbInputDirective id="form1" placeholder="Wyszukaj lokalizację" autocorrect="off" autocapitalize="off" spellcheck="off"
+             type="text" class="form-control" #search [formControl]="searchControl">
+    </div>
+
+    <div class="md-form">
+      <input type="text" formControlName="name" id="name" class="form-control" mdbInputDirective>
+      <label for="name">Tytuł</label>
+    </div>
+
+    <div class="md-form">
+      <input type="text" formControlName="desc" id="desc" class="form-control" mdbInputDirective>
+      <label for="desc">Opis</label>
+    </div>
+
+    <div class="md-form mt-5">
+      <select formControlName="type" name="options" id="select" class="browser-default md-select form-control">
+        <option *ngFor="let type of partyTypes" [ngValue]="type._id">
+          {{type.name}}
+        </option>
+      </select>
+      <label class="active" for="form6">Wybierz jedną z możliwych form</label>
+    </div>
+
+    <div class="custom-control custom-checkbox">
+      <input formControlName="private" type="checkbox" class="custom-control-input" id="private" checked>
+      <label class="custom-control-label" for="private">Prywatna</label>
+    </div>
+
+    <div class="text-center">
+      <input type="submit" mdbBtn color="default" sclass="waves-light" mdbWavesEffect value="Zapisz">
+    </div>
+  </form>
+</div>
