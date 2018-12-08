@@ -1,13 +1,6 @@
-<!-- navigation -->
-<app-header></app-header>
-<!-- navigation -->
-<div class="h-100 row justify-content-center align-items-center">
-    <div class="col-10">
-            <ul *ngFor="let party of partyEvents" class="list-group">
-                <li class="list-group-item">{{ party.name }} {{ party.desc }}</li>
-            </ul>
-    </div>
-</div>
 
 
+<ul *ngFor="let party of partyEvents" class="list-group">
+  <li class="list-group-item">{{ party.name }} {{ party.desc }}</li>
+</ul>
 

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-MainDir='/var/www/html/apps/'
+MainDir='/var/www/html/apps/partyAppProject'
 
 cd "$MainDir/partyApp" && ng serve &
 cd "$MainDir/partyAppBackend" && npm run dev &
