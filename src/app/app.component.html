@@ -1,15 +1,18 @@
 <section>
-  <div class="row no-gutters">
+  <div class="h-100 row no-gutters">
     <!-- left content -->
     <div class="col">
-          <!-- Routed views go here -->
-          <router-outlet></router-outlet>
-          <!-- Routed views go here -->
+      <!-- navigation -->
+      <app-header></app-header>
+      <!-- navigation -->
+      <!-- Routed views go here -->
+        <router-outlet></router-outlet>
+      <!-- Routed views go here -->
     </div>
     <!-- left content -->
     <!-- map -->
     <div class="col">
-       <app-map></app-map>
+      <app-map></app-map>
     </div>
     <!-- map -->
   </div>
