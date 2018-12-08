@@ -29,7 +29,6 @@ import { routerModule } from './app.routing';
 import config from './app.config';
 import { AdminComponent } from './admin/admin.component';
 import { PartylistComponent } from './party/partylist/partylist.component';
-import { PartymainComponent } from './party/partymain/partymain.component';
 import { ActionComponent } from './action/action.component';
 import { PartyTypeComponent } from './party/party-type/party-type.component';
 import { ProfileComponent } from './user/profile/profile.component';
@@ -39,6 +38,8 @@ import { MatTableModule } from '@angular/material/table';
 import { MatSortModule } from '@angular/material/sort';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatButtonModule, MatCheckboxModule } from '@angular/material';
+import { PartyFormComponent } from './party/party-form/party-form.component';
+import { PartyDetailsComponent } from './party/party-details/party-details.component';
 
 @NgModule({
   declarations: [
@@ -51,11 +52,12 @@ import { MatButtonModule, MatCheckboxModule } from '@angular/material';
     SettingsComponent,
     AdminComponent,
     PartylistComponent,
-    PartymainComponent,
     ActionComponent,
     PartyTypeComponent,
     ProfileComponent,
     UserComponent,
+    PartyFormComponent,
+    PartyDetailsComponent,
   ],
   imports: [
     BrowserAnimationsModule,
