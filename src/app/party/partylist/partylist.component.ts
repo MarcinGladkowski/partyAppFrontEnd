@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewChild } from '@angular/core';
 import { PartyListsService } from '../../services/party-lists.service';
-import { AuthService } from './../../services/auth.service';
+import { MatPaginator, MatTableDataSource, MatSort} from '@angular/material';
 
 @Component({
   selector: 'app-partylist',
@@ -9,18 +9,18 @@ import { AuthService } from './../../services/auth.service';
 })
 export class PartylistComponent implements OnInit {
 
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+
   constructor(
     private partyListsService: PartyListsService,
-    private authService: AuthService
-  ) { }
-
-  partyEvents = [];
+  ) {}
+  dataSource$ = <any>[];
+  displayedColumns$: string[] = ['name', 'desc'];
 
   ngOnInit() {
-    this.authService.checkIsUserLogin();
-
-    this.partyListsService.getPartiesList().subscribe((data) => {
-      this.partyEvents = data;
-    });
+    this.partyListsService.getPartiesList().subscribe((data => {
+      this.dataSource$ = new MatTableDataSource(data);
+      this.dataSource$.paginator = this.paginator;
+    }));
   }
 }
