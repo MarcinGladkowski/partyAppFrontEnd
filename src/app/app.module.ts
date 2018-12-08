@@ -34,6 +34,11 @@ import { ActionComponent } from './action/action.component';
 import { PartyTypeComponent } from './party/party-type/party-type.component';
 import { ProfileComponent } from './user/profile/profile.component';
 import { UserComponent } from './user/user.component';
+import { CdkTableModule } from '@angular/cdk/table';
+import { MatTableModule } from '@angular/material/table';
+import { MatSortModule } from '@angular/material/sort';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatButtonModule, MatCheckboxModule } from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -53,6 +58,13 @@ import { UserComponent } from './user/user.component';
     UserComponent,
   ],
   imports: [
+    BrowserAnimationsModule,
+    MatButtonModule,
+    MatCheckboxModule,
+    MatSortModule,
+    MatTableModule,
+    MatPaginatorModule,
+    CdkTableModule,
     ButtonsModule,
     BrowserModule,
     CommonModule,
