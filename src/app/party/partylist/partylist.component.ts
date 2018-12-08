@@ -15,10 +15,11 @@ export class PartylistComponent implements OnInit {
     private partyListsService: PartyListsService,
   ) {}
   dataSource$ = <any>[];
-  displayedColumns$: string[] = ['name', 'desc'];
+  displayedColumns$: string[] = ['name', 'desc', '_id'];
 
   ngOnInit() {
     this.partyListsService.getPartiesList().subscribe((data => {
+      console.log(data);
       this.dataSource$ = new MatTableDataSource(data);
       this.dataSource$.paginator = this.paginator;
     }));
