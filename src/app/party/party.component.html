@@ -1,9 +1,5 @@
-<!-- navigation -->
-<app-header></app-header>
-<!-- navigation -->
-<div class="h-100 row justify-content-center align-items-center">
-   <div class="col-8">
-    <form [formGroup]="partyForm" (ngSubmit)="onSubmit()">
+<div class="row h-75 justify-content-center align-items-center">
+    <form class="col-8" [formGroup]="partyForm" (ngSubmit)="onSubmit()">
       <p class="h5 text-center mb-4">Add party</p>
 
       <div class="md-form">
@@ -41,5 +37,4 @@
         <input type="submit" mdbBtn color="default" sclass="waves-light" mdbWavesEffect value="Save">
       </div>
     </form>
-  </div>
 </div>
