@@ -13,8 +13,8 @@ export class PartyListsService {
     this.getParties();
   }
 
-  getpartiesList() {
-    return this.partiesList;
+  getPartiesList() {
+    return this.parties$.asObservable();
   }
 
   private createParty(partyAttrs) {
