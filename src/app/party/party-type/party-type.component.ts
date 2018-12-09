@@ -33,8 +33,7 @@ export class PartyTypeComponent implements OnInit {
      icon: this.fileUpload
     };
 
-    this.partyTypeService.create(form).subscribe((data: any) => {
-    });
+    this.partyTypeService.create(form).subscribe((data: any) => {});
 
   }
 
