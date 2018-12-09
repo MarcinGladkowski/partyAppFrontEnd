@@ -1,3 +1,4 @@
+import { PageNoFoundComponent } from './helpers/page-no-found/page-no-found.component';
 import { UserComponent } from './user/user.component';
 import { ProfileComponent } from './user/profile/profile.component';
 import { RouterModule, Routes } from '@angular/router';
@@ -31,7 +32,9 @@ const routesConfig: Routes = [
       {path: 'profile', component: ProfileComponent},
     ]
   },
-  {path: 'action/activate/:hash', component: ActionComponent}
+  {path: 'action/activate/:hash', component: ActionComponent},
+  {path: '**', component: PageNoFoundComponent}
+
 ];
 
 export const routerModule = RouterModule.forRoot(routesConfig);
