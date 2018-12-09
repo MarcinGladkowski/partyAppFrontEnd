@@ -36,7 +36,7 @@ export class PartyFormComponent implements OnInit {
     this.partyForm = this.formBuilder.group({
       'name': [null, Validators.required],
       'desc': [null, Validators.required],
-      'type': [null, Validators.required],
+      'partyType': [null, Validators.required],
       'private': [null, Validators.required]
     });
 
