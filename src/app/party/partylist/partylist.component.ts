@@ -19,7 +19,6 @@ export class PartylistComponent implements OnInit {
 
   ngOnInit() {
     this.partyListsService.getPartiesList().subscribe((data => {
-      console.log(data);
       this.dataSource$ = new MatTableDataSource(data);
       this.dataSource$.paginator = this.paginator;
     }));
