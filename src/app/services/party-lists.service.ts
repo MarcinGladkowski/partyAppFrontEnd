@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { Observable, Subject} from 'rxjs';
 
+
 @Injectable()
 export class PartyListsService {
 
@@ -38,6 +39,10 @@ export class PartyListsService {
       this.partiesList = data.parties;
       this.parties$.next(data.parties);
     });
+  }
+
+  getParty(id: any) {
+    return this.http.get(`${environment.api}/party/${id}`);
   }
 
 }
