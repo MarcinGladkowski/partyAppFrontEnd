@@ -11,6 +11,7 @@ import { ActionComponent } from './action/action.component';
 import { PartyTypeComponent } from './party/party-type/party-type.component';
 import {PartyFormComponent} from './party/party-form/party-form.component';
 import {PartyDetailsComponent} from './party/party-details/party-details.component';
+import { AuthGuard } from './auth/auth.guard';
 
 const routesConfig: Routes = [
   {path: '', component: LoginComponent},
@@ -18,7 +19,9 @@ const routesConfig: Routes = [
   {path: 'register', component: RegisterComponent},
   {path: 'settings', component: SettingsComponent},
   {
-    path: 'party', component: PartyComponent, children: [
+    path: 'party', component: PartyComponent,
+    canActivateChild: [AuthGuard],
+    children: [
       {path: '', redirectTo: 'list', pathMatch: 'full'},
       {path: 'add', component: PartyFormComponent},
       {path: 'list', component: PartylistComponent},
