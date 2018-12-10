@@ -40,6 +40,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatButtonModule, MatCheckboxModule } from '@angular/material';
 import { PartyFormComponent } from './party/party-form/party-form.component';
 import { PartyDetailsComponent } from './party/party-details/party-details.component';
+import { PageNoFoundComponent } from './helpers/page-no-found/page-no-found.component';
 
 @NgModule({
   declarations: [
@@ -58,6 +59,7 @@ import { PartyDetailsComponent } from './party/party-details/party-details.compo
     UserComponent,
     PartyFormComponent,
     PartyDetailsComponent,
+    PageNoFoundComponent,
   ],
   imports: [
     BrowserAnimationsModule,
