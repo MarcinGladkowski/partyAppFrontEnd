@@ -2,7 +2,7 @@ import { map } from 'rxjs/operators';
 import { environment } from './../../environments/environment';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
-import { Subject, Observable } from 'rxjs';
+import { Subject, Observable, BehaviorSubject } from 'rxjs';
 
 @Injectable()
 export class AuthService {
@@ -18,7 +18,7 @@ export class AuthService {
   });
 
   /** change loggedIn to a subject */
-  public loggedIn = new Subject<boolean>();
+  public loggedIn = new BehaviorSubject<boolean>(false);
 
   /** make isLoggedIn public readonly */
   isLoggedIn(): Observable<boolean> {
