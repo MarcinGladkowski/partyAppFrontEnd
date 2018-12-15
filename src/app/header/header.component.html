@@ -35,7 +35,7 @@
                     <div *dropdownMenu class="dropdown-menu dropdown dropdown-primary" role="menu">
                         <a routerLink="/user/profile" class="dropdown-item waves-light" mdbWavesEffect href="#">Mój profil</a>
                         <div class="divider dropdown-divider"></div>
-                        <a class="dropdown-item waves-light" mdbWavesEffect href="#">Wyloguj</a>
+                        <a class="dropdown-item waves-light" mdbWavesEffect (click)="logout()" >Wyloguj</a>
                     </div>
                 </li>
             </ng-template>
