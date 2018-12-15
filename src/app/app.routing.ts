@@ -12,6 +12,8 @@ import { PartyTypeComponent } from './party/party-type/party-type.component';
 import {PartyFormComponent} from './party/party-form/party-form.component';
 import {PartyDetailsComponent} from './party/party-details/party-details.component';
 import { AuthGuard } from './auth/auth.guard';
+import {AvatarComponent} from './user/avatar/avatar.component';
+import {PasswordComponent} from './user/password/password.component';
 
 const routesConfig: Routes = [
   {path: '', component: LoginComponent},
@@ -30,9 +32,13 @@ const routesConfig: Routes = [
     ]
   },
   {
-    path: 'user', component: UserComponent, children: [
+    path: 'user',
+    canActivateChild: [AuthGuard],
+    component: UserComponent, children: [
       {path: '', redirectTo: 'profile', pathMatch: 'full'},
       {path: 'profile', component: ProfileComponent},
+      {path: 'password', component: AvatarComponent},
+      {path: 'avatar', component: PasswordComponent},
     ]
   },
   {path: 'action/activate/:hash', component: ActionComponent},
