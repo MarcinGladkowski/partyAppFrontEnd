@@ -41,6 +41,8 @@ import { MatButtonModule, MatCheckboxModule } from '@angular/material';
 import { PartyFormComponent } from './party/party-form/party-form.component';
 import { PartyDetailsComponent } from './party/party-details/party-details.component';
 import { PageNoFoundComponent } from './helpers/page-no-found/page-no-found.component';
+import { AvatarComponent } from './user/avatar/avatar.component';
+import { PasswordComponent } from './user/password/password.component';
 
 @NgModule({
   declarations: [
@@ -60,6 +62,8 @@ import { PageNoFoundComponent } from './helpers/page-no-found/page-no-found.comp
     PartyFormComponent,
     PartyDetailsComponent,
     PageNoFoundComponent,
+    AvatarComponent,
+    PasswordComponent,
   ],
   imports: [
     BrowserAnimationsModule,
