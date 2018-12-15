@@ -1,13 +1,13 @@
 import { environment } from './../../environments/environment';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
-import { Observable, Subject} from 'rxjs';
+import {BehaviorSubject, Observable, Subject} from 'rxjs';
 
 
 @Injectable()
 export class PartyListsService {
 
-  public parties$: Subject<any> = new Subject();
+  public parties$: BehaviorSubject<any> = new BehaviorSubject([]);
   private partiesList = [];
 
   constructor(private http: HttpClient) {
