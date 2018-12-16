@@ -2,7 +2,7 @@ import { UserAttrs } from './user-attrs';
 
 export class User implements UserAttrs {
 
-    static defaultAvatar = '/assets/defaultUser.png';
+    static defaultAvatar = 'defaultAvatar.png';
 
     _id: number;
     email: string;
