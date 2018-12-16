@@ -1,53 +1,49 @@
 <mdb-navbar SideClass="navbar navbar-expand-lg navbar-dark default-color ie-nav" [containerInside]="false">
-    <mdb-navbar-brand>
-        <a class="logo navbar-brand" href="#"><strong>Party APP</strong></a>
-    </mdb-navbar-brand>
-    <links>
-        <ul class="navbar-nav mr-auto">
-            <ng-template [ngIf]="!isLoggedIn">
-                <li class="nav-item waves-light" mdbWavesEffect>
-                    <a routerLink="/" class="nav-link">Logowanie</a>
-                </li>
-                <li class="nav-item waves-light" mdbWavesEffect>
-                    <a routerLink="/register" class="nav-link">Rejestracja</a>
-                </li>
-            </ng-template>
-            <ng-template [ngIf]="isLoggedIn">
-                <li class="nav-item waves-light" mdbWavesEffect>
-                    <a (click)="logout()" class="nav-link">Wyloguj</a>
-                </li>
-                <li class="nav-item waves-light" mdbWavesEffect>
-                    <a routerLink="/party/list" class="nav-link">Lista</a>
-                </li>
-                <li class="nav-item waves-light" mdbWavesEffect>
-                    <a routerLink="/party/add" class="nav-link">Dodaj</a>
-                </li>
-            </ng-template>
-        </ul>
-        <ul class="navbar-nav nav-flex-icons">
-            <ng-template [ngIf]="isLoggedIn">
-            <li class="nav-item dropdown" dropdown>
-                    <a dropdownToggle mdbWavesEffect type="button" class="nav-link dropdown-toggle waves-light" mdbWavesEffect>
-                    <!-- <img style="width: auto; height: 23px;" src="https://mdbootstrap.com/img/Photos/Avatars/img%20(10).jpg" alt="avatar mx-auto white" class="rounded-circle img-fluid"> -->
-                    <!-- jesli nie ma zaladowanego obrazka -->
-                    <i class="fa fa-user-o" aria-hidden="true"></i>
-                    <span class="caret"></span></a>
-                    <div *dropdownMenu class="dropdown-menu dropdown dropdown-primary" role="menu">
-                        <a routerLink="/user/profile" class="dropdown-item waves-light" mdbWavesEffect href="#">Mój profil</a>
-                        <div class="divider dropdown-divider"></div>
-                        <a class="dropdown-item waves-light" mdbWavesEffect (click)="logout()" >Wyloguj</a>
-                    </div>
-                </li>
-            </ng-template>
-            <li class="nav-item waves-light" mdbWavesEffect>
-                <a class="nav-link"><i class="fa fa-facebook"></i></a>
-            </li>
-            <li class="nav-item waves-light" mdbWavesEffect>
-                <a class="nav-link"><i class="fa fa-twitter"></i></a>
-            </li>
-            <li class="nav-item waves-light" mdbWavesEffect>
-                <a class="nav-link"><i class="fa fa-instagram"></i></a>
-            </li>
-        </ul>
-    </links>
+  <mdb-navbar-brand>
+    <a class="logo navbar-brand" href="#"><strong>Party APP</strong></a>
+  </mdb-navbar-brand>
+  <links>
+    <ul class="navbar-nav mr-auto">
+      <ng-template [ngIf]="!isLoggedIn">
+        <li class="nav-item waves-light" mdbWavesEffect>
+          <a routerLink="/" class="nav-link">Logowanie</a>
+        </li>
+        <li class="nav-item waves-light" mdbWavesEffect>
+          <a routerLink="/register" class="nav-link">Rejestracja</a>
+        </li>
+      </ng-template>
+      <ng-template [ngIf]="isLoggedIn">
+        <li class="nav-item waves-light" mdbWavesEffect>
+          <a routerLink="/party/list" class="nav-link">Lista</a>
+        </li>
+        <li class="nav-item waves-light" mdbWavesEffect>
+          <a routerLink="/party/add" class="nav-link">Dodaj</a>
+        </li>
+      </ng-template>
+    </ul>
+    <ul class="navbar-nav nav-flex-icons">
+      <ng-template [ngIf]="isLoggedIn">
+        <li class="nav-item dropdown" dropdown>
+          <a dropdownToggle mdbWavesEffect type="button" class="nav-link dropdown-toggle waves-light" mdbWavesEffect>
+            <img style="width: auto; height: 23px;" *ngIf="user" src="/assets/avatars/{{ user?.avatar }}" alt="avatar mx-auto white"
+                 class="rounded-circle img-fluid">
+            <span class="caret"></span></a>
+          <div *dropdownMenu class="dropdown-menu dropdown dropdown-primary" role="menu">
+            <a routerLink="/user/profile" class="dropdown-item waves-light" mdbWavesEffect href="#">Mój profil</a>
+            <div class="divider dropdown-divider"></div>
+            <a class="dropdown-item waves-light" mdbWavesEffect (click)="logout()">Wyloguj</a>
+          </div>
+        </li>
+      </ng-template>
+      <li class="nav-item waves-light" mdbWavesEffect>
+        <a class="nav-link"><i class="fa fa-facebook"></i></a>
+      </li>
+      <li class="nav-item waves-light" mdbWavesEffect>
+        <a class="nav-link"><i class="fa fa-twitter"></i></a>
+      </li>
+      <li class="nav-item waves-light" mdbWavesEffect>
+        <a class="nav-link"><i class="fa fa-instagram"></i></a>
+      </li>
+    </ul>
+  </links>
 </mdb-navbar>

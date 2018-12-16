@@ -1,6 +1,7 @@
 import { Component, OnInit, Output, EventEmitter} from '@angular/core';
 import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
+import {User} from '../user/user';
 
 @Component({
   selector: 'app-header',
@@ -10,6 +11,7 @@ import { Router } from '@angular/router';
 export class HeaderComponent implements OnInit {
 
   isLoggedIn;
+  user: User;
 
   logout() {
     this.redirectAfterLogout();
@@ -23,13 +25,14 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit() {
 
-    this.authService.isLoggedIn().subscribe((data: any) => {
+    this.authService.isLoggedIn().subscribe((data: boolean) => {
       this.isLoggedIn = data;
     });
-
+    this.authService.getProfile().subscribe((user: User) => {
+      this.user = user;
+    });
   }
-
-  redirectAfterLogout() {
+  private redirectAfterLogout() {
     this.authService.logout();
     this.router.navigate(['/']);
   }
