@@ -1,5 +1,5 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { PartyTypeService } from '../../services/party-type.service';
 
 @Component({
@@ -9,8 +9,8 @@ import { PartyTypeService } from '../../services/party-type.service';
 })
 export class PartyTypeComponent implements OnInit {
 
-  public partyTypeForm: FormGroup;
-  public fileUpload: File = null;
+  partyTypeForm: FormGroup;
+  fileUpload: File = null;
 
   constructor(
     private formBuilder: FormBuilder,

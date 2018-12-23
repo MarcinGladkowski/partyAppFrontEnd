@@ -12,8 +12,6 @@ import { Router } from '@angular/router';
 export class LoginComponent implements OnInit {
 
   public loginForm: FormGroup;
-  isLoggedIn;
-
 
   constructor(
     private authService: AuthService,
@@ -37,7 +35,7 @@ export class LoginComponent implements OnInit {
    * Send login form to service
    */
   onSubmit() {
-    this.authService.login(JSON.stringify(this.loginForm.value))
+    this.authService.login(this.loginForm.value)
     .subscribe((data: any) => {
       if (data && (data.auth === true)) {
         this.router.navigate(['/party/list']);

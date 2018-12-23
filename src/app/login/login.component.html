@@ -20,7 +20,7 @@
       <label for="password">Hasło</label>
     </div>
     <div class="text-center">
-      <input [disabled]='loginForm.valid === false'
+      <input [disabled]='!loginForm.valid'
              type="submit"
              mdbBtn
              color="default"

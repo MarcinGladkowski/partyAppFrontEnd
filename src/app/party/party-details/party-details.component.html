@@ -1,43 +1,33 @@
 <!-- News jumbotron -->
-<div class="jumbotron text-center hoverable p-4">
-
+<div *ngIf="party" class="jumbotron text-center hoverable p-4">
   <!-- Grid row -->
   <div class="row">
-
     <!-- Grid column -->
     <div class="col-md-4 offset-md-1 mx-3 my-3">
-
       <!-- Featured image -->
       <div class="view overlay waves-light" mdbWavesEffect>
-        <img src="https://mdbootstrap.com/img/Photos/Others/laptop-sm.jpg" class="img-fluid" alt="Sample image for first version of blog listing">
+        <img src="https://mdbootstrap.com/img/Photos/Others/laptop-sm.jpg" class="img-fluid"
+             alt="Sample image for first version of blog listing">
         <a>
           <div class="mask rgba-white-slight"></div>
         </a>
       </div>
-
     </div>
     <!-- Grid column -->
-
     <!-- Grid column -->
     <div class="col-md-7 text-md-left ml-3 mt-3">
-
       <!-- Excerpt -->
       <a href="#!" class="green-text">
-        <h6 class="h6 pb-1"><i class="fa fa-desktop pr-1"></i> {{ party.partyType.name }}</h6>
+        <h6 class="h6 pb-1"><i class="fa fa-desktop pr-1"></i>{{ party.partyType?.name }}</h6>
       </a>
-
       <h4 class="h4 mb-4">{{ party.name }}</h4>
-
       <p class="font-weight-normal">{{ party.desc }}.</p>
       <p class="font-weight-normal">by <a><strong>{{ party.userCreated.username }}</strong></a>, 19/08/2016</p>
-
       <a mdbBtn color="success" mdbWavesEffect>Dołącz</a>
 
     </div>
     <!-- Grid column -->
-
   </div>
   <!-- Grid row -->
-
 </div>
 <!-- News jumbotron -->
