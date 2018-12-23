@@ -52,6 +52,9 @@ export class AuthService {
           if (data && data.auth) {
             localStorage.setItem('auth', JSON.stringify(data));
             this.loggedIn.next(true);
+            this.userService.getUser().subscribe((user: User) => {
+              this.user.next(user);
+            });
           }
         },
         (err) => {
