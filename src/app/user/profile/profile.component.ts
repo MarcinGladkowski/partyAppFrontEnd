@@ -2,6 +2,7 @@ import { UserService } from './../../services/user.service';
 import { Component, OnInit } from '@angular/core';
 import { User } from '../user';
 import { FormGroup, FormControl } from '@angular/forms';
+import {AuthService} from '../../services/auth.service';
 
 @Component({
   selector: 'app-profile',
@@ -12,7 +13,10 @@ export class ProfileComponent implements OnInit {
 
   profileForm: FormGroup;
 
-  constructor(private userService: UserService) { }
+  constructor(
+    private userService: UserService,
+    private authService: AuthService
+    ) { }
 
   ngOnInit() {
 
@@ -21,14 +25,19 @@ export class ProfileComponent implements OnInit {
       email: new FormControl(),
     });
 
-    this.userService.getUser().subscribe((user: User) => {
-      this.profileForm.controls['username'].setValue(user.username);
-      this.profileForm.controls['email'].setValue(user.email);
+    this.authService.getProfile().subscribe((data: any) => {
+      if (data) {
+        this.profileForm.controls['username'].setValue(data.username);
+        this.profileForm.controls['email'].setValue(data.email);
+      }
     });
   }
-
   onSubmit() {
-    console.log(this.profileForm.value);
+    this.userService.update(this.profileForm.value).subscribe((user: User) => {
+      if (user) {
+        this.authService.user.next(user);
+      }
+    });
   }
 
 }
