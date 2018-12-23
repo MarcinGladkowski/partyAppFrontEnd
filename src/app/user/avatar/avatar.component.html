@@ -3,26 +3,24 @@
 
     <!-- Grid column -->
     <div class="d-flex justify-content-center">
-      <!--<img *ngIf="user" src="/assets/avatars/{{ user.avatar }}" class="img-fluid z-depth-1 rounded-circle" alt="Responsive image">-->
-      <img src="https://mdbootstrap.com/img/Photos/Avatars/img(31).jpg" class="img-fluid z-depth-1 rounded-circle" alt="Responsive image">
+      <img *ngIf="user" src="{{ user.avatar }}" class="img-fluid z-depth-1 rounded-circle" alt="Responsive image">
     </div>
     <!-- Grid column -->
-
-    <!--<form [formGroup]="partyTypeForm" (ngSubmit)="onSubmit()">-->
-      <!--<div class="input-group mb-3">-->
-        <!--<div class="input-group-prepend">-->
-          <!--<span class="input-group-text" id="inputGroupFileAddon01">Upload</span>-->
-        <!--</div>-->
-        <!--<div class="custom-file">-->
-          <!--<input type="file" class="custom-file-input" id="iconFile" aria-describedby="inputGroupFileAddon01"-->
-                 <!--(change)="onFileChange($event)">-->
-          <!--<label  class="custom-file-label" for="iconFile">{{ fileUpload === null ? 'Choose file' :  fileUpload.filename }}</label>-->
-        <!--</div>-->
-      <!--</div>-->
-      <!--<div class="text-center">-->
-        <!--<input type="submit" mdbBtn color="default" sclass="waves-light" mdbWavesEffect value="Zapisz">-->
-      <!--</div>-->
-    <!--</form>-->
+    <form [formGroup]="avatarForm" (ngSubmit)="onSubmit()">
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
+        </div>
+        <div class="custom-file">
+          <input type="file" class="custom-file-input" id="iconFile" aria-describedby="inputGroupFileAddon01"
+                 (change)="onFileChange($event)">
+          <label  class="custom-file-label" for="iconFile">{{ fileUpload === null ? 'Wybierz plik' :  fileUpload.name }}</label>
+        </div>
+      </div>
+      <div class="text-center">
+        <input type="submit" mdbBtn color="default" sclass="waves-light" mdbWavesEffect value="Zapisz">
+      </div>
+    </form>
 
   </div>
 </div>
