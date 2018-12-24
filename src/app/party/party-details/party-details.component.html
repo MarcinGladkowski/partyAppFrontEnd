@@ -23,15 +23,20 @@
       <h4 class="h4 mb-4">{{ party.name }}</h4>
       <p class="font-weight-normal">{{ party.desc }}.</p>
       <p class="font-weight-normal">by <a><strong>{{ party.userCreated.username }}</strong></a>, 19/08/2016</p>
-      <a mdbBtn color="success" mdbWavesEffect>Dołącz</a>
+      <a mdbBtn color="success" (click)="addParticipant(party._id)" mdbWavesEffect>Dołącz</a>
 
     </div>
     <!-- Grid column -->
   </div>
   <!-- Grid row -->
+  <!--participants list-->
   <h4 class="card-title h4 pb-2 text-left">Lista uczestników</h4>
-  <ul class="list-group">
+  <ul *ngIf="party.participants.length" class="list-group">
+    <li *ngFor="let participant of party.participants" class="list-group-item">{{ participant.username }}</li>
+  </ul>
+  <ul *ngIf="!party.participants.length" class="list-group">
     <li class="list-group-item">Brak uczestników</li>
   </ul>
+  <!--participants list-->
 </div>
 <!-- News jumbotron -->
