@@ -1,6 +1,8 @@
 import { PartyListsService } from './../../services/party-lists.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import {Observable} from 'rxjs';
+import {Party} from '../party';
 
 @Component({
   selector: 'app-party-details',
@@ -9,7 +11,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class PartyDetailsComponent implements OnInit {
 
-  party;
+  party$: Observable<Party>;
 
   constructor(
     private partyListService: PartyListsService,
@@ -19,9 +21,8 @@ export class PartyDetailsComponent implements OnInit {
   ngOnInit() {
 
     this.route.params.subscribe((params) => {
-      this.partyListService.getParty(params.id).subscribe((data) => {
-        this.party = data;
-      });
+      this.party$ = this.partyListService.getParty(params.id);
+      console.log(this.party$);
     });
 
   }

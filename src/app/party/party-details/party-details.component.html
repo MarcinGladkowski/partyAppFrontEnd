@@ -1,5 +1,5 @@
 <!-- News jumbotron -->
-<div *ngIf="party" class="jumbotron text-center hoverable p-4">
+<div *ngIf="party$ | async as party" class="jumbotron text-center hoverable p-4">
   <!-- Grid row -->
   <div class="row">
     <!-- Grid column -->
@@ -29,5 +29,9 @@
     <!-- Grid column -->
   </div>
   <!-- Grid row -->
+  <h4 class="card-title h4 pb-2 text-left">Lista uczestników</h4>
+  <ul class="list-group">
+    <li class="list-group-item">Brak uczestników</li>
+  </ul>
 </div>
 <!-- News jumbotron -->
