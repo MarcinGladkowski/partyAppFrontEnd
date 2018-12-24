@@ -1,8 +1,12 @@
 import { environment } from './../../environments/environment';
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
-import {BehaviorSubject, Observable, Subject} from 'rxjs';
-
+import { HttpClient, } from '@angular/common/http';
+import { BehaviorSubject } from 'rxjs';
+import {map} from 'rxjs/operators';
+import {PartyType} from '../party/party-type/party-type';
+import {PartyInterface} from '../party/party-interface';
+import {Party} from '../party/party';
+import {User} from '../user/user';
 
 @Injectable()
 export class PartyListsService {
@@ -41,8 +45,16 @@ export class PartyListsService {
     });
   }
 
-  getParty(id: any) {
-    return this.http.get(`${environment.api}/party/${id}`);
+  getParty(id: string) {
+    return this.http.get<PartyInterface>(`${environment.api}/party/${id}`).pipe(
+      map((partyAttrs) => new Party(partyAttrs))
+    );
+  }
+  /** add new participant to party */
+  addParticipant(id: string, user: User) {
+    return this.http.post<PartyInterface>(`${environment.api}/party/${id}/participant`, user).pipe(
+      map((partyAttrs) => new Party(partyAttrs))
+    );
   }
 
 }
