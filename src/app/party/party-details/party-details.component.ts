@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import {Observable} from 'rxjs';
 import {Party} from '../party';
+import {AuthService} from '../../services/auth.service';
 
 @Component({
   selector: 'app-party-details',
@@ -15,15 +16,17 @@ export class PartyDetailsComponent implements OnInit {
 
   constructor(
     private partyListService: PartyListsService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private authService: AuthService
     ) { }
 
   ngOnInit() {
-
     this.route.params.subscribe((params) => {
       this.party$ = this.partyListService.getParty(params.id);
-      console.log(this.party$);
     });
+  }
 
+  addParticipant(id: string, ) {
+    this.party$ = this.partyListService.addParticipant(id, this.authService.user.getValue());
   }
 }
