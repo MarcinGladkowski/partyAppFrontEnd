@@ -23,8 +23,9 @@
       <h4 class="h4 mb-4">{{ party.name }}</h4>
       <p class="font-weight-normal">{{ party.desc }}.</p>
       <p class="font-weight-normal">by <a><strong>{{ party.userCreated.username }}</strong></a>, 19/08/2016</p>
-      <a mdbBtn color="success" (click)="addParticipant(party._id)" mdbWavesEffect>Dołącz</a>
-
+      <!--check is user created or take part in party-->
+      <a *ngIf="!userInParty" mdbBtn color="success" (click)="addParticipant(party._id)" mdbWavesEffect>Dołącz</a>
+      <a *ngIf="userInParty" mdbBtn color="success" (click)="removeParticipant(party._id)" mdbWavesEffect>Zrezygnuj</a>
     </div>
     <!-- Grid column -->
   </div>
@@ -32,7 +33,10 @@
   <!--participants list-->
   <h4 class="card-title h4 pb-2 text-left">Lista uczestników</h4>
   <ul *ngIf="party.participants.length" class="list-group">
-    <li *ngFor="let participant of party.participants" class="list-group-item">{{ participant.username }}</li>
+    <li *ngFor="let participant of party.participants" class="list-group-item">
+      <img style="width: auto; height: 23px;" src="http://localhost:8080/avatar/{{ participant?.avatar }}" alt="avatar" class="rounded-circle img-fluid">
+      {{ participant?.username }}
+    </li>
   </ul>
   <ul *ngIf="!party.participants.length" class="list-group">
     <li class="list-group-item">Brak uczestników</li>
