@@ -57,4 +57,10 @@ export class PartyListsService {
     );
   }
 
+  removeParticipant(id: string, user: User) {
+    return this.http.delete<PartyInterface>(`${environment.api}/party/${id}/participant/${user._id}`).pipe(
+      map((partyAttrs) => new Party(partyAttrs))
+    );
+  }
+
 }
