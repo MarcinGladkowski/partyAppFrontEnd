@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import {Observable} from 'rxjs';
 import {Party} from '../party';
 import {AuthService} from '../../services/auth.service';
+import {User} from '../../user/user';
 
 @Component({
   selector: 'app-party-details',
@@ -13,6 +14,9 @@ import {AuthService} from '../../services/auth.service';
 export class PartyDetailsComponent implements OnInit {
 
   party$: Observable<Party>;
+  user$: Observable<User>;
+  userInParty = false;
+  user: User;
 
   constructor(
     private partyListService: PartyListsService,
@@ -24,9 +28,27 @@ export class PartyDetailsComponent implements OnInit {
     this.route.params.subscribe((params) => {
       this.party$ = this.partyListService.getParty(params.id);
     });
+
+    this.user$ = this.authService.getProfile();
+    this.user = this.authService.user.getValue();
+
+    this.party$.subscribe(party => {
+
+      const inParty = party.participants.filter((participant) => participant._id === this.user._id);
+      if (inParty.length) {
+        this.userInParty = true;
+      }
+
+    });
   }
 
   addParticipant(id: string, ) {
     this.party$ = this.partyListService.addParticipant(id, this.authService.user.getValue());
+    this.userInParty = true;
+  }
+
+  removeParticipant(id: string) {
+    this.party$ = this.partyListService.removeParticipant(id, this.authService.user.getValue());
+    this.userInParty = false;
   }
 }
