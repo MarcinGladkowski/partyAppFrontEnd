@@ -37,12 +37,17 @@ import { CdkTableModule } from '@angular/cdk/table';
 import { MatTableModule } from '@angular/material/table';
 import { MatSortModule } from '@angular/material/sort';
 import { MatPaginatorModule } from '@angular/material/paginator';
-import { MatButtonModule, MatCheckboxModule } from '@angular/material';
+import { MatButtonModule, MatCheckboxModule, MatInputModule } from '@angular/material';
 import { PartyFormComponent } from './party/party-form/party-form.component';
 import { PartyDetailsComponent } from './party/party-details/party-details.component';
 import { PageNoFoundComponent } from './helpers/page-no-found/page-no-found.component';
 import { AvatarComponent } from './user/avatar/avatar.component';
 import { PasswordComponent } from './user/password/password.component';
+
+import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
+import { WavesModule } from 'angular-bootstrap-md';
+import { PartyInviteComponent } from './party/party-invite/party-invite.component';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
 
 @NgModule({
   declarations: [
@@ -64,6 +69,7 @@ import { PasswordComponent } from './user/password/password.component';
     PageNoFoundComponent,
     AvatarComponent,
     PasswordComponent,
+    PartyInviteComponent,
   ],
   imports: [
     BrowserAnimationsModule,
@@ -88,6 +94,11 @@ import { PasswordComponent } from './user/password/password.component';
     AgmSnazzyInfoWindowModule,
     MDBBootstrapModule.forRoot(),
     BrowserAnimationsModule,
+    OwlDateTimeModule,
+    OwlNativeDateTimeModule,
+    WavesModule,
+    MatAutocompleteModule,
+    MatInputModule,
     routerModule
   ],
   schemas: [ NO_ERRORS_SCHEMA ],
