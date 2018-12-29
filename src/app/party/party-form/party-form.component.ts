@@ -36,6 +36,8 @@ export class PartyFormComponent implements OnInit {
     this.partyForm = this.formBuilder.group({
       'name': [null, Validators.required],
       'desc': [null, Validators.required],
+      'startDate': [null , Validators.required],
+      'endDate': [null, Validators.required],
       'partyType': [null, Validators.required],
       'private': [null, Validators.required]
     });
@@ -49,26 +51,20 @@ export class PartyFormComponent implements OnInit {
       });
       autocomplete.addListener('place_changed', () => {
         this.ngZone.run(() => {
-
           const place: google.maps.places.PlaceResult = autocomplete.getPlace();
-
           if (place.geometry === undefined || place.geometry === null) {
             return;
           }
-
           this.latitude = place.geometry.location.lat();
           this.longitude = place.geometry.location.lng();
-
         });
       });
     });
   }
 
   onSubmit() {
-
     this.partyForm.value.latitude = this.latitude;
     this.partyForm.value.longitude = this.longitude;
-
     const newParty = this.partyForm.value;
 
     /** @TODO if place is not found (lat, lng) not send request */

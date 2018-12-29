@@ -16,7 +16,20 @@
       <input type="text" formControlName="desc" id="desc" class="form-control" mdbInputDirective>
       <label for="desc">Opis</label>
     </div>
-
+    <!--start date-->
+    <div class="md-form">
+      <input type="text" formControlName="startDate" id="startDate" class="form-control"
+             mdbInputDirective [owlDateTime]="startDate" [owlDateTimeTrigger]="startDate" placeholder="data rozpoczęcia">
+      <owl-date-time #startDate></owl-date-time>
+    </div>
+    <!--start date-->
+    <!--end date-->
+    <div class="md-form">
+      <input type="text" formControlName="endDate" id="endDate" class="form-control"
+             mdbInputDirective [owlDateTime]="endDate" [owlDateTimeTrigger]="endDate" placeholder="data zakończenia">
+      <owl-date-time #endDate></owl-date-time>
+    </div>
+    <!--end date-->
     <div class="md-form mt-5">
       <select formControlName="partyType" name="options" id="select" class="browser-default md-select form-control">
         <option *ngFor="let type of partyTypes" [ngValue]="type._id">
@@ -32,7 +45,7 @@
     </div>
 
     <div class="text-center">
-      <input type="submit" mdbBtn color="default" sclass="waves-light" mdbWavesEffect value="Zapisz">
+      <input [disabled]="!partyForm.valid" type="submit" mdbBtn color="default" sclass="waves-light" mdbWavesEffect value="Zapisz">
     </div>
   </form>
 </div>
