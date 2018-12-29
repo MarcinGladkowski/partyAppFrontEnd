@@ -1,0 +1,16 @@
+<div class="row h-75 justify-content-center align-items-center">
+
+  <form class="example-form">
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="Wyszukaj użytkownika" aria-label="State" [matAutocomplete]="auto" [formControl]="stateCtrl">
+      <mat-autocomplete #auto="matAutocomplete">
+        <mat-option *ngFor="let user of filteredUsers | async" [value]="user.username">
+          <img class="example-option-img" aria-hidden [src]="user?.avatar" height="25">
+          <span>{{ user.username }}</span>
+          <small>{{ user | json }}</small>
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+  </form>
+</div>
+
