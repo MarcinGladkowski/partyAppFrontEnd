@@ -2,7 +2,7 @@ import { UserAttrs } from './../user/user-attrs';
 import { environment } from './../../environments/environment';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { map } from 'rxjs/operators';
+import { map, tap } from 'rxjs/operators';
 import { User } from '../user/user';
 
 @Injectable()
@@ -31,11 +31,17 @@ export class UserService {
      map((userAttrs) => new User(userAttrs))
     );
   }
+
+  getUsers() {
+    return this.http.get<UserAttrs[]>(`${environment.api}/users/all`);
+  }
+
   update(formData) {
     return this.http.put<UserAttrs>(`${environment.api}/users`, formData).pipe(
       map((userAttrs) => new User(userAttrs))
     );
   }
+
   updateAvatar(data) {
     const formData = new FormData();
     formData.append('avatar', data.avatar);
