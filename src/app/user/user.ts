@@ -5,7 +5,7 @@ export class User implements UserAttrs {
 
     static defaultAvatar = 'defaultAvatar.png';
 
-    _id: number;
+    _id: string;
     email: string;
     username: string;
     avatar: string;

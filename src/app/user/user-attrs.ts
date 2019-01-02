@@ -1,5 +1,5 @@
 export interface UserAttrs {
-    _id: number;
+    _id: string;
     email: string;
     username: string;
     avatar: string;
