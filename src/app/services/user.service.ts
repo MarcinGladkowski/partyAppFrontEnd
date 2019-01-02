@@ -4,6 +4,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { map, tap } from 'rxjs/operators';
 import { User } from '../user/user';
+import {Observable} from 'rxjs';
 
 @Injectable()
 export class UserService {
@@ -32,8 +33,12 @@ export class UserService {
     );
   }
 
-  getUsers() {
-    return this.http.get<UserAttrs[]>(`${environment.api}/users/all`);
+  getUsers(): Observable<User[]> {
+    return this.http.get<UserAttrs[]>(`${environment.api}/users/all`).pipe(
+      map((data) => {
+        return data.map((userAttrs: UserAttrs) => new User(userAttrs));
+      })
+    );
   }
 
   update(formData) {
