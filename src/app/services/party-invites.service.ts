@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {environment} from '../../environments/environment';
 import {Observable} from 'rxjs';
-import {PartyInviteInterface} from '../party/party-invite/party-intive-interface';
+import {PartyInviteInterface} from '../party/party-invite/party-invite-interface';
 import {map} from 'rxjs/operators';
 import {PartyInvite} from '../party/party-invite/party-invite';
 
