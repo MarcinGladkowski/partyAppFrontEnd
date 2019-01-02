@@ -1,4 +1,4 @@
-import {PartyInviteInterface} from './party-intive-interface';
+import {PartyInviteInterface} from './party-invite-interface';
 import {Party} from '../party';
 import {User} from '../../user/user';
 
