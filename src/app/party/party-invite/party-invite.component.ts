@@ -38,13 +38,18 @@ export class PartyInviteComponent implements OnInit {
   }
 
   selected(event: MatAutocompleteSelectedEvent, user: User) {
-    const result = this.inviteList.filter(invited => invited._id === user._id);
+    const result = this.inviteList.filter(invite => invite.userInvited._id === user._id);
     if (!result.length) {
-      this.partyInvitesService.create(this.partyId, user._id).subscribe((data) => {
-        this.inviteList = [... this.inviteList, data];
-      });
+       this.partyInvitesService.create(this.partyId, user._id).subscribe((data) => {
+         this.inviteList = [...this.inviteList, data];
+       });
     }
-    // @TODO add by post to document
     this.stateCtrl.setValue('');
+  }
+
+  sendInvite(partyInviteId: string) {
+    this.partyInvitesService.sendInvite(partyInviteId).subscribe(data => {
+      console.log(data);
+    });
   }
 }
