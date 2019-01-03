@@ -23,10 +23,13 @@ export class PartyListsService {
   }
 
   private createParty(partyAttrs) {
-    return this.http.post(`${environment.api}/party`, partyAttrs).subscribe((response: any) => {
-      this.partiesList.push(response.data);
-      this.parties$.next(this.partiesList);
-    });
+    return this.http.post(`${environment.api}/party`, partyAttrs).pipe(
+      map((response: any) => {
+          this.partiesList.push(response.data);
+          this.parties$.next(this.partiesList);
+          return response.data;
+      })
+    );
   }
 
   private updateParty(partyAttrs) {
