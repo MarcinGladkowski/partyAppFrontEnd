@@ -3,6 +3,7 @@ import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {MapsAPILoader} from '@agm/core';
 import {PartyListsService} from '../../services/party-lists.service';
 import {PartyTypeService} from '../../services/party-type.service';
+import {SaveModalComponent} from './save-modal/save-modal.component';
 
 @Component({
   selector: 'app-party-form',
@@ -26,6 +27,7 @@ export class PartyFormComponent implements OnInit {
   ) { }
 
   @ViewChild('search') public searchElementRef: ElementRef;
+  @ViewChild('modal') public savedPartyModal: SaveModalComponent;
 
   ngOnInit() {
 
@@ -39,7 +41,7 @@ export class PartyFormComponent implements OnInit {
       'startDate': [null , Validators.required],
       'endDate': [null, Validators.required],
       'partyType': [null, Validators.required],
-      'private': [null, Validators.required]
+      'private': [null]
     });
 
     this.searchControl = new FormControl();
@@ -69,7 +71,9 @@ export class PartyFormComponent implements OnInit {
 
     /** @TODO if place is not found (lat, lng) not send request */
     if (this.partyForm.value.latitude !== undefined || this.partyForm.value.longitude !== undefined) {
-      this.partyListsService.saveParty(newParty);
+      this.partyListsService.saveParty(newParty).subscribe((savedParty) => {
+        this.savedPartyModal.show(savedParty);
+      });
     }
 
     this.partyForm.reset();
