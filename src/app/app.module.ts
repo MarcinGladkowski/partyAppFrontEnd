@@ -48,6 +48,7 @@ import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
 import { WavesModule } from 'angular-bootstrap-md';
 import { PartyInviteComponent } from './party/party-invite/party-invite.component';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import { SaveModalComponent } from './party/party-form/save-modal/save-modal.component';
 
 @NgModule({
   declarations: [
@@ -70,6 +71,7 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
     AvatarComponent,
     PasswordComponent,
     PartyInviteComponent,
+    SaveModalComponent,
   ],
   imports: [
     BrowserAnimationsModule,
