@@ -26,4 +26,10 @@ export class PartyInvitesService {
       })
     );
   }
+
+  sendInvite(partyInviteId: string) {
+    return this.http.patch<PartyInviteInterface>(`${environment.api}/party-invite/${partyInviteId}`, {send: true}).pipe(
+      map(attrs => new PartyInvite(attrs))
+    );
+  }
 }
