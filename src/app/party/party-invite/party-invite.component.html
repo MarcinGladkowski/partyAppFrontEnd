@@ -14,9 +14,9 @@
 
   <div class="col-6">
     <ul class="list-group">
-      <li class="list-group-item d-flex justify-content-between" *ngFor="let invite of inviteList ">
+      <li class="list-group-item d-flex justify-content-between" *ngFor="let invite of inviteList">
         <div class="d-flex align-items-center">{{ invite.userInvited.username }}</div>
-        <button size="sm" mdbBtn type="button" color="default" outline="true" mdbWavesEffect>Wyślij zaproszenie</button>
+        <button size="sm" mdbBtn type="button" color="default" outline="true" mdbWavesEffect (click)="sendInvite(invite._id)">Wyślij zaproszenie</button>
       </li>
     </ul>
   </div>
