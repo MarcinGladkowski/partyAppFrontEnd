@@ -5,6 +5,18 @@ import {HttpClient, HttpHeaders, HttpErrorResponse} from '@angular/common/http';
 import {Subject, Observable, BehaviorSubject} from 'rxjs';
 import {User} from '../user/user';
 import {UserService} from './user.service';
+import {FormControl, Validators} from '@angular/forms';
+
+interface Login {
+  email: string;
+  password: string;
+}
+
+interface ChangePassword {
+  oldPassword: string;
+  newPassword: string;
+  newPasswordRepeat: string;
+}
 
 @Injectable()
 export class AuthService {
@@ -26,7 +38,7 @@ export class AuthService {
     return this.user.asObservable();
   }
 
-  login(loginData) {
+  login(loginData: Login) {
     return this.http.post(`${environment.api}/auth`, loginData).pipe(
       map((data: any) => {
         if (data && data.auth) {
@@ -64,7 +76,7 @@ export class AuthService {
       );
   }
 
-  updatePassword(data): Observable<User> {
+  updatePassword(data: ChangePassword): Observable<User> {
     return this.http.post(`${environment.api}/auth/update-password`, data).pipe(
       map((userAttrs) => new User(userAttrs))
     );
