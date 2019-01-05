@@ -24,7 +24,8 @@
               "node_modules/font-awesome/scss/font-awesome.scss",
               "node_modules/angular-bootstrap-md/scss/bootstrap/bootstrap.scss",
               "node_modules/angular-bootstrap-md/scss/mdb-free.scss",
-              "node_modules/snazzy-info-window/dist/snazzy-info-window.css"
+              "node_modules/snazzy-info-window/dist/snazzy-info-window.css",
+              "node_modules/ng-pick-datetime/assets/style/picker.min.css"
             ],
             "scripts": [
               "node_modules/chart.js/dist/Chart.js",
