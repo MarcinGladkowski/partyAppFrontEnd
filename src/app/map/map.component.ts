@@ -10,8 +10,10 @@ import { PartyListsService } from '../services/party-lists.service';
 export class MapComponent implements OnInit {
 
   partyEvents = [];
-
   imagesPath = environment.iconsDir;
+  latitude: number;
+  longitude: number;
+  zoom = 4;
 
   customStyles = [
     {
@@ -246,10 +248,6 @@ export class MapComponent implements OnInit {
       ]
     }
   ];
-
-  public latitude: number;
-  public longitude: number;
-  public zoom = 4;
 
   constructor(private partyListsService: PartyListsService) { }
 
