@@ -3,6 +3,7 @@ import { Component, OnInit, ViewChild, ElementRef, Input, AfterViewInit} from '@
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
+import {HttpErrorResponse} from '@angular/common/http';
 
 @Component({
   selector: 'app-login',
@@ -11,7 +12,8 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
-  public loginForm: FormGroup;
+  loginForm: FormGroup;
+  error: string;
 
   constructor(
     private authService: AuthService,
@@ -35,11 +37,13 @@ export class LoginComponent implements OnInit {
    * Send login form to service
    */
   onSubmit() {
-    this.authService.login(this.loginForm.value)
-    .subscribe((data: any) => {
+    this.authService.login(this.loginForm.value).subscribe((data: any) => {
       if (data && (data.auth === true)) {
         this.router.navigate(['/party/list']);
       }
+    },
+      (error: HttpErrorResponse) => {
+      this.error = error.message;
     });
   }
 
