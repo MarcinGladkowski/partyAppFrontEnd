@@ -1,11 +1,10 @@
-import {map} from 'rxjs/operators';
+import {catchError, map } from 'rxjs/operators';
 import {environment} from './../../environments/environment';
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders, HttpErrorResponse} from '@angular/common/http';
-import {Subject, Observable, BehaviorSubject} from 'rxjs';
+import {Observable, BehaviorSubject, of} from 'rxjs';
 import {User} from '../user/user';
 import {UserService} from './user.service';
-import {FormControl, Validators} from '@angular/forms';
 
 interface Login {
   email: string;
@@ -49,9 +48,16 @@ export class AuthService {
           });
         }
         return data;
+      }),
+      catchError((err) => {
+        if (err instanceof HttpErrorResponse) {
+          throw new Error(err.message);
+        }
+        return of();
       })
     );
   }
+
 
   logout() {
     localStorage.removeItem('auth');
