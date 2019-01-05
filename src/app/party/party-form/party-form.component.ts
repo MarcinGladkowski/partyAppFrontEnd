@@ -4,6 +4,7 @@ import {MapsAPILoader} from '@agm/core';
 import {PartyListsService} from '../../services/party-lists.service';
 import {PartyTypeService} from '../../services/party-type.service';
 import {SaveModalComponent} from './save-modal/save-modal.component';
+import {PartyDatesValidator, PartyDateValidator} from '../../validators/party-dates-validator';
 
 @Component({
   selector: 'app-party-form',
@@ -38,11 +39,11 @@ export class PartyFormComponent implements OnInit {
     this.partyForm = this.formBuilder.group({
       'name': [null, Validators.required],
       'desc': [null, Validators.required],
-      'startDate': [null , Validators.required],
+      'startDate': [null , [Validators.required, PartyDateValidator.actualDate]],
       'endDate': [null, Validators.required],
       'partyType': [null, Validators.required],
       'private': [null]
-    });
+    }, {validator: PartyDatesValidator });
 
     this.searchControl = new FormControl();
 
