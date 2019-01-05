@@ -14,6 +14,7 @@ import {PartyDetailsComponent} from './party/party-details/party-details.compone
 import { AuthGuard } from './auth/auth.guard';
 import {AvatarComponent} from './user/avatar/avatar.component';
 import {PasswordComponent} from './user/password/password.component';
+import {PartyInviteComponent} from './party/party-invite/party-invite.component';
 
 const routesConfig: Routes = [
   {path: '', component: LoginComponent},
@@ -29,6 +30,7 @@ const routesConfig: Routes = [
       {path: 'list', component: PartylistComponent},
       {path: 'type', component: PartyTypeComponent},
       {path: 'details/:id', component: PartyDetailsComponent},
+      {path: 'invite/:id', component: PartyInviteComponent},
     ]
   },
   {
@@ -37,13 +39,11 @@ const routesConfig: Routes = [
     component: UserComponent, children: [
       {path: '', redirectTo: 'profile', pathMatch: 'full'},
       {path: 'profile', component: ProfileComponent},
-      {path: 'password', component: AvatarComponent},
-      {path: 'avatar', component: PasswordComponent},
+      {path: 'avatar', component: AvatarComponent},
+      {path: 'password', component: PasswordComponent},
     ]
   },
   {path: 'action/activate/:hash', component: ActionComponent},
   {path: '**', component: PageNoFoundComponent}
-
 ];
-
 export const routerModule = RouterModule.forRoot(routesConfig);
