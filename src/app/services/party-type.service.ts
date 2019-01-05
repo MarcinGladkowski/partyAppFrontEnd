@@ -5,13 +5,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 @Injectable()
 export class PartyTypeService {
 
-  private partyTypes = [];
-
   constructor(private http: HttpClient) { }
-
-  headers = new HttpHeaders({
-    'Content-Type': 'application/json'
-  });
 
   create(partyTypeForm) {
 
