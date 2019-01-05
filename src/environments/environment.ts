@@ -5,6 +5,7 @@
 
 export const environment = {
   production: false,
-  iconsDir: 'assets/icons/',
-  api: 'http://localhost:8080/api'
+  iconsDir: 'assets/icon/',
+  api: 'http://localhost:8080/api',
+  upload: 'http://localhost:8080'
 };
