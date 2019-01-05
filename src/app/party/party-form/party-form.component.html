@@ -15,11 +15,15 @@
       <input type="text" formControlName="desc" id="desc" class="form-control" mdbInputDirective>
       <label for="desc">Opis</label>
     </div>
+    <!--dates-->
     <!--start date-->
     <div class="md-form">
       <input type="text" formControlName="startDate" id="startDate" class="form-control"
              mdbInputDirective [owlDateTime]="startDate" [owlDateTimeTrigger]="startDate" placeholder="data rozpoczęcia">
       <owl-date-time #startDate></owl-date-time>
+    </div>
+    <div *ngIf="partyForm.controls['startDate'].hasError('badDate') && partyForm.get('startDate').dirty" class="cross-validation-error-message alert alert-danger">
+      Data nie może być z przeszłości
     </div>
     <!--start date-->
     <!--end date-->
@@ -28,20 +32,30 @@
              mdbInputDirective [owlDateTime]="endDate" [owlDateTimeTrigger]="endDate" placeholder="data zakończenia">
       <owl-date-time #endDate></owl-date-time>
     </div>
+    <div *ngIf="partyForm.controls['endDate'].hasError('badDate')" class="cross-validation-error-message alert alert-danger">
+      Data nie może być z przeszłości
+    </div>
     <!--end date-->
+    <div *ngIf="partyForm.errors?.diff && partyForm.get('endDate').dirty" class="cross-validation-error-message alert alert-danger">
+      Data zakończenia musi być późniejsza niż data rozpoczęcia
+    </div>
+    <!--dates-->
     <div class="md-form mt-5">
-      <select formControlName="partyType" name="options" id="select" class="browser-default md-select form-control">
+      <select formControlName="partyType" name="options" id="partyType" class="browser-default md-select form-control">
         <option *ngFor="let type of partyTypes" [ngValue]="type._id">
           {{type.name}}
         </option>
       </select>
-      <label class="active" for="form6">Wybierz jedną z możliwych form</label>
+      <label class="active" for="partyType">Wybierz jedną z możliwych form</label>
     </div>
 
     <div class="custom-control custom-checkbox">
       <input formControlName="private" type="checkbox" class="custom-control-input" id="private" checked>
       <label class="custom-control-label" for="private">Prywatna</label>
     </div>
+
+
+
 
     <div class="text-center">
       <input [disabled]="!partyForm.valid" type="submit" mdbBtn color="default" sclass="waves-light" mdbWavesEffect value="Zapisz">
