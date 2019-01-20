@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormBuilder,  Validators} from '@angular/forms';
 import { UserService  } from '../services/user.service';
+import {RegisterModalComponent} from './register-modal/register-modal.component';
 
 @Component({
   selector: 'app-register',
@@ -9,32 +10,31 @@ import { UserService  } from '../services/user.service';
 })
 export class RegisterComponent implements OnInit {
 
-  public registerForm: FormGroup;
+  registerForm: FormGroup;
 
-  @ViewChild('content') public contentModal;
+  @ViewChild('modal') public registerModal: RegisterModalComponent;
 
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService,
+              private fb: FormBuilder) { }
 
   ngOnInit() {
-    this.registerForm = new FormGroup({
-      username: new FormControl(),
-      email: new FormControl(),
-      password: new FormControl(),
-      repeatPassword: new FormControl()
+    this.registerForm = this.fb.group({
+      username: ['', [Validators.required, Validators.min(3)]],
+      email: ['', [Validators.required, Validators.min(3)]],
+      password: ['', [Validators.required, Validators.min(3)]],
+      repeatPassword: ['', [Validators.required, Validators.min(3)]],
     });
+
   }
 
   showModal() {
-    this.contentModal.show();
+    this.registerModal.show();
   }
 
   onSubmit() {
-    this.userService.register(JSON.stringify(this.registerForm.value))
+    this.userService.register(this.registerForm.value)
     .subscribe((data: any) => {
-      if (data.status === 'ok') {
-        this.showModal();
-      }
-      return data;
+      if (data) { this.showModal(); }
     });
   }
 
