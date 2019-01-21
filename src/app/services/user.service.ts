@@ -27,7 +27,7 @@ export class UserService {
   }
 
   /** Method to get user data by id */
-  getUser() {
+  getUser(): Observable<User> {
     return this.http.get<UserAttrs>(`${environment.api}/users`).pipe(
      map((userAttrs) => new User(userAttrs))
     );
