@@ -17,14 +17,11 @@ export class ActionComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-
     const hash = this.route.snapshot.paramMap.get('hash');
-
-    this.userService.activate(JSON.stringify({'hash': hash}))
-    .subscribe((data: any) => {
-      if (data.status === 'ok') {
-        this.activate = true;
-      }
+    this.userService.activate({'hash': hash})
+    .subscribe((data) => {
+      // @TOOD check response
+      if (data) { this.activate = true; }
     });
   }
 }
