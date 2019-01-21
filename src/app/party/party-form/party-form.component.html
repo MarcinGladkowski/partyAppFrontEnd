@@ -3,7 +3,7 @@
     <p class="h5 text-center mb-4">Utwórz nowe wydarzenie</p>
     <div class="md-form">
       <input mdbInputDirective id="form1" placeholder="Wyszukaj lokalizację" autocorrect="off" autocapitalize="off" spellcheck="off"
-             type="text" class="form-control" #search [formControl]="searchControl">
+             type="text" class="form-control" #search [formControl]="searchControl" required>
     </div>
 
     <div class="md-form">
@@ -53,9 +53,6 @@
       <input formControlName="private" type="checkbox" class="custom-control-input" id="private" checked>
       <label class="custom-control-label" for="private">Prywatna</label>
     </div>
-
-
-
 
     <div class="text-center">
       <input [disabled]="!partyForm.valid" type="submit" mdbBtn color="default" sclass="waves-light" mdbWavesEffect value="Zapisz">
