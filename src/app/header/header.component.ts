@@ -22,15 +22,16 @@ export class HeaderComponent implements OnInit {
     private router: Router
   ) {}
 
-
   ngOnInit() {
 
     this.authService.isLoggedIn().subscribe((data: boolean) => {
       this.isLoggedIn = data;
     });
+
     this.authService.getProfile().subscribe((user: User) => {
       this.user = user;
     });
+
   }
   private redirectAfterLogout() {
     this.authService.logout();
