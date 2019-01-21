@@ -17,7 +17,7 @@
     <!-- Grid column -->
     <div class="col-md-7 text-md-left ml-3 mt-3">
       <!-- Excerpt -->
-      <a href="#!" class="green-text">
+      <a class="green-text">
         <h6 class="h6 pb-1"><i class="fa fa-desktop pr-1"></i>{{ party.partyType?.name }}</h6>
       </a>
       <h4 class="h4 mb-4">{{ party.name }}</h4>
@@ -34,7 +34,7 @@
   <h4 class="card-title h4 pb-2 text-left">Lista uczestników</h4>
   <ul *ngIf="party.participants.length" class="list-group">
     <li *ngFor="let participant of party.participants" class="list-group-item">
-      <img style="width: auto; height: 23px;" src="http://localhost:8080/avatar/{{ participant?.avatar }}" alt="avatar" class="rounded-circle img-fluid">
+      <img style="width: auto; height: 23px;" src="{{ participant?.avatar }}" alt="avatar" class="rounded-circle img-fluid">
       {{ participant?.username }}
     </li>
   </ul>
