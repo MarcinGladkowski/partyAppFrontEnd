@@ -3,7 +3,7 @@ import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { AgmCoreModule } from '@agm/core';
-import { MDBBootstrapModule, ModalModule, ButtonsModule } from 'angular-bootstrap-md';
+import { MDBBootstrapModule, ModalModule, ButtonsModule, WavesModule, InputsModule } from 'angular-bootstrap-md';
 import { CommonModule } from '@angular/common';
 import { AgmSnazzyInfoWindowModule } from '@agm/snazzy-info-window';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -45,10 +45,10 @@ import { AvatarComponent } from './user/avatar/avatar.component';
 import { PasswordComponent } from './user/password/password.component';
 
 import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
-import { WavesModule } from 'angular-bootstrap-md';
 import { PartyInviteComponent } from './party/party-invite/party-invite.component';
-import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { SaveModalComponent } from './party/party-form/save-modal/save-modal.component';
+import { RegisterModalComponent } from './register/register-modal/register-modal.component';
 
 @NgModule({
   declarations: [
@@ -72,6 +72,7 @@ import { SaveModalComponent } from './party/party-form/save-modal/save-modal.com
     PasswordComponent,
     PartyInviteComponent,
     SaveModalComponent,
+    RegisterModalComponent,
   ],
   imports: [
     BrowserAnimationsModule,
@@ -81,7 +82,6 @@ import { SaveModalComponent } from './party/party-form/save-modal/save-modal.com
     MatTableModule,
     MatPaginatorModule,
     CdkTableModule,
-    ButtonsModule,
     BrowserModule,
     CommonModule,
     FormsModule,
@@ -95,10 +95,12 @@ import { SaveModalComponent } from './party/party-form/save-modal/save-modal.com
     }),
     AgmSnazzyInfoWindowModule,
     MDBBootstrapModule.forRoot(),
+    WavesModule,
+    InputsModule,
+    ButtonsModule,
     BrowserAnimationsModule,
     OwlDateTimeModule,
     OwlNativeDateTimeModule,
-    WavesModule,
     MatAutocompleteModule,
     MatInputModule,
     routerModule
