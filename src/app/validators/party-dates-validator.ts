@@ -1,9 +1,10 @@
 import {FormControl, FormGroup, ValidatorFn} from '@angular/forms';
+import * as moment from 'moment';
 
 export const PartyDatesValidator: ValidatorFn | null = (fg: FormGroup) => {
-  const startDate = new Date(fg.get('startDate').value);
-  const endDate = new Date(fg.get('endDate').value);
-  return startDate !== endDate && endDate > startDate ? null : { diff: true, startDate: true };
+  const startDate = moment(fg.get('endDate').value, 'YYYY-MM-DD HH:MM', true).format('YYYY-MM-DD HH:mm');
+  const endDate = moment(fg.get('startDate').value, 'YYYY-MM-DD HH:MM', true).format('YYYY-MM-DD HH:mm');
+  return startDate !== endDate || endDate > startDate ? null : { diff: true, startDate: true };
 };
 
 export class PartyDateValidator {
