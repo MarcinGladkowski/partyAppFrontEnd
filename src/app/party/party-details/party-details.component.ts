@@ -5,6 +5,7 @@ import {Observable} from 'rxjs';
 import {Party} from '../party';
 import {AuthService} from '../../services/auth.service';
 import {User} from '../../user/user';
+import { environment } from './../../../environments/environment';
 
 @Component({
   selector: 'app-party-details',
@@ -17,6 +18,7 @@ export class PartyDetailsComponent implements OnInit {
   user$: Observable<User>;
   userInParty = false;
   user: User;
+  environmentPath: string = environment.upload;
 
   constructor(
     private partyListService: PartyListsService,

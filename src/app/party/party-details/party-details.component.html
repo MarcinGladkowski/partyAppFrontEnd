@@ -34,7 +34,7 @@
   <h4 class="card-title h4 pb-2 text-left">Lista uczestników</h4>
   <ul *ngIf="party.participants.length" class="list-group">
     <li *ngFor="let participant of party.participants" class="list-group-item">
-      <img style="width: auto; height: 23px;" src="{{ participant?.avatar }}" alt="avatar" class="rounded-circle img-fluid">
+      <img style="width: auto; height: 23px;" src="{{ environmentPath }}{{ participant?.avatar }}" alt="avatar" class="rounded-circle img-fluid">
       {{ participant?.username }}
     </li>
   </ul>
