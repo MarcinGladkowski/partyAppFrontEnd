@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { FormGroup, FormBuilder,  Validators} from '@angular/forms';
+import {FormGroup, FormBuilder, Validators, FormControl} from '@angular/forms';
 import { UserService  } from '../services/user.service';
 import {RegisterModalComponent} from './register-modal/register-modal.component';
 
@@ -19,12 +19,11 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit() {
     this.registerForm = this.fb.group({
-      username: ['', [Validators.required, Validators.min(3)]],
-      email: ['', [Validators.required, Validators.min(3)]],
-      password: ['', [Validators.required, Validators.min(3)]],
-      repeatPassword: ['', [Validators.required, Validators.min(3)]],
+      username: [null, [Validators.required, Validators.minLength(6)]],
+      email: [null, [Validators.required, Validators.minLength(6)]],
+      password: [null, [Validators.required, Validators.minLength(8)]],
+      repeatPassword: [null, [Validators.required, Validators.minLength(8)]],
     });
-
   }
 
   showModal() {
