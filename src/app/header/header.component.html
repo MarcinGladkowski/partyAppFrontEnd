@@ -5,18 +5,30 @@
   <links>
     <ul class="navbar-nav mr-auto">
       <ng-template [ngIf]="!isLoggedIn">
-        <li class="nav-item waves-light" mdbWavesEffect>
+        <li class="nav-item waves-light"
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{ exact: true }"
+            mdbWavesEffect>
           <a routerLink="/" class="nav-link">Logowanie</a>
         </li>
-        <li class="nav-item waves-light" mdbWavesEffect>
+        <li class="nav-item waves-light"
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{ exact: true }"
+            mdbWavesEffect>
           <a routerLink="/register" class="nav-link">Rejestracja</a>
         </li>
       </ng-template>
       <ng-template [ngIf]="isLoggedIn">
-        <li class="nav-item waves-light" mdbWavesEffect>
+        <li class="nav-item waves-light"
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{ exact: true }"
+            mdbWavesEffect>
           <a routerLink="/party/list" class="nav-link">Lista</a>
         </li>
-        <li class="nav-item waves-light" mdbWavesEffect>
+        <li class="nav-item waves-light"
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{ exact: true }"
+            mdbWavesEffect>
           <a routerLink="/party/add" class="nav-link">Dodaj</a>
         </li>
       </ng-template>
