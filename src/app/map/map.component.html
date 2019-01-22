@@ -1,18 +1,22 @@
 <div class="container-fluid">
   <div class="row main-container">
     <agm-map [latitude]="latitude" [longitude]="longitude" [styles]="customStyles">
-      <agm-marker 
-        class="mapMarker" 
-        *ngFor="let party of partyEvents; let i = index" 
-        [latitude]="party.latitude" 
+      <agm-marker
+        class="mapMarker"
+        *ngFor="let party of partyEvents; let i = index"
+        [latitude]="party.latitude"
         [longitude]="party.longitude"
         [iconUrl]="imagesPath + party.partyType.filename"
         >
-        <agm-info-window>
-          <strong>Dodał: {{ party.userCreated.username }}</strong><br>
-          <strong>Tytuł: {{ party.name }}</strong>
-          <p>Opis: {{ party.desc }} </p>
-        </agm-info-window>
+
+        <agm-snazzy-info-window [maxWidth]="200" [closeWhenOthersOpen]="true">
+          <ng-template>
+            <strong>Dodał: {{ party.userCreated.username }}</strong><br>
+            <strong>Tytuł: {{ party.name }}</strong>
+            <p>Opis: {{ party.desc }} </p>
+          </ng-template>
+        </agm-snazzy-info-window>
+
       </agm-marker>
     </agm-map>
   </div>
