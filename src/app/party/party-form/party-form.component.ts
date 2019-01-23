@@ -17,6 +17,7 @@ export class PartyFormComponent implements OnInit {
   searchControl: FormControl;
   latitude: number;
   longitude: number;
+  adressValitationMessage = true;
   partyTypes = [];
 
   constructor(
@@ -37,6 +38,7 @@ export class PartyFormComponent implements OnInit {
     });
 
     this.partyForm = this.formBuilder.group({
+      'searchControl': [null, Validators.required],
       'name': [null, Validators.required],
       'desc': [null, Validators.required],
       'startDate': [null , [Validators.required, PartyDateValidator.actualDate]],
@@ -45,9 +47,6 @@ export class PartyFormComponent implements OnInit {
       'private': [null]
     }, {validator: PartyDatesValidator });
 
-    this.searchControl = new FormControl();
-
-    // load Places Autocomplete
     this.mapsAPILoader.load().then(() => {
       const autocomplete = new google.maps.places.Autocomplete(this.searchElementRef.nativeElement, {
         types: ['address']
@@ -60,25 +59,26 @@ export class PartyFormComponent implements OnInit {
           }
           this.latitude = place.geometry.location.lat();
           this.longitude = place.geometry.location.lng();
+          this.adressValitationMessage = false;
         });
       });
     });
   }
 
   onSubmit() {
+    // @TODO change to ES6 syntax
     this.partyForm.value.latitude = this.latitude;
     this.partyForm.value.longitude = this.longitude;
     const newParty = this.partyForm.value;
-
-    /** @TODO if place is not found (lat, lng) not send request */
+    /** @TODO if place is not found (lat, lng) not send request, add message on screen */
     if (this.partyForm.value.latitude !== undefined || this.partyForm.value.longitude !== undefined) {
+      this.adressValitationMessage = false;
       this.partyListsService.saveParty(newParty).subscribe((savedParty) => {
         this.savedPartyModal.show(savedParty);
       });
+    } else {
+      this.adressValitationMessage = true;
     }
-
     this.partyForm.reset();
-    this.searchControl.setValue('');
   }
 }
-

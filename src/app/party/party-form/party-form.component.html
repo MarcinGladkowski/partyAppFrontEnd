@@ -1,9 +1,23 @@
 <div class="row h-75 justify-content-center align-items-center">
   <form class="col-8" [formGroup]="partyForm" (ngSubmit)="onSubmit()">
     <p class="h5 text-center mb-4">Utwórz nowe wydarzenie</p>
+
+    <div *ngIf="adressValitationMessage && (partyForm.get('searchControl').touched || partyForm.get('searchControl').dirty)"
+         class="cross-validation-error-message alert alert-danger">
+         Niepoprawnie wypełniony adres. Wpisz szukany adres a następnie wybierz z listy!
+    </div>
+
     <div class="md-form">
-      <input mdbInputDirective id="form1" placeholder="Wyszukaj lokalizację" autocorrect="off" autocapitalize="off" spellcheck="off"
-             type="text" class="form-control" #search [formControl]="searchControl" required>
+      <input mdbInputDirective
+             id="searchControl"
+             placeholder="Wyszukaj lokalizację"
+             autocorrect="off"
+             autocapitalize="off"
+             spellcheck="off"
+             type="text"
+             class="form-control"
+             #search
+             formControlName="searchControl">
     </div>
 
     <div class="md-form">
