@@ -7,15 +7,23 @@ import { map, catchError } from 'rxjs/operators';
 
 export class UserValidator implements Validators {
 
-    static userExists(formControl: FormControl) {
+    static userExistsByEmail(formControl: FormControl) {
         if (!formControl.value) { return of(null); }
         return ajax.get(`${environment.api}/auth/is-exists?email=${formControl.value}`).pipe(
-            map((ajaxResponse) => {
-                if (ajaxResponse.response.status) { return null; }
-            }),
+          map((ajaxResponse) => ajaxResponse.response !== null),
+          map((hasUser) => hasUser ? null : {usernameExists: true},
             catchError((res: HttpErrorResponse) => {
-                return of({userExists: {message: 'Brak podanego adresu w aplikacji'}});
+              return of(null);
             })
+          )
+        );
+    }
+
+    static userExistsByUserName(formControl: FormControl) {
+        if (!formControl.value) { return of(null); }
+        return ajax.get(`${environment.api}/auth/is-exists?username=${formControl.value}`).pipe(
+          map((ajaxResponse) => ajaxResponse.response !== null),
+          map((hasUser) => hasUser ? {usernameExists: true} : null)
         );
     }
 }
