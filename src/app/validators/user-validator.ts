@@ -23,7 +23,10 @@ export class UserValidator implements Validators {
         if (!formControl.value) { return of(null); }
         return ajax.get(`${environment.api}/auth/is-exists?username=${formControl.value}`).pipe(
           map((ajaxResponse) => ajaxResponse.response !== null),
-          map((hasUser) => hasUser ? {usernameExists: true} : null)
+          map((hasUser) => hasUser ? {usernameExists: true} : null),
+          catchError((res: HttpErrorResponse) => {
+            return of(null);
+          })
         );
     }
 }
