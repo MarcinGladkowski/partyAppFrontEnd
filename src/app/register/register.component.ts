@@ -1,9 +1,9 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import {FormGroup, FormBuilder, Validators, FormControl} from '@angular/forms';
+import {FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { UserService  } from '../services/user.service';
-import {RegisterModalComponent} from './register-modal/register-modal.component';
-import {UserValidator} from '../validators/user-validator';
-import {PasswordRegisterRepeatValidator} from '../validators/password-repeat-validator';
+import { RegisterModalComponent } from './register-modal/register-modal.component';
+import { UserValidator } from '../validators/user-validator';
+import { PasswordRegisterRepeatValidator } from '../validators/password-repeat-validator';
 
 @Component({
   selector: 'app-register',
@@ -21,15 +21,21 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit() {
     this.registerForm = this.fb.group({
-      username: [null, [Validators.required, Validators.minLength(8)]],
-      email: [null, [Validators.required, Validators.minLength(8), Validators.email], [UserValidator.userExists]],
-      password: [null, [Validators.required, Validators.minLength(8)]],
+      username:
+        [null,
+        [Validators.required, Validators.minLength(6)],
+        [UserValidator.userExistsByUserName]],
+      email:
+        [null,
+        [Validators.required, Validators.minLength(8),
+          Validators.email]],
+      password:
+        [null,
+        [Validators.required, Validators.minLength(8)]
+      ],
       repeatPassword: [null, [Validators.required, Validators.minLength(8)]],
     }, {validator: PasswordRegisterRepeatValidator });
   }
-
-  get passwordInput() { return this.registerForm.get('password'); }
-  get passwordRepeatInput() { return this.registerForm.get('repeatPassword'); }
 
   showModal() {
     this.registerModal.show();

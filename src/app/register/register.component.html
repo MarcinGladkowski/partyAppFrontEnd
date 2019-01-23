@@ -1,45 +1,53 @@
 <div class="row h-75 justify-content-center align-items-center">
-<div class="col-6">
-        <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
-            <p class="h5 text-center mb-4">Rejestracja</p>
+  <div class="col-6">
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+      <p class="h5 text-center mb-4">Rejestracja</p>
 
-            <div *ngIf="registerForm.errors?.diff && (passwordInput.touched || passwordRepeatInput.dirty)" class="cross-validation-error-message alert alert-danger">
-              Podane hasła nie pasują do siebie!
-            </div>
+      <div
+        *ngIf="registerForm.errors?.diff && (registerForm.get('password').touched || registerForm.get('repeatPassword').dirty)"
+        class="cross-validation-error-message alert alert-danger">
+        Podane hasła nie pasują do siebie!
+      </div>
 
-            <div class="md-form">
-              <i class="fa fa-user prefix grey-text"></i>
-              <input mdbInputDirective type="text" formControlName="username" id="username" class="form-control">
-              <label for="username">Nazwa użytkownika</label>
-            </div>
+      <div *ngIf="registerForm.get('username').hasError('usernameExists')"
+           class="cross-validation-error-message alert alert-danger">
+        Nazwa użytkownika jest już zajęta!
+      </div>
 
-            <div class="md-form">
-              <i class="fa fa-envelope prefix grey-text"></i>
-              <input type="text" formControlName="email" id="email" class="form-control" mdbInputDirective>
-              <label for="email">Email</label>
-            </div>
+      <div class="md-form">
+        <i class="fa fa-user prefix grey-text"></i>
+        <input mdbInputDirective type="text" formControlName="username" id="username" class="form-control">
+        <label for="username">Nazwa użytkownika</label>
+      </div>
 
-            <div class="md-form">
-                <i class="fa fa-lock prefix grey-text"></i>
-                <input type="password" formControlName="password" id="password" class="form-control" mdbInputDirective>
-                <label for="password">Hasło</label>
-              </div>
+      <div class="md-form">
+        <i class="fa fa-envelope prefix grey-text"></i>
+        <input type="text" formControlName="email" id="email" class="form-control" mdbInputDirective>
+        <label for="email">Email</label>
+      </div>
 
-            <div class="md-form">
-                  <i class="fa fa-lock prefix grey-text"></i>
-                  <input type="password" formControlName="repeatPassword"  id="repeatPassword" class="form-control" mdbInputDirective>
-                  <label for="repeatPassword">Powtórz hasło</label>
-            </div>
-        
-            <div class="text-center">
-              <input [disabled]='!registerForm.valid'
-                     type="submit" mdbBtn color="default"
-                     sclass="waves-light"
-                     mdbWavesEffect
-                     value="Zarejestruj się">
-            </div>
-          </form>
-    </div>
+      <div class="md-form">
+        <i class="fa fa-lock prefix grey-text"></i>
+        <input type="password" formControlName="password" id="password" class="form-control" mdbInputDirective>
+        <label for="password">Hasło</label>
+      </div>
+
+      <div class="md-form">
+        <i class="fa fa-lock prefix grey-text"></i>
+        <input type="password" formControlName="repeatPassword" id="repeatPassword" class="form-control"
+               mdbInputDirective>
+        <label for="repeatPassword">Powtórz hasło</label>
+      </div>
+
+      <div class="text-center">
+        <input [disabled]='!registerForm.valid'
+               type="submit" mdbBtn color="default"
+               sclass="waves-light"
+               mdbWavesEffect
+               value="Zarejestruj się">
+      </div>
+    </form>
+  </div>
 </div>
 
 <app-register-modal #modal></app-register-modal>
