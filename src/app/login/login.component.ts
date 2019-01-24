@@ -45,9 +45,7 @@ export class LoginComponent implements OnInit {
         this.router.navigate(['/party/list']);
       }
     },
-      (error: HttpErrorResponse) => {
-      this.error = error.message;
-    });
+      (error: HttpErrorResponse) => this.error = error.message );
   }
 
 }

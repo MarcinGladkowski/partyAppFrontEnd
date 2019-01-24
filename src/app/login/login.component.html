@@ -2,6 +2,9 @@
 
   <form class="col-6" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
     <p class="h5 text-center mb-4">Zaloguj</p>
+
+    <div *ngIf="error" class="cross-validation-error-message alert alert-danger"><strong>{{ error }}</strong></div>
+
     <div class="md-form">
       <i class="fa fa-envelope prefix grey-text"></i>
       <input type="text"
@@ -21,8 +24,6 @@
              mdbInputDirective>
       <label for="password">Hasło</label>
     </div>
-
-    <div *ngIf="error" class="cross-validation-error-message alert alert-danger">Błędne <strong>hasło</strong> lub <strong>email</strong></div>
 
     <div class="text-center">
       <input [disabled]='!loginForm.valid'

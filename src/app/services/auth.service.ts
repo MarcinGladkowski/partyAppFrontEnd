@@ -38,7 +38,7 @@ export class AuthService {
   }
 
   login(loginData: Login) {
-    return this.http.post(`${environment.api}/auth`, loginData).pipe(
+    return this.http.post(`${environment.api}/auth`, loginData, {responseType: 'json'}).pipe(
       map((data: any) => {
         if (data && data.auth) {
           localStorage.setItem('auth', JSON.stringify(data));
@@ -51,7 +51,7 @@ export class AuthService {
       }),
       catchError((err) => {
         if (err instanceof HttpErrorResponse) {
-          throw new Error(err.message);
+          throw new Error(err.error.message);
         }
         return of();
       })
