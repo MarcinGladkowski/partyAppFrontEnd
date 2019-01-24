@@ -19,6 +19,18 @@ export class UserValidator implements Validators {
         );
     }
 
+  static userNotExistsByEmail(formControl: FormControl) {
+    if (!formControl.value) { return of(null); }
+    return ajax.get(`${environment.api}/auth/is-exists?email=${formControl.value}`).pipe(
+      map((ajaxResponse) => ajaxResponse.response !== null),
+      map((hasUser) => hasUser ? {emailExists: true} : null,
+        catchError((res: HttpErrorResponse) => {
+          return of(null);
+        })
+      )
+    );
+  }
+
     static userExistsByUserName(formControl: FormControl) {
         if (!formControl.value) { return of(null); }
         return ajax.get(`${environment.api}/auth/is-exists?username=${formControl.value}`).pipe(
@@ -29,4 +41,24 @@ export class UserValidator implements Validators {
           })
         );
     }
+
+  /**
+   *  if true
+   * @param param true|false
+   */
+  static userExistsByUserNameParam = (param: boolean) => {
+    return (formControl: FormControl) => {
+      if (!formControl.value) { return of(null); }
+      return ajax.get(`${environment.api}/auth/is-exists?username=${formControl.value}`).pipe(
+        map((ajaxResponse) => ajaxResponse.response !== null),
+        map((hasUser) => hasUser ? {usernameExists: true} : null),
+        catchError((res: HttpErrorResponse) => {
+          return of(null);
+        })
+      );
+    };
+  }
+
+
 }
+

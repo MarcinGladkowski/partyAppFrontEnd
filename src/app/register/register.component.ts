@@ -27,8 +27,8 @@ export class RegisterComponent implements OnInit {
         [UserValidator.userExistsByUserName]],
       email:
         [null,
-        [Validators.required, Validators.minLength(8),
-          Validators.email]],
+        [Validators.required, Validators.minLength(8), Validators.email],
+        [UserValidator.userNotExistsByEmail]],
       password:
         [null,
         [Validators.required, Validators.minLength(8)]
