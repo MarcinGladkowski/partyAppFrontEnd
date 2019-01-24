@@ -12,8 +12,8 @@ export class MapComponent implements OnInit {
 
   partyEvents = [];
   imagesPath = environment.iconsDir;
-  latitude: number;
-  longitude: number;
+  latitude = 51.919437;
+  longitude = 19.145136;
   zoom = 4;
   customStyles = defaultMapStyle;
 
@@ -39,7 +39,7 @@ export class MapComponent implements OnInit {
         console.log(`Długość geograficzna: ${this.longitude}`);
       });
     } else {
-      alert(`Geolocation is not supported by this browser.`);
+        console.log(`Geolocation is not supported by this browser.`);
     }
   }
 
