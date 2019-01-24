@@ -4,7 +4,7 @@
       <p class="h5 text-center mb-4">Rejestracja</p>
 
       <div
-        *ngIf="registerForm.errors?.diff && (registerForm.get('password').touched || registerForm.get('repeatPassword').dirty)"
+        *ngIf="registerForm.errors?.diff && (registerForm.get('password').touched && registerForm.get('repeatPassword').dirty)"
         class="cross-validation-error-message alert alert-danger">
         Podane hasła nie pasują do siebie!
       </div>
