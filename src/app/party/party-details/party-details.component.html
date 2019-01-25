@@ -22,10 +22,11 @@
       </a>
       <h4 class="h4 mb-4">{{ party.name }}</h4>
       <p class="font-weight-normal">{{ party.desc }}.</p>
-      <p class="font-weight-normal">by <a><strong>{{ party.userCreated.username }}</strong></a>, 19/08/2016</p>
+      <p class="font-weight-normal"><a><strong>{{ party.userCreated.username }}</strong></a>, {{ party.createdDate | date: 'dd/MM/yyyy' }}</p>
       <!--check is user created or take part in party-->
       <a *ngIf="!userInParty" mdbBtn color="success" (click)="addParticipant(party._id)" mdbWavesEffect>Dołącz</a>
       <a *ngIf="userInParty" mdbBtn color="success" (click)="removeParticipant(party._id)" mdbWavesEffect>Zrezygnuj</a>
+      <a mdbBtn color="success" [routerLink]="['/party/invite/', party._id]" mdbWavesEffect>Zaproś</a>
     </div>
     <!-- Grid column -->
   </div>
