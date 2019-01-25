@@ -1,11 +1,11 @@
-import { PartyListsService } from './../../services/party-lists.service';
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import {PartyListsService} from './../../services/party-lists.service';
+import {Component, OnInit} from '@angular/core';
+import {ActivatedRoute} from '@angular/router';
 import {Observable} from 'rxjs';
 import {Party} from '../party';
 import {AuthService} from '../../services/auth.service';
 import {User} from '../../user/user';
-import { environment } from './../../../environments/environment';
+import {environment} from './../../../environments/environment';
 
 @Component({
   selector: 'app-party-details',
@@ -24,7 +24,8 @@ export class PartyDetailsComponent implements OnInit {
     private partyListService: PartyListsService,
     private route: ActivatedRoute,
     private authService: AuthService
-    ) { }
+  ) {
+  }
 
   ngOnInit() {
     this.route.params.subscribe((params) => {
@@ -35,16 +36,15 @@ export class PartyDetailsComponent implements OnInit {
     this.user = this.authService.user.getValue();
 
     this.party$.subscribe(party => {
-
-      const inParty = party.participants.filter((participant) => participant._id === this.user._id);
-      if (inParty.length) {
+      const inParty = party.participants.filter((participant) => participant._id === this.user._id );
+      if (inParty.length > 0) {
         this.userInParty = true;
       }
 
     });
   }
 
-  addParticipant(id: string, ) {
+  addParticipant(id: string) {
     this.party$ = this.partyListService.addParticipant(id, this.authService.user.getValue());
     this.userInParty = true;
   }
@@ -54,3 +54,4 @@ export class PartyDetailsComponent implements OnInit {
     this.userInParty = false;
   }
 }
+
