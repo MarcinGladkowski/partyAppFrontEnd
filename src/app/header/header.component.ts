@@ -2,6 +2,7 @@ import { Component, OnInit, Output, EventEmitter} from '@angular/core';
 import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
 import {User} from '../user/user';
+import {environment} from '../../environments/environment';
 
 @Component({
   selector: 'app-header',
@@ -12,6 +13,7 @@ export class HeaderComponent implements OnInit {
 
   isLoggedIn;
   user: User;
+  environmentPath: string = environment.upload;
 
   logout() {
     this.redirectAfterLogout();

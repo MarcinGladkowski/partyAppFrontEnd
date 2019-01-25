@@ -37,7 +37,7 @@
       <ng-template [ngIf]="isLoggedIn">
         <li class="nav-item dropdown" dropdown>
           <a dropdownToggle mdbWavesEffect type="button" class="nav-link dropdown-toggle waves-light" mdbWavesEffect>
-            <img style="width: auto; height: 23px;" *ngIf="user" src="{{ user?.avatar }}" alt="avatar"
+            <img style="width: auto; height: 23px;" *ngIf="user" src="{{ environmentPath }}{{ user?.avatar }}" alt="avatar"
                  class="rounded-circle img-fluid">
             <span class="caret"></span></a>
           <div *dropdownMenu class="dropdown-menu dropdown dropdown-primary" role="menu">
