@@ -43,6 +43,7 @@ export class PartyListsService {
 
   getParties() {
     return this.http.get(`${environment.api}/party`).subscribe((data: any) => {
+      console.log('update party list!');
       this.partiesList = data.parties;
       this.parties$.next(data.parties);
     });
@@ -55,12 +56,14 @@ export class PartyListsService {
   }
   /** add new participant to party */
   addParticipant(id: string, user: User) {
+    this.getParties();
     return this.http.post<PartyInterface>(`${environment.api}/party/${id}/participant`, user).pipe(
       map((partyAttrs) => new Party(partyAttrs))
     );
   }
 
   removeParticipant(id: string, user: User) {
+    this.getParties();
     return this.http.delete<PartyInterface>(`${environment.api}/party/${id}/participant/${user._id}`).pipe(
       map((partyAttrs) => new Party(partyAttrs))
     );
