@@ -1,25 +1,37 @@
 <div class="row h-75 justify-content-center align-items-center">
 
-  <form class="col-8 example-form" >
-    <mat-form-field class="example-full-width">
-      <input matInput placeholder="Wyszukaj użytkownika" aria-label="State" [matAutocomplete]="auto" [formControl]="stateCtrl">
-      <mat-autocomplete #auto="matAutocomplete">
-        <mat-option (onSelectionChange)="selected($event, user)"  *ngFor="let user of filteredUsers | async" [value]="user.username">
-          <img class="example-option-img" aria-hidden [src]="user?.avatar" height="25">
+  <div class="col-8">
+    <div class="example-form md-form">
+      <input mdbInputDirective aria-label="State" placeholder="Wyszukaj użytkownika" [matAutocomplete]="auto" [formControl]="stateCtrl" id="form1" class="form-control" [mdbValidate]="false">
+        <mat-autocomplete #auto="matAutocomplete">
+        <mat-option (onSelectionChange)="selected($event, user)" *ngFor="let user of filteredUsers | async" [value]="user.username">
+          <img class="example-option-img" aria-hidden [src]="environmentPath + user?.avatar " height="25">
           <span>{{ user.username }}</span>
         </mat-option>
       </mat-autocomplete>
-    </mat-form-field>
-  </form>
+    </div>
+  </div>
 
-  <div class="col-6">
+  <div *ngIf="inviteList.length; else loading" class="col-8">
+    <h5>Lista zaproszeń</h5>
     <ul class="list-group">
       <li class="list-group-item d-flex justify-content-between" *ngFor="let invite of inviteList">
-        <div class="d-flex align-items-center">{{ invite.userInvited.username }}</div>
-        <button size="sm" mdbBtn type="button" color="default" outline="true" mdbWavesEffect (click)="sendInvite(invite._id)">Wyślij zaproszenie</button>
+        <div class="d-flex align-items-center">
+          <img style="width: auto; height: 23px;" src="{{ environmentPath }}{{ invite?.userInvited.avatar }}" alt="avatar" class="rounded-circle img-fluid">
+          {{ invite.userInvited.username }}
+        </div>
+        <button *ngIf="!invite.send" size="sm" mdbBtn type="button" color="default" outline="true" mdbWavesEffect (click)="sendInvite(invite._id)">Wyślij zaproszenie</button>
+        <button *ngIf="invite.send" [disabled]="true" size="sm" mdbBtn type="button" color="default" outline="true" mdbWavesEffect (click)="sendInvite(invite._id)">Wysłano zaproszenie</button>
       </li>
     </ul>
   </div>
 
-</div>
+  <ng-template #loading>
+    <div class="col-8">
+      <div class="alert alert-success" role="alert">
+        Brak zaproszeń
+      </div>
+    </div>
+  </ng-template>
 
+</div>

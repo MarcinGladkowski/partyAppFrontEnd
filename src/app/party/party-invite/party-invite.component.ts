@@ -7,7 +7,7 @@ import {MatAutocompleteSelectedEvent} from '@angular/material';
 import {PartyInvitesService} from '../../services/party-invites.service';
 import {ActivatedRoute} from '@angular/router';
 import {PartyInvite} from './party-invite';
-import {map, tap} from 'rxjs/operators';
+import {environment} from '../../../environments/environment';
 
 @Component({
   selector: 'app-party-invite',
@@ -20,6 +20,7 @@ export class PartyInviteComponent implements OnInit {
   stateCtrl = new FormControl();
   filteredUsers: Observable<User[]>;
   inviteList: PartyInvite[];
+  environmentPath: string = environment.upload;
 
   constructor(
     private userService: UserService,
@@ -30,11 +31,15 @@ export class PartyInviteComponent implements OnInit {
   ngOnInit() {
     this.route.params.subscribe((params) => {
        this.partyId = params.id;
-       this.partyInvitesService.getPartyInvites(this.partyId).subscribe(data => {
-         this.inviteList = data;
-       });
+       this.getPartyInvites();
     });
     this.filteredUsers = this.userService.getUsers();
+  }
+
+  private getPartyInvites() {
+    this.partyInvitesService.getPartyInvites(this.partyId).subscribe(data => {
+      this.inviteList = data;
+    });
   }
 
   selected(event: MatAutocompleteSelectedEvent, user: User) {
@@ -48,8 +53,10 @@ export class PartyInviteComponent implements OnInit {
   }
 
   sendInvite(partyInviteId: string) {
-    this.partyInvitesService.sendInvite(partyInviteId).subscribe(data => {
-      console.log(data);
+    this.partyInvitesService.sendInvite(partyInviteId).subscribe((partyInvite: PartyInvite) => {
+      if (partyInvite) {
+        this.getPartyInvites();
+      }
     });
   }
 }
