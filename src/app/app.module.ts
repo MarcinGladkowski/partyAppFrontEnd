@@ -3,7 +3,7 @@ import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { AgmCoreModule } from '@agm/core';
-import { MDBBootstrapModule, ModalModule, ButtonsModule, WavesModule, InputsModule } from 'angular-bootstrap-md';
+import { MDBBootstrapModule, ModalModule, ButtonsModule, WavesModule, InputsModule, IconsModule, BadgeModule } from 'angular-bootstrap-md';
 import { CommonModule } from '@angular/common';
 import { AgmSnazzyInfoWindowModule } from '@agm/snazzy-info-window';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -37,7 +37,7 @@ import { CdkTableModule } from '@angular/cdk/table';
 import { MatTableModule } from '@angular/material/table';
 import { MatSortModule } from '@angular/material/sort';
 import { MatPaginatorModule } from '@angular/material/paginator';
-import { MatButtonModule, MatCheckboxModule, MatInputModule } from '@angular/material';
+import { MatButtonModule, MatCheckboxModule, MatInputModule, MatAutocompleteModule} from '@angular/material';
 import { PartyFormComponent } from './party/party-form/party-form.component';
 import { PartyDetailsComponent } from './party/party-details/party-details.component';
 import { PageNoFoundComponent } from './helpers/page-no-found/page-no-found.component';
@@ -46,7 +46,6 @@ import { PasswordComponent } from './user/password/password.component';
 
 import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
 import { PartyInviteComponent } from './party/party-invite/party-invite.component';
-import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { SaveModalComponent } from './party/party-form/save-modal/save-modal.component';
 import { RegisterModalComponent } from './register/register-modal/register-modal.component';
 
@@ -103,6 +102,8 @@ import { RegisterModalComponent } from './register/register-modal/register-modal
     OwlNativeDateTimeModule,
     MatAutocompleteModule,
     MatInputModule,
+    IconsModule,
+    BadgeModule,
     routerModule
   ],
   schemas: [ NO_ERRORS_SCHEMA ],
