@@ -26,7 +26,11 @@
       <!--check is user created or take part in party-->
       <a *ngIf="!userInParty" mdbBtn color="success" (click)="addParticipant(party._id)" mdbWavesEffect>Dołącz</a>
       <a *ngIf="userInParty" mdbBtn color="success" (click)="removeParticipant(party._id)" mdbWavesEffect>Zrezygnuj</a>
-      <a mdbBtn color="success" [routerLink]="['/party/invite/', party._id]" mdbWavesEffect>Zaproś</a>
+      <!--show button only to user who create party-->
+      <ng-container *ngIf="(user$ | async) as userLogged">
+        <a *ngIf="userLogged?._id === party.userCreated._id"mdbBtn color="success" [routerLink]="['/party/invite/', party._id]" mdbWavesEffect>Zaproś</a>
+      </ng-container>
+
     </div>
     <!-- Grid column -->
   </div>
