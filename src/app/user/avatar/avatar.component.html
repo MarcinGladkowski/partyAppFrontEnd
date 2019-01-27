@@ -2,7 +2,7 @@
   <div class="col-8">
     <!-- Grid column -->
     <div class="d-flex justify-content-center avatar-box">
-      <img *ngIf="user" src="{{ user.avatar }}" class="img-fluid z-depth-1 rounded-circle" alt="Responsive image">
+      <img *ngIf="user" src="{{ environmentPath }}{{ user.avatar }}" class="img-fluid z-depth-1 rounded-circle" alt="Responsive image">
     </div>
     <!-- Grid column -->
     <form [formGroup]="avatarForm" (ngSubmit)="onSubmit()">

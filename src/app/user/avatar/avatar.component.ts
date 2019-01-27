@@ -2,7 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {AuthService} from '../../services/auth.service';
 import {UserService} from '../../services/user.service';
 import {User} from '../user';
-import {Form, FormBuilder, FormGroup} from '@angular/forms';
+import {FormBuilder, FormGroup} from '@angular/forms';
+import {environment} from '../../../environments/environment';
 
 @Component({
   selector: 'app-avatar',
@@ -14,6 +15,7 @@ export class AvatarComponent implements OnInit {
   user: User;
   fileUpload: File = null;
   avatarForm: FormGroup;
+  environmentPath: string = environment.upload;
 
   constructor(
     private authService: AuthService,
