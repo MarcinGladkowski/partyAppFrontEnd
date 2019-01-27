@@ -11,8 +11,7 @@
       </mat-autocomplete>
     </div>
   </div>
-
-  <div *ngIf="inviteList.length; else loading" class="col-8">
+  <div *ngIf="inviteList; else loading" class="col-8">
     <h5>Lista zaproszeń</h5>
     <ul class="list-group">
       <li class="list-group-item d-flex justify-content-between" *ngFor="let invite of inviteList">
