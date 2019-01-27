@@ -11,7 +11,7 @@ import {defaultMapStyle} from './map.styles';
 export class MapComponent implements OnInit {
 
   partyEvents = [];
-  imagesPath = environment.iconsDir;
+  url = environment.upload;
   latitude = 51.919437;
   longitude = 19.145136;
   zoom = 4;

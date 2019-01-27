@@ -6,7 +6,7 @@
         *ngFor="let party of partyEvents; let i = index"
         [latitude]="party.latitude"
         [longitude]="party.longitude"
-        [iconUrl]="imagesPath + party.partyType.filename">
+        [iconUrl]="url + party.partyType.filename">
 
         <agm-snazzy-info-window [maxWidth]="200" [closeWhenOthersOpen]="true">
           <ng-template>
@@ -14,6 +14,7 @@
             <strong>Tytuł: {{ party.name }}</strong>
             <p>Opis: {{ party.desc }} </p>
             <p>Liczba uczestników: {{ party.participants.length }}</p>
+            <a color="success" [routerLink]="['/party/details/', party._id]" >Szczegóły...</a>
           </ng-template>
         </agm-snazzy-info-window>
 
