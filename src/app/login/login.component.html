@@ -1,7 +1,7 @@
 <div class="row h-75 justify-content-center align-items-center">
 
   <form class="col-6" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-    <p class="h5 text-center mb-4">Zaloguj</p>
+    <p class="h5 text-center mb-4">Logowanie</p>
 
     <div *ngIf="error" class="cross-validation-error-message alert alert-danger"><strong>{{ error }}</strong></div>
 
@@ -31,7 +31,7 @@
              mdbBtn
              color="default"
              sclass="waves-light"
-             mdbWavesEffect value="Login">
+             mdbWavesEffect value="Zaloguj">
     </div>
   </form>
 </div>
