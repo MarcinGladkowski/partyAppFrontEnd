@@ -44,7 +44,7 @@ export class PartyFormComponent implements OnInit {
       'startDate': [null , [Validators.required, PartyDateValidator.actualDate]],
       'endDate': [null, Validators.required],
       'partyType': [null, Validators.required],
-      'private': [null]
+      'priv': [null]
     }, {validator: PartyDatesValidator });
 
     this.mapsAPILoader.load().then(() => {
