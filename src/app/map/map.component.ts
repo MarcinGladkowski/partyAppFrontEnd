@@ -20,12 +20,8 @@ export class MapComponent implements OnInit {
   constructor(private partyListsService: PartyListsService) { }
 
   ngOnInit() {
-
     this.getUserPositon();
-
-    this.partyListsService.parties$.subscribe((data: any) => {
-      this.partyEvents = data;
-    });
+    this.partyListsService.parties$.subscribe((data: any) => this.partyEvents = data);
   }
   /**
    * Function uses native geolocation form browser
