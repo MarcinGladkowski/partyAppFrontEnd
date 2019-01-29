@@ -35,7 +35,9 @@ export class AvatarComponent implements OnInit {
   onSubmit() {
     const form = { avatar: this.fileUpload };
     this.userService.updateAvatar(form).subscribe((user: User) => {
-      console.log(user);
+      if (user) {
+        this.authService.user.next(user);
+      }
     });
   }
 
