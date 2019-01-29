@@ -12,6 +12,7 @@ import {AuthService} from '../../services/auth.service';
 export class ProfileComponent implements OnInit {
 
   profileForm: FormGroup;
+  message = false;
 
   constructor(
     private userService: UserService,
@@ -36,6 +37,8 @@ export class ProfileComponent implements OnInit {
     this.userService.update(this.profileForm.value).subscribe((user: User) => {
       if (user) {
         this.authService.user.next(user);
+        this.message = true;
+        setTimeout(() => { this.message = false; }, 2000);
       }
     });
   }
