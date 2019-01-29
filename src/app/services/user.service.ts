@@ -50,6 +50,8 @@ export class UserService {
   updateAvatar(data) {
     const formData = new FormData();
     formData.append('avatar', data.avatar);
-    return this.http.post(`${environment.api}/update-avatar`, formData);
+    return this.http.post(`${environment.api}/users/avatar`, formData).pipe(
+      map((userAttrs) => new User(userAttrs))
+    );
   }
 }
