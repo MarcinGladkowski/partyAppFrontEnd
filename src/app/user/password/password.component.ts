@@ -12,6 +12,7 @@ import {User} from '../user';
 export class PasswordComponent implements OnInit {
 
   updatePassword: FormGroup;
+  message = false;
 
   constructor(
     private fb: FormBuilder,
@@ -31,6 +32,8 @@ export class PasswordComponent implements OnInit {
       this.authService.updatePassword(this.updatePassword.value).subscribe((user: User) => {
         if (user) {
           this.authService.user.next(user);
+          this.message = true;
+          setTimeout(() => { this.message = false; }, 2000);
         }
       });
     }
