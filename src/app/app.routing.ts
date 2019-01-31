@@ -23,7 +23,7 @@ const routesConfig: Routes = [
   {path: 'settings', component: SettingsComponent},
   {
     path: 'party', component: PartyComponent,
-    // canActivateChild: [AuthGuard],
+    canActivateChild: [AuthGuard],
     children: [
       {path: '', redirectTo: 'list', pathMatch: 'full'},
       {path: 'add', component: PartyFormComponent},
