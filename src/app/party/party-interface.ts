@@ -11,4 +11,5 @@ export interface PartyInterface {
     partyType: PartyType;
     participants: User[];
     userCreated: User;
+    priv: boolean;
 }

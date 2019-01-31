@@ -5,6 +5,7 @@ import {HttpClient, HttpErrorResponse} from '@angular/common/http';
 import {Observable, BehaviorSubject, of} from 'rxjs';
 import {User} from '../user/user';
 import {UserService} from './user.service';
+import {PartyListsService} from './party-lists.service';
 
 interface Login {
   email: string;
@@ -22,7 +23,8 @@ export class AuthService {
 
   constructor(
     private http: HttpClient,
-    private userService: UserService
+    private userService: UserService,
+    private partyService: PartyListsService
     ) {}
 
   /** change loggedIn to a subject */
@@ -45,6 +47,7 @@ export class AuthService {
           this.loggedIn.next(true);
           this.userService.getUser().subscribe((user: User) => {
             this.user.next(user);
+            this.partyService.getParties(true);
           });
         }
         return data;
@@ -62,6 +65,7 @@ export class AuthService {
   logout() {
     localStorage.removeItem('auth');
     this.loggedIn.next(false);
+    this.partyService.getParties(false);
   }
 
   checkIsUserLogin() {

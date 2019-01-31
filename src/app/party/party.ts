@@ -12,6 +12,7 @@ export class Party implements PartyInterface {
   participants: User[];
   partyType: PartyType;
   userCreated: User;
+  priv: boolean;
 
   constructor(attrs: Partial<PartyInterface>) {
     this._id = attrs._id;
@@ -23,5 +24,6 @@ export class Party implements PartyInterface {
     this.participants = attrs.participants;
     this.partyType = attrs.partyType;
     this.userCreated = attrs.userCreated;
+    this.priv = attrs.priv;
   }
 }

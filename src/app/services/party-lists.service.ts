@@ -15,7 +15,7 @@ export class PartyListsService {
   private partiesList = [];
 
   constructor(private http: HttpClient) {
-    this.getParties();
+    this.getParties(false);
   }
 
   getPartiesList() {
@@ -36,8 +36,12 @@ export class PartyListsService {
     return this.createParty(partyAttrs);
   }
 
-  getParties() {
-    return this.http.get(`${environment.api}/party`).subscribe((data: any) => {
+  getParties(priv = true) {
+    let url = `${environment.api}/party/`;
+    if (priv === false) {
+      url = `${environment.api}/party/?priv=no`;
+    }
+    return this.http.get(url).subscribe((data: any) => {
       this.partiesList = data.parties;
       this.parties$.next(data.parties);
     });

@@ -40,7 +40,6 @@ export class PartyDetailsComponent implements OnInit {
       if (inParty.length > 0) {
         this.userInParty = true;
       }
-
     });
   }
 
