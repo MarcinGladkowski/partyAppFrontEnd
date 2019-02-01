@@ -13,16 +13,15 @@ export class AuthGuard implements CanActivateChild {
     private router: Router
     ) {}
 
-
   canActivateChild(next: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
 
-      let loggedIn = false;
+    const auth = JSON.parse(localStorage.getItem('auth'));
 
-      this.authService.isLoggedIn().subscribe(data => {
-        if (!data) { this.router.navigate(['/']); }
-        loggedIn = data;
-      });
-
-      return loggedIn;
+    if (auth && auth.token) {
+      return true;
+    } else {
+      this.router.navigate(['/']);
+      return false;
+    }
   }
 }
