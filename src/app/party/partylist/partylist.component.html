@@ -1,6 +1,6 @@
 <div class="row justify-content-center align-items-center">
   <div class="col-10">
-    <div class="mat-elevation-z8">
+    <div class="mat-elevation-z8 table-container">
       <table mat-table [dataSource]="dataSource$" class="mat-elevation-z8">
         <!--nazwa-->
         <ng-container matColumnDef="name">
@@ -23,7 +23,7 @@
         <tr mat-header-row *matHeaderRowDef="displayedColumns$"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns$;"></tr>
       </table>
-      <mat-paginator [pageSize]="15" [pageSizeOptions]="[5, 10, 15]"></mat-paginator>
+      <mat-paginator [pageSize]="10" [pageSizeOptions]="[5, 10, 15]"></mat-paginator>
     </div>
   </div>
 </div>
