@@ -17,3 +17,7 @@
   margin-right: 0;
   margin-left: 8px;
 }
+
+::ng-deep .cdk-overlay-pane {
+  background-color: #fafafa;
+}
