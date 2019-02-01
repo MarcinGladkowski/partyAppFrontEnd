@@ -1,6 +1,5 @@
 <div class="row justify-content-center align-items-center left-container-90">
   <form class="col-8" [formGroup]="partyForm" (ngSubmit)="onSubmit()">
-    <p class="h5 text-center mb-4">Dodaj nowe wydarzenie</p>
 
     <div *ngIf="adressValitationMessage && (partyForm.get('searchControl').touched || partyForm.get('searchControl').dirty)"
          class="cross-validation-error-message alert alert-danger">
